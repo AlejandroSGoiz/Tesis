@@ -1,0 +1,142 @@
+\documentclass[12pt,twoside]{report}
+\usepackage[activeacute,spanish]{babel}
+\usepackage[width= 150mm,top=25mm,bottom=25mm]{geometry}
+\usepackage{graphicx} % Required for inserting images
+
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{extpfeil}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage[style=mexican]{csquotes} 
+
+\usepackage[style= alphabetic]{biblatex}
+\addbibresource{referencias.bib}
+
+
+\usepackage{parskip}
+\setlength{\headheight}{16pt}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[RO,LE]{\nouppercase{\leftmark}}
+
+\usepackage{tikz-cd}
+\usetikzlibrary{decorations.pathmorphing} 
+\usetikzlibrary{babel}
+\usetikzlibrary{calc}
+
+\usepackage[hidelinks]{hyperref}
+
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par
+\pushQED{\qed}%
+\normalfont \topsep-1\p@\@plus6\p@\relax
+\trivlist
+\item\relax
+{\itshape
+#1\@addpunct{.}}\hspace\labelsep\ignorespaces
+}{%
+\popQED\endtrivlist\@endpefalse
+}
+\makeatother
+
+\theoremstyle{definition}
+\newtheorem{defi}{Definición}[section]
+\newtheorem{ejem}[defi]{Ejemplo}
+\newtheorem{ejems}[defi]{Ejemplos}
+
+\theoremstyle{plain}
+\newtheorem{prop}[defi]{Proposición}
+\newtheorem{teo}[defi]{Teorema}
+\newtheorem*{teo*}{Teorema}
+\newtheorem{coro}[defi]{Corolario}
+
+\newcommand{\N}[0]{\mathbb N}
+\newcommand{\Q}[0]{\mathbb Q}
+\newcommand{\ff}[3]{#1\colon #2\to #3}
+\newcommand{\pare}[1]{\left(#1\right)}
+
+\newcommand{\cat}[1]{\mathsf{#1}}
+\newcommand{\id}[1]{1_{#1}}
+\newcommand{\homc}[3]{\Hom_\cat #1\left(#2,#3\right)}
+\newcommand{\homopp}[3]{\Hom_\opp #1\left(#2,#3\right)}
+\newcommand{\homo}[2]{\Hom\left(#1,#2\right)}
+\newcommand{\inv}[1]{#1^{-1}}
+\newcommand{\invopp}[1]{#1^{\textbf{op}}}
+\newcommand{\opp}[1]{\cat #1^{\textbf{op}}}
+\newcommand{\fun}[1]{\mathcal{#1}}
+\newcommand{\func}[3]{\fun{#1}\colon \cat #2\to \cat #3}
+\newcommand{\nat}[3]{#1\colon #2\Rightarrow #3}
+
+\newcommand\chap[1]{%
+  \chapter*{#1}%
+  \addcontentsline{toc}{chapter}{#1}}
+
+\DeclareMathOperator{\sub}{Sub}
+\DeclareMathOperator{\dems}{Dem}
+\DeclareMathOperator{\Ob}{Ob}
+\DeclareMathOperator{\set}{Set}
+\DeclareMathOperator{\grp}{Grp}
+\DeclareMathOperator{\topo}{Top}
+\DeclareMathOperator{\mat}{Mat_{\mathbb K}}
+\DeclareMathOperator{\cero}{\mathbf{0}}
+\DeclareMathOperator{\uno}{\mathbf{1}}
+\DeclareMathOperator{\dos}{\mathbf{2}}
+\DeclareMathOperator{\poset}{Poset}
+\DeclareMathOperator{\C}{\cat C}
+\DeclareMathOperator{\F}{\fun F}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\cring}{CRing}
+\DeclareMathOperator{\mon}{Mon}
+\DeclareMathOperator{\Nat}{Nat}
+\DeclareMathOperator{\ev}{Ev}
+
+\newcommand{\ob}[1]{\Ob(\cat{#1})}
+\newcommand{\obopp}[1]{\Ob(\opp{#1})}
+
+
+%Comandos en tikz
+\newcommand{\df}[4]{\begin{tikzcd}[ampersand replacement=\&]
+	{#1} \& {#2}
+	\arrow["#3", shift left, from=1-1, to=1-2]
+	\arrow["#4"', shift right, from=1-1, to=1-2]
+\end{tikzcd}}
+\newcommand{\diag}[8]{
+\begin{tikzcd} [ampersand replacement=\&]
+	#1 \&\& #2 \\
+	\\
+	#3 \&\& #4
+	\arrow["#5", from=1-1, to=1-3]
+	\arrow["#7"', from=1-1, to=3-1]
+	\arrow["#8", from=1-3, to=3-3]
+	\arrow["#6"', from=3-1, to=3-3]
+\end{tikzcd}}
+
+
+\title{Teorema del Punto Fijo de Lawvere}
+\author{Alejandro Sánchez Goiz}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+
+\chapter*{Introducci'on}
+\addcontentsline{toc}{chapter}{Introducci'on}
+\markboth{Introducci'on}{Introducci'on}
+\input{Capitulos/cap00}
+
+
+\chapter{Teoría de Categorías}
+\input{Capitulos/cap01}
+
+\nocite{*}
+\printbibliography
+\end{document}

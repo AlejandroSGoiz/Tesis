@@ -1,0 +1,660 @@
+\section{Categor'ias y tipos de morfismos}
+
+En el estudio moderno de las matemáticas, la mayoría de áreas empiezan a través de la teoría de conjuntos. Así, por ejemplo, un grupo es un conjunto con cierta estructura añadida; una topología es un conjunto y un subconjunto del conjunto potencia con ciertos axiomas a cumplir; incluso un sistema formal parte de conjuntos de símbolos, axiomas, reglas de formación y de inferencia. El lenguaje matemático es entonces, por lo general, uno que nace de la visión conjuntista. Sin embargo, el teorema del punto fijo de Lawvere sólo puede aplicarse en categorías cartesianas cerradas. Por tanto, todos los ejemplos que veremos en el capítulo 3 serán tratados desde la visión categórica, no la conjuntista. Es necesario entonces introducir los conceptos básicos de la teoría de categorías para poder llegar al teorema deseado y poder visualizar los ejemplos a mostrar desde una nueva percepción, i.e., la categórica. El punto natural para iniciar es con la noci'on de categor'ia, d'andonos nuestra primera
+
+
+\begin{defi}[Categoría]
+    Una \emph{categoría} $\cat C$ consta de:
+    \begin{itemize}
+        \item Una colección de objetos, simbolizada por $\ob C$, 
+        \item Para cada $A, B$ en $\ob C$, una colección de morfismos $f\colon A\to B$, donde $A$ es denominado el \textbf{dominio} y $B$ el \textbf{codominio}.
+        \item Para cada $A$ en $\ob C$, un \textbf{morfismo identidad}, denotado por $\id A$, con dominio y codominio $A$.  
+        \item Para cada par de morfismos $f\colon A\to B$, $g\colon B\to C$ un \textbf{morfismo composici'on}, $gf\colon A\to C$, tambi'en denominado el \textbf{compuesto de $f$ con $g$}.
+
+    \end{itemize}
+
+    tales que cumplen los siguientes dos axiomas:
+
+    \begin{itemize}
+        \item \textbf{Identidad:} Para cada $f\colon A\to B$, se cumple que $\id A f = f = f \id B$.
+        \item \textbf{Asociatividad:} Para cualesquiera $f\colon A\to B$, $g\colon B\to C$, $h\colon C\to D$, tenemos que $h(gf) = (hg)f$.
+    \end{itemize}
+
+\end{defi}
+
+    Para denotar objetos usamos intercambiablemente letras may'usculas o letras min'usculas, seg'un sea m'as conveniente en el contexto que se usen. 
+
+    A los morfismos $f\colon A \to B$ tambi'en los denominamos como \textbf{flechas} o \textbf{mapas} entre objetos. A la colecci'on de morfismos entre dos objetos $A$ y $B$ de una categor'ia $\cat C$ la simbolizamos por $\homc{C}{A}{B}$ o bien simplemente $\homo{A}{B}$ si no existe confusi'on. Adicionalmente, los morfismos $f\colon A\to B$ tambi'en los podemos representar como $A \xlongrightarrow{f} B$. 
+
+    En el estudio de la teor'ia de categor'ias nos veremos constantemente usando \emph{diagramas}. Someramente, un diagrama es una representaci'on visual de objetos y flechas entre estos objetos. Pensado como una gr'afica, los objetos actuan como v'ertices y las flechas como aristas. Existe, como veremos a lo largo de este cap'itulo, una ventaja en representar cuestiones de la teor'ia a trav'es de diagramas. Usualmente, nos permitir'a una nueva percepci'on del problema y puede facilitar nuestro entendimiento de 'este. As'i, por ejemplo, la composici'on $gf\colon A\to B$ puede ser representado como la afirmaci'on de que el siguiente diagrama conmuta:
+
+% https\colon//q.uiver.app/#q=WzAsMyxbMSwwLCJCIl0sWzAsMSwiQSJdLFsyLDEsIkMiXSxbMSwyLCJnZiIsMl0sWzEsMCwiZiJdLFswLDIsImciXV0=
+\[\begin{tikzcd}
+	& B \\
+	A && C.
+	\arrow["g", from=1-2, to=2-3]
+	\arrow["f", from=2-1, to=1-2]
+	\arrow["gf"', from=2-1, to=2-3]
+\end{tikzcd}\]
+
+    Cuando decimos que el diagrama conmuta, nos referimos a que es lo mismo tomar el camino superior que el inferior, es decir, del objeto $A$ pasar al objeto $B$ a trav'es de $f$ y del objeto $B$ pasar a trav'es de $g$ al objeto $C$, que simplemente pasar del objeto $A$ al objeto $C$ a trav'es de $gf$.
+
+    Para ejemplificar mejor, mostramos los axiomas de identidad y asociatividad a trav'es de diagramas. 
+
+    \textbf{Axioma de identidad} 
+
+    Para toda $f\colon A\to B$, el siguiente diagrama es conmutativo 
+
+    % https\colon//q.uiver.app/#q=WzAsNCxbMCwwLCJBIl0sWzIsMCwiQSJdLFsyLDIsIkIiXSxbNCwyLCJCIl0sWzAsMSwiXFxpZCBBIl0sWzEsMiwiZiJdLFsyLDMsIlxcaWQgQiJdLFswLDIsImYiLDJdLFsxLDMsImYiXV0=
+\[\begin{tikzcd}
+	A && A \\
+	\\
+	&& B && B.
+	\arrow["{\id A}", from=1-1, to=1-3]
+	\arrow["f"', from=1-1, to=3-3]
+	\arrow["f", from=1-3, to=3-3]
+	\arrow["f", from=1-3, to=3-5]
+	\arrow["{\id B}", from=3-3, to=3-5]
+\end{tikzcd}\]
+\newpage
+\textbf{Axioma de asociatividad}
+
+Para cualesquiera, $f\colon A\to B$, $g\colon B\to C$ y $C\to D$, el siguiente diagrama es conmutativo. 
+
+% https\colon//q.uiver.app/#q=WzAsNCxbMCwwLCJBIl0sWzMsMCwiQiJdLFszLDIsIkMiXSxbMCwyLCJEIl0sWzAsMSwiZiJdLFsxLDIsImciXSxbMiwzLCJoIl0sWzAsMywiaChnZik9KGhnKWYiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifX19XSxbMCwyLCJnZiIsMSx7ImxhYmVsX3Bvc2l0aW9uIjozMCwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzEsMywiaGciLDEseyJsYWJlbF9wb3NpdGlvbiI6MzAsInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
+\[\begin{tikzcd}
+	A &&& B \\
+	\\
+	D &&& C.
+	\arrow["f", from=1-1, to=1-4]
+	\arrow["{h(gf)=(hg)f}"{description}, dotted, from=1-1, to=3-1]
+	\arrow["gf"{description, pos=0.3}, dashed, from=1-1, to=3-4]
+	\arrow["hg"{description, pos=0.3}, dashed, from=1-4, to=3-1]
+	\arrow["g", from=1-4, to=3-4]
+	\arrow["h", from=3-4, to=3-1]
+\end{tikzcd}\]
+
+Dos observaciones son importantes en la definici'on de categor'ia. La primera, la visi'on conjuntista habitual nos har'ia pensar que los objetos son en realidad conjuntos y los morfismos, funciones. Es importante observar que esta visi'on puede privar a uno de una visi'on m'as amplia que ofrece 'esta teor'ia y que, en lo general, no es cierto que se pueda hacer dicha comparaci'on. 
+
+La segunda observación, se hace menci'on de \emph{colecciones}, no de conjuntos en la definición. Esto es porque en principio las categor'ias que se manejan pueden recolectar una cantidad tan grande de objetos y morfismos que no pueden ser conjuntos. Sin embargo, hay casos en que podemos hablar de conjuntos en vez de colecciones para los morfismos de una categor'ia, y la distinci'on es lo suficientemente importante para valer una definici'on:
+
+\begin{defi} Sea $\cat C$ una categor'ia. Decimos que es 
+\begin{enumerate}
+    \item \textbf{Localmente pequeña} si para cada par de objetos $A,B$ en $\ob C$, $\homc{C}{A}{B}$ es un conjunto. 
+    \item \textbf{Pequeña} si tanto la colección de sus objetos como la colecci'on de todas sus flechas son conjuntos. 
+\end{enumerate}   
+\end{defi}
+ 
+Exhibimos algunos ejemplos de categor'ias. 
+
+\begin{ejems} \leavevmode 
+    \begin{enumerate}[label=\alph*)]
+        \item $\set$ es la categor'ia cuyos objetos son conjuntos y los morfismos son funciones entre conjuntos. 
+        \item $\grp$ es la categor'ia cuyos objetos son grupos y los morfismos son homomorfismos entre grupos. Del mismo modo podemos definir categor'ias para grupos abelianos, Ab, para anillos unitarios, Ring, etc.
+        \item Un s'olo grupo $G$ puede ser visto como una categor'ia $\cat G$, que consta de un 'unico objeto $*$ y cuyos morfismos son todos los elementos del grupo. As'i, la composici'on est'a dada por la operaci'on del grupo y el morfismo identidad de $\cat G$ es el elemento neutro del grupo. 
+        \item $\topo$ es la categor'ia cuyos objetos son espacios topol'ogicos y los morfismos son las funciones continuas entre espacios topol'ogicos. 
+        \item $\topo_*$ es la categor'ia cuyos objetos son espacios topol'ogicos con un punto base y los morfismos son funciones continuas que preservan puntos base. 
+        \item $\mat$ es la categor'ia cuyos objetos son n'umeros naturales y cuyos morfismos son matrices con entradas elementos de un campo $\mathbb K$, es decir, dados n'umeros naturales $m,n$ un morfismo $A\colon m\to n$ es una matriz de $m\times n$ con entradas en $\mathbb K$. La composici'on est'a dada por multiplicaci'on de matrices, y los morfismos identidad son las matrices identidad. 
+        \item Dado un orden parcial $(P, \leq)$ podemos tratar 'este como una categor'ia $\cat P$. Sus objetos son los elementos del orden parcial y dados dos objetos $a,b\in \ob P$, decimos que existe un morfismo $a\to b$ si y solo si $a\leq b$. Por la propiedad reflexiva del orden parcial, $a\leq a$ para todo $a\in \ob P$ por lo que existen morfismos identidad para cada objeto. La propiedad transitiva del orden define la composici'on de morfismos. 
+        \item La categoría $\poset$ tiene como objetos 'ordenes parciales $(P,\leq)$ y como morfismos funciones que preservan 'ordenes, es decir, tales que si $(P, \leq_P)$ y $(Q,\leq_Q)$ son 'ordenes parciales, $f\colon (P,\leq_P)\to (Q,\leq_q)$ es una funci'on tal que para todo $p, q\in P$, $fp\leq_Q fq$ si y s'olo si $p\leq_P q$.
+
+    \end{enumerate}
+    \end{ejems}
+
+En contraste a la teor'ia de conjuntos, aqu'i no hablamos de elementos. La pertenencia como tal no es propia en el manejo de una categor'ia. Es decir, si consideramos un objeto $X$ en la categor'ia $\set$, no podemos hablar de un elemento $a\in X$. Existe, en este sentido, una forma de hablar de elementos y pertenencia a trav'es de morfismos. Para ello consideramos las siguientes definiciones:
+
+\begin{defi}
+    Decimos que un objeto $A$ en una categor'ia $\cat C$ es 
+    \begin{enumerate}
+        \item \textbf{terminal}, si para cualquier objeto $X$ en $\cat C$ existe un 'unico morfismo con dominio $X$ y codominio $A$,
+        \item \textbf{inicial}, si para cualquier objeto $X$ en $\cat C$ existe un 'unico morfismo con dominio $A$ y codominio $X$.
+    \end{enumerate}
+\end{defi}
+
+\begin{ejems} \leavevmode 
+\begin{enumerate}[label=\alph*)]
+    \item En la categor'ia $\set$, cualquier unitario, i.e., conjunto con un solo elemento $\{x\}$ es un objeto terminal. En particular, el conjunto $\mathbf{1}$ que definimos como $\{\varnothing\}$ es un objeto terminal. En contraste, el 'unico objeto incial es el conjunto vac'io, $\varnothing$, que definimos como $\mathbf{0}$, por vacuidad s'olo existe una funci'on con dominio $\varnothing$ y codominio $X$ para cualquier conjunto $X$. 
+
+    \item  En un orden parcial $(P,\leq)$ un m'inimo $a$ es tal que para todo $b\in P$, $a\leq b$. Por otro lado, un m'aximo $c$ es tal que para todo $b\in P$, $b\leq c$. Con estas nociones en mente, podemos observar que un objeto inicial en un orden parcial es un m'inimo y, por el contrario, un objeto terminal es un m'aximo.
+\end{enumerate}
+\end{ejems}
+
+Con esta noci'on en mente, podemos definir un elemento y la pertenencia. Pensemos, por ejemplo, en un elemento $a$ en un conjunto $A$. En t'erminos categ'oricos, podemos definir a $a$ como el morfismo $\uno \xlongrightarrow{a} A$. Tenemos entonces la siguiente definici'on. 
+
+\begin{defi}\label{elemento global}
+    En la categor'ia $\set$, un \textbf{elemento global} de un objeto $A$ es un morfismo $\uno \xlongrightarrow{a} A$. 
+\end{defi}
+
+En particular, podemos entender as'i la noci'on de pertenencia, $\in$, en t'erminos categ'oricos. Cuando expresamos $a\in A$ es lo mismo que expresar, en forma categ'orica, que existe un morfismo $a\colon\uno\to A$.
+
+Pensando ahora en los morfismos, hay propiedades interesantes en estos que merecen ser distinguidas. Tenemos las siguientes definiciones. 
+
+\begin{defi}
+    Decimos que un morfismo $f\colon A\to B$ es 
+    \begin{enumerate}
+        \item \textbf{monomorfismo} o \textbf{mono} si para cada par de morfismos $h,g \colon C\to A$ tales que $fg=fh$ esto implica $g=h$. Es decir, si el siguiente diagrama conmuta 
+        % https\colon//q.uiver.app/#q=WzAsMyxbMCwwLCJDIl0sWzIsMCwiQSJdLFs0LDAsIkIiXSxbMCwxLCJnIiwwLHsib2Zmc2V0IjotMn1dLFsxLDIsImYiXSxbMCwxLCJoIiwyLHsib2Zmc2V0IjoyfV1d
+\[\begin{tikzcd}
+	C && A && B
+	\arrow["g", shift left=2, from=1-1, to=1-3]
+	\arrow["h"', shift right=2, from=1-1, to=1-3]
+	\arrow["f", from=1-3, to=1-5]
+\end{tikzcd}\]
+entonces, $g=h$.
+        \item \textbf{epimorfismo} o $\textbf{epi}$ si para cada par de morfismos $h,g\colon B\to C$ tales que $gf=hf$ esto implica $g=h$. Es decir, si el siguiente diagrama conmuta, 
+        % https\colon//q.uiver.app/#q=WzAsMyxbMCwwLCJDIl0sWzIsMCwiQiJdLFs0LDAsIkEiXSxbMSwwLCJnIiwyLHsib2Zmc2V0IjoyfV0sWzIsMSwiZiIsMl0sWzEsMCwiaCIsMCx7Im9mZnNldCI6LTJ9XV0=
+\[\begin{tikzcd}
+	C && B && A
+	\arrow["g"', shift right=2, from=1-3, to=1-1]
+	\arrow["h", shift left=2, from=1-3, to=1-1]
+	\arrow["f"', from=1-5, to=1-3]
+\end{tikzcd}\]
+entonces $g=h$.
+        \item \textbf{invertible} si existe $g\colon B\to A$ tal que $fg= \id B$ y $gf= \id A$. En este caso decimos que $f$ es un \textbf{isomorfismo} y que $A$ y $B$ son \textbf{isomorfos}. Es decir, existe $g$ tal que el siguiente diagrama conmuta 
+        % https\colon//q.uiver.app/#q=WzAsNSxbMCwwLCJBIl0sWzIsMCwiQiJdLFswLDIsIkEiXSxbMiwyLCJCIl0sWzIsMywiQiJdLFswLDEsImYiXSxbMCwyLCJcXGlkIEEiXSxbMSwzLCJcXGlkIEIiLDJdLFsyLDMsImYiLDJdLFsxLDIsImciLDFdXQ==
+\[\begin{tikzcd}
+	A && B \\
+	\\
+	A && B. \\
+	\arrow["f", from=1-1, to=1-3]
+	\arrow["{\id A}"', from=1-1, to=3-1]
+	\arrow["g"{description}, from=1-3, to=3-1]
+	\arrow["{\id B}", from=1-3, to=3-3]
+	\arrow["f"', from=3-1, to=3-3]
+\end{tikzcd}\]
+    \end{enumerate}
+\end{defi}
+\begin{ejems}  \label{iso} \leavevmode
+    
+    \begin{enumerate}[label=\alph*)]
+        \item En $\set$ los monomorfismos son las funciones inyectivas, los epimorfismos son las funciones suprayectivas y los isomorfismos son las funciones biyectivas. 
+        \item En $\topo$ los isomorfismos son los homeomorfismos. 
+        \item  En un orden parcial $(P, \leq)$, todas las flechas son tanto monomorfismos como epimorfismos. Como las flechas $a\to b$ se dan si y s'olo si $a\leq b$, cada flecha $a\to b$ es 'unica. Por contraste, los 'unicos isomorfismos son las flechas identidades. En efecto, si tenemos $a\to b$ invertible,  esto implica que existe una flecha $b\to a$. Tenemos entonces $a\leq b$ y $b\leq a$, por lo que $a=b$ por antisimetr'ia. 
+        \item En un grupo $G$ considerado como categor'ia, todos los morfismos son isomorfismos. Recordemos que un grupo visto como categor'ia consta de un 'unico objeto $*$ y los elementos del grupo act'uan como morfismos, mientras que el elemento neutro actua como el morfismo identidad del objeto $G$. Recordemos que para cada elemento $g$ del grupo $G$, existe un inverso $h$ bajo la operaci'on del grupo tal que $g\cdot h = e$, con $\cdot$ la operaci'on del grupo y $e$ el elemento neutro. De esto vemos que cada morfismo tiene un inverso que da el morfismo identidad, por lo que to1546546564641064158 b ndos son isomorfismos. 
+    \end{enumerate}
+\end{ejems}
+
+El ejemplo anterior ayuda a exhibir una noci'on importante que pudiese confundir. En la teor'ia de conjuntos, una funci'on biyectiva es tanto suprayectiva como inyectiva. Conversamente, si una funci'on es tanto suprayectiva como inyectiva, es biyectiva. En teor'ia de categor'ias el an'alogo es cierto para la primera parte: si un morfismo es isomorfismo es tambi'en epimorfismo y monomorfismo. Pero como el inciso c) del ejemplo~\ref{iso} nos muestra, el converso no es cierto: un morfismo que es tanto epi como mono no implica que sea isomorfismo. 
+
+Procedemos a demostrar la afirmaci'on hecha.
+
+\begin{prop} Si $f\colon A\to B$ es un isomorfismo, entonces es tambi'en un epimorfismo y un monomorfismo. 
+\end{prop}
+\begin{proof}
+    Demostremos primero que es un monomorfismo. Sean entonces $g,h\colon C\to A$ morfismos tales que $fg=fh$. Como $f$ es isomorfismo, existe $\inv f\colon B\to A$ tal que $\inv f f = \id A$. Tenemos entonces 
+    \[
+        g = \id A g = (\inv f f) g=  \inv f(fg) = \inv f (fh) = (\inv f f) h = \id A h = h 
+   \]
+   por lo tanto $g=h$. Probar que $f$ es epimorfismo es completamente an'alogo a como procedimos. 
+\end{proof}
+En el uso de la prueba anterior usamos la notaci'on $\inv f$ para hablar de un morfismo inverso para $f$. Esto se debe a que dicho morfismo inverso, de existir, es 'unico. Demostramos esta afirmaci'on. 
+
+\begin{prop}
+    Si $f$ es un isomorfismo, entonces existe un 'unico morfismo inverso. 
+\end{prop}
+\begin{proof}
+    Sea $f\colon A\to B$ isomorfismo y $g,h\colon B\to A$ inversas de $f$. Tenemos entonces 
+    \[g = g\id B = g(fh) = (gf)h = \id A h = h \]
+    Por lo tanto $g=h$.
+\end{proof}
+Por tanto nuestra notaci'on $\inv f$ esta debidamente justificada. 
+
+Concluimos esta secci'on construyendo una categor'ia a partir de una dada $\cat C$. Dada una flecha $a\to b$, podemos pensar en el proceso de invertir la direcci'on de 'esta. En este caso, tendr'iamos $b\to a$. El proceso de \enquote{revertir todas las flechas} produce lo que conocemos como un proceso \emph{dual}. Este procedimiento nos permite definir la siguiente categor'ia: 
+
+\begin{defi} [Categor'ia Opuesta]
+    Sea $\cat C$ una categor'ia. La categor'ia opuesta $\opp C$ tiene:
+    \begin{itemize}
+        \item como objetos $\obopp C$ los mismos objetos que $\ob C$,
+        \item como morfismos los mismos que en $\cat C$ pero con el orden de las flechas invertidos, dado un morfismo $f\colon A\to B$ en $\cat C$, el morfismo correspondiente en $\opp C$ es $\invopp f \colon B\to A$. 
+        \item como morfismos identidad los mismos morfismos identidad que en $\cat C$.
+        \item la composici'on en $\opp C$ funciona igual que en $\cat C$. Dados morfismos $f\colon A\to B$, $g\colon B\to C$ su composici'on $gf\colon A\to C$ da lugar la composici'on $\invopp{(gf)} = \invopp f \invopp g\colon C\to A$.
+    \end{itemize}
+\end{defi}
+Es evidente que los axiomas de identidad y asociatividad se siguen en $\opp C$ si y solo si la $\cat C$ es una categor'ia. Esta construcci'on y, en general, las construcciones duales que veremos m'as adelante ser'an de gran utilidad para el teorema del punto fijo de Lawvere. 
+
+
+
+%Aqui finaliza la primera seccion 
+%--------------------------------------------------------------------------------------------------
+
+\section{Funtores y Transformaciones Naturales}
+
+La noci'on de categor'ia nos invita a pensar en objetos matem'aticos y los morfismos que permiten preservar su estructura. Consideramos por ejemplo grupos. Los morfismos que preservan su estructura son los homomorfismos; pensamos en espacios topol'ogicos, cuyos morfismos que preservan estructura son funciones continuas. Una categor'ia es tambi'en un objeto matem'atico, por lo que podemos preguntarnos en qu'e morfismos preservan la estructura de una categor'ia. Los funtores son precisamente estos morfismos. 
+
+\begin{defi}[Funtor]\label{funtor}
+Sean $\cat C$, $\cat D$ categor'ias. Un \textbf{funtor} $\func {F}{C}{D}$ consta de 
+\begin{itemize}
+    \item objetos $\fun F C$ en $\ob D$ para cada $C$ en $\ob C$,
+    \item morfismos $\fun F f\colon \fun F A\to \fun F B$ en $\cat D$ para cada morfismo $f\colon A\to B$ en $\cat C$. Es decir, para cada colecci'on $\homc{C}{A}{B}$ corresponde una colecci'on $\homc{D}{\fun FA}{\fun FB}$.
+\end{itemize}
+    Tales que:
+    \begin{itemize}
+        \item para cada $A$ en $ \ob C$, $\fun F(\id A) = \id{\fun F A}$,
+        \item para cada $f\colon A\to B$, $g\colon B\to C$ en $\cat C$, $\fun F g\fun F f = \fun F(gf)$
+    \end{itemize}
+\end{defi}
+\begin{ejems} \label{ejemplos funtores}
+    \leavevmode
+    \begin{enumerate}
+        \item El funtor $\fun F\colon \grp\to \set$ llamado \emph{olvidadizo} pues \enquote{olvida} la estructura de grupo y deja tan solo al conjunto de elementos; olvida tambi'en que las funciones son homomorfismos y simplemente las convierte a funciones sin esa noci'on. 
+        \item  $\fun P\colon \set \to \set$ es un funtor que manda a cada conjunto $X$ a su conjunto potencia $P(X)$ y que manda toda funci'on $f\colon X\to Y$ a $\fun Pf\colon P(X)\to P(Y)$, esta funci'on manda a cada $A\subset X$ a la imagen $f(A)\in P(Y)$.
+        \item Dados 'ordenes parciales $(P,\leq_P)$, $(Q,\leq_Q$) un funtor $\fun F\colon P\to Q$ es una funci'on que preserva 'ordenes, es decir, manda objetos $p, q\in P$ a objetos $\fun F p, \fun F q \in Q$ de tal manera que $p\leq_P q$ si y s'olo si $\fun F p \leq_Q \fun F q$. Observemos que estos funtores son los morfismos en la categor'ia $\poset$. 
+        \item El funtor $\pi_1 \colon \topo_*\to \grp$ que manda todo espacio topol'ogico $X$ con punto base $x$ a su grupo funamental $\pi_1(X,x)$ y a toda funci'on continua $f\colon (X,x)\to (Y,y)$ a un homomorfismo de grupos $\pi_1(f)\colon \pi_1(X,x)\to \pi_1(Y,y)$. 
+        \item Sea $\cat C$ una categor'ia, el funtor identidad $\id {\cat C}\colon \cat C\to \cat C$ manda a objetos $C$ y morfismos $f\colon C\to D$ en s'i mismos.  
+    \end{enumerate}
+\end{ejems}
+
+También denominamos a este tipo de funtor como \textbf{funtor covariante}, para distinguirlo de otro tipo de funtor. 
+
+\begin{defi}[Funtor contravariante] \label{contravariante}
+    Sean $\cat C$, $\cat D$ categor'ias. Un \textbf{funtor contravariante} de $\cat C$ a $\cat D$ es un funtor $\fun F\colon \opp C \to \cat D$. Siendo m'as expl'icitos, la diferencia principal de 'este y el funtor covariante de $\cat C$ en $\cat D$ es que morfismos $f\colon A\to B$ en $\cat C$ son mandados a morfismos $\fun F\colon \fun F B\to \fun F A$ en $\cat D$. Adem'as, si el codomonio del funtor es $\set$, decimos que el funtor es una \textbf{pregavilla}.
+\end{defi}
+\begin{ejem}\label{homfunctor} Sea $\cat C$ una categor'ia localmente pequeña y $C$ en $\ob C$. El funtor contravariante $\homc{C}{-}{C}\colon \opp C\to \set$ asigna objetos $A$ a conjuntos $\homc{C}{A}{C}$ y dado un morfismo $f\colon A\to B$ en $\homc{C}{A}{B}$ le asigna a 'este un morfismo $\homc{C}{-}{C} f\colon \homc{C}{B}{C}\to \homc{C}{A}{C}$ dado por $g\mapsto gf$.
+
+Podemos, en una manera similar, definir un funtor covariante de $\cat C$ en $\set$, denotado $\homc{C}{C}{-}$, que asigna objetos $A$ en $\ob C$ a conjuntos $\homc{C}{C}{A}$ y morfismos $f\colon A\to B$ a morfismos $\homc{C}{C}{-}\colon \homc{C}{C}{A}\to \homc{C}{C}{B}$ dado por $g\mapsto fg$.
+\end{ejem}
+
+Como mencion'abamos al inicio de la secci'on, podemos entender a los funtores como morfismos entre categor'ias, por lo que naturalmente surge la pregunta de si existen nociones similares a epimorfismo, monomorfismo o isomorfismo para funtores. Tenemos nociones similares en categor'ias localmente pequeñas, que definimos a continuación.
+
+\begin{defi}
+    Sean $\cat C,\cat D$ categor'ias localmente pequeñas y $\func{F}{C}{D}$ un funtor entre ellas. Decimos que el funtor es:
+
+    \begin{enumerate}
+        \item \textbf{fiel} si para cada $A,B$ en $\ob C$, la funci'on $\homc{C}{A}{B}\to \homc{D}{\F A}{\F B}$ es inyectiva;
+        \item \textbf{pleno} si para cada $A,B$ en $\ob C$, la funci'on $\homc{C}{A}{B}\to \homc{D}{\F A}{\F B}$ es suprayectiva;
+        \item \textbf{esencialmente suprayectivo} si para cada $A$ en $\ob C$ existe una $D$ en $\ob D$ tal que $D$ es isom'orfica a $\F A$.
+    \end{enumerate}
+    \end{defi}
+    Notemos aqu'i que estamos hablando de funciones, inyectividad y suprayectividad, por ello es que requerimos que las categor'ias en cuesti'on sean localmente pequeñas. Por otro lado, la noción de isomorfismo es idéntica a como vimos con morfismos. 
+    \begin{defi} Sean $\cat C,\cat D$ categor'ias. Un funtor $\func{F}{C}{D}$ es un \textbf{isomorfismo} si existe un funtor $\func{G}{D}{C}$ tal que $\F \fun G = \id{\cat D}$ y $\fun G \F = \id{\cat C}$. En este caso decimos que $\F F$ y $\fun G$ son \textbf{isomorfos} y lo denotamos por $\F\cong \fun G$.
+        
+    \end{defi}
+
+    Si los funtores los podemos entender como morfismos entre categor'ias, es igual de v'alido preguntarse sobre morfismos entre funtores. Hist'oricamente, este tipo de morfismos fueron los primeros en ser estudiados y que derivaron en la creaci'on de la teor'ia de categor'ias. Antes de definirlos propiamente, veamos un ejemplo en donde su presencia es 'util. 
+
+    \begin{ejem}
+        Sea $n \in \N$ y consideremos cualquier anillo conmutativo unitario $R$. Consideremos ahora las matrices $n\times n$ con entradas en $R$. Junto con la multiplicaci'on de matrices, este conjunto forma un monoide, que denotamos por $M_n(R)$. Por otro lado, si conservamos s'olo la multiplicaci'on del anillo $R$ y olvidamos la suma, obtenemos tambi'en un monoide que podemos denotar por $U(R)$. A partir de un anillo $R$ entonces tenemos dos maneras de llegar a un monoide, una definida por $M_n(R)$ y otra por $U(R)$.
+
+        Recordemos ahora que cualquier matriz cuadrada $A$ en cualquier anillo $R$ posee un determinante $\det(A)$ con valores en $R$ y que, en particular, cumple las siguientes dos propiedades: 
+        \[\det(A)\det(B) = \det(AB)\qquad \qquad \det(I_m) = 1_R\]
+        donde $I_m$ es la matriz identidad de las matrices de $m\times m$ con $m\in \N$ y $1_R$ es la identidad bajo multiplicaci'on de $Q$. Observemos que estas mismas dos propiedades son las que determinan un homomorfismos de monoides y que $\det$ toma matrices cuadradas con entradas en $R$ y devuelve valores en $R$. Por lo tanto podemos considerar el homomorfismo $\det\colon M_n(R) \to U(R)$, para cada anillo $R$. 
+
+       Consideremos un homomorfismo de anillos conmutativos $f\colon R\to Q$. Si preservamos 'unicamente la estructura de multiplicaci'on, la funci'on en cuesti'on es ahora un homomorfismo de monoides. Podemos denotar esta nueva funci'on como $U(f)\colon U(R)\to U(Q)$. Es decir, para cada anillo conmutativo $R$ tenemos un monoide $U(R)$ y para cada homomorfismo de anillos conmutativos $f\colon R\to Q$ tenemos un homomorfismo de monoides $U(f)\colon U(R)\to U(Q)$. Del mismo modo, todo homomorfismo de anillos $f\colon R\to Q$ induce un homomorfismos de monoides $M_n(f)\colon M_n(R)\to M_n(Q)$. Del estudio que llevamos al momento salta a la luz la noci'on de funtor. En efecto, podemos considerar la categor'ia $\cring$ cuyos objetos son anillos conmutativos unitarios y sus morfismos son homomorfismos de anillos conmutativos y la categor'ia $\mon$ cuyos objetos son monoides y cuyos morfismos son homomorfismos de monoides. Tenemos entonces dos funtores $M_n\colon \cring \to \mon$ y $U\colon \cring \to \mon$. 
+
+       Con estas nociones en mente, consideremos el siguiente diagrama 
+       % https\colon//q.uiver.app/#q=WzAsNCxbMCwwLCJNX24oUikiXSxbMywwLCJNX24oUSkiXSxbMCwzLCJNKFIpIl0sWzMsMywiTShRKSJdLFswLDEsIk1fbihmKSJdLFswLDIsIlxcZGV0X1IoTV9uKFIpKSIsMl0sWzIsMywiTShmKSIsMl0sWzEsMywiXFxkZXQoTV9uKFEpKSJdXQ==
+\[\begin{tikzcd}
+	{M_n(R)} &&& {M_n(Q)} \\
+	\\
+	\\
+	{U(R)} &&& {U(Q)}
+	\arrow["{M_n(f)}", from=1-1, to=1-4]
+	\arrow["{\det(M_n(R))}"', from=1-1, to=4-1]
+	\arrow["{\det(M_n(Q))}", from=1-4, to=4-4]
+	\arrow["{U(f)}"', from=4-1, to=4-4]
+\end{tikzcd}\]
+Podemos observar que $\det$ act'ua como un morfismo entre estos dos funtores. La primera pregunta que podr'ia salirnos en mente es si el diagrama es conmutativo, i.e., tenemos que $U(f)\det(M_n(R)) = \det(M_n(Q))M_n(f)$. Podemos verificar r'apidamente que el diagrama conmuta considerando los elementros neutros de los monoides y recordando que todas estas funciones son homomorfismos de monoides. 
+
+La elecci'on de los valores aqu'i es arbitraria, por lo que vemos que para la familia de morfismos $\pare{\det\colon M_n(R)\to U(R)}_{R\in \cring}$ cualquier diagrama como el mostrado arriba ser'a conmutativo. Si consideramos entonces a $\det\colon M_n\to M$, con $\det$ la famlilia mencionada $\pare{\det\colon M_n(R)\to U(R)}_{R\in \cring}$ vemos que para cada homomorfismos de anillos $f\colon R\to Q$, el diagrama mostrado arriba conmutar'a. Esto refleja que la noci'on de determinante es uniforme para todos los anillos, i.e., no es dependiente de c'omo est'a determinado un anillo en particular. Esta es la idea fundamental detr'as de una transformaci'on natural, la cual procedemos a definir formalmente. 
+\end{ejem}
+
+\begin{defi}[Transformaci'on Natural]
+Sean $\C$ y $\cat D$ categor'ias, y \df{\C}{\cat D}{\F}{\fun G} funtores. Una \textbf{transformaci'on natural} $\alpha\colon \F \Rightarrow \fun G$ consiste en una colecci'on de morfismos $\alpha_c\colon \F c\to \fun G c$ para cada objeto $c$ en $\ob C$ tales que para cada morfismo $f\colon c\to d$ en $\C$, el siguiente diagrama de morfismos en $\cat D$ es conmutativo:
+
+% https\colon//q.uiver.app/#q=WzAsNCxbMCwwLCJGYyJdLFsyLDAsIkZkIl0sWzAsMiwiR19jIl0sWzIsMiwiR2QiXSxbMCwxLCJGZiJdLFswLDIsIlxcYWxwaGFfYyIsMl0sWzIsMywiR2YiLDJdLFsxLDMsIlxcYWxwaGFfZCJdXQ==
+\[\begin{tikzcd}
+	Fc && Fd \\
+	\\
+	{G_c} && Gd
+	\arrow["Ff", from=1-1, to=1-3]
+	\arrow["{\alpha_c}"', from=1-1, to=3-1]
+	\arrow["{\alpha_d}", from=1-3, to=3-3]
+	\arrow["Gf"', from=3-1, to=3-3]
+\end{tikzcd}\]
+Si adem'as cada uno de los morfismos $\alpha_c$ es un isomorfismos, entonces decimos que es un \textbf{isomorfismo natural} y lo denotamos por $\alpha\colon \F \cong \fun G$. A los morfismos $\alpha_c$ tambi'en los denotamos como los \textbf{componentes} de la transformaci'on natural. 
+\end{defi}
+\begin{ejems} \leavevmode
+\begin{enumerate}[label=\alph*)]
+    \item Los funtores contravariantes $\fun O, \fun C\colon \begin{tikzcd}
+	{\topo^{op}} & \set
+	\arrow[shift left, from=1-1, to=1-2]
+	\arrow[shift right, from=1-1, to=1-2]
+\end{tikzcd}$, donde $\fun O$ es el funtor que lleva espacios topol'ogicos $X$ a la familia de conjuntos abiertos de $X$ y que a funciones continuas $f\colon X\to Y$ las lleva a $\fun O f\colon \fun O Y\to \fun O X$, con $\fun O f$ la funci'on que lleva a un subconjunto $U\subset Y$ a su preimagen bajo $f$, $\inv f(U)$ y $\fun C$ es el funtor an'alogo pero llevando los espacios a la familia de conjuntos cerrados de la topolog'ia son naturalmene isom'orficos, con la transformaci'on natural $\alpha\colon \fun O \to \fun C$, donde los morfismos $\alpha_X$ para cada $X\in \topo$ llevan a los conjuntos abiertos a su complemento, que es un conjunto cerrado. Para cada uno de estos, su inverso $\inv\alpha_X$ est'a dado como el morfismo que lleva los conjuntos cerrados de $X$ a su complemento, que es un conjunto abierto. 
+
+\item Recordemos que dados 'ordenes parciales $(P,\leq_P)$, $(Q,\leq_Q)$ vistos como categor'ias, un funtor entre ellos es una funci'on que preserva 'ordenes. Consideremos funtores $\fun F, \fun G$ con dominio $P$ y codominio $Q$. Si para todo $p\in P$ tenemos que $\F p \leq_Q \fun G p$  podemos definir morfismos $\alpha_p\colon \F p \to \fun G p$ tales que el diagrama
+% https\colon//q.uiver.app/#q=WzAsNCxbMCwwLCJcXGZ1bmYgcCJdLFsyLDAsIlxcZnVuZiBxIl0sWzAsMiwiXFxmdW4gRyBwIl0sWzIsMiwiXFxmdW4gRyBxIl0sWzAsMV0sWzAsMiwiXFxhbHBoYV9wIiwyXSxbMiwzXSxbMSwzLCJcXGFscGhhX3EiXV0=
+\[\begin{tikzcd}
+	{\F p} && {\F q} \\
+	\\
+	{\fun G p} && {\fun G q}
+	\arrow[from=1-1, to=1-3]
+	\arrow["{\alpha_p}"', from=1-1, to=3-1]
+	\arrow["{\alpha_q}", from=1-3, to=3-3]
+	\arrow[from=3-1, to=3-3]
+\end{tikzcd}\]
+conmuta, gracias a la transitividad del orden parcial $(Q,\leq_q)$. Por otro lado, la existencia de morfismos $\alpha_p\colon \F p \to \fun G p$ implica que $\F p\leq_Q \fun G p$, por lo que vemos que una transformaci'on natural entre los funtores $\F, \fun G$ existe si y solo si $\F p\leq_Q \fun G p$ para todo $p\in P$. 
+\end{enumerate}
+    
+\end{ejems}
+
+Las transformaciones naturales empiezan a resaltar la importancia de los diagramas para representar la informaci'on dada. Nos permiten entender de una manera m'as directa lo que est'a ocurriendo a trav'es de los objetos y los morfismos. Por ejemplo, dado el diagrama 
+% https\colon//q.uiver.app/#q=WzAsMyxbMCwwLCJBIl0sWzAsMiwiQyJdLFsxLDEsIkIiXSxbMCwxLCJnZiIsMl0sWzAsMiwiZiJdLFsyLDEsImciXV0=
+\[\begin{tikzcd}
+	A \\
+	& B \\
+	C
+	\arrow["f", from=1-1, to=2-2]
+	\arrow["gf"', from=1-1, to=3-1]
+	\arrow["g", from=2-2, to=3-1]
+\end{tikzcd}\]
+decir que es conmutativo representa la idea de la composici'on en una categor'ia. Ahora, un funtor lo podemos entender como el traslado o mapeo de la informaci'on de la categor'ia a otra dada y la propiedad $\F (gf) = \F g \F f$ implica que el mapeo del diagrama conserva la conmutatividad, es decir, el tri'angulo derecho del siguiente diagrama tambi'en es conmutativo.
+
+% https\colon//q.uiver.app/#q=WzAsOCxbMCwwLCJBIl0sWzAsMiwiQyJdLFsxLDEsIkIiXSxbNCwwLCJGQSJdLFs0LDIsIkZDIl0sWzUsMSwiRkIiXSxbMiwxXSxbMywxXSxbMCwxLCJnZiIsMl0sWzAsMiwiZiJdLFsyLDEsImciXSxbMyw0LCJGZ2YiLDJdLFszLDUsIkZmIl0sWzUsNCwiRmciXSxbNiw3LCJGIl1d
+\[\begin{tikzcd}
+	A &&&& FA \\
+	& B & {} & {} && FB \\
+	C &&&& FC
+	\arrow["f", from=1-1, to=2-2]
+	\arrow["gf"', from=1-1, to=3-1]
+	\arrow["Ff", from=1-5, to=2-6]
+	\arrow["Fgf"', from=1-5, to=3-5]
+	\arrow["g", from=2-2, to=3-1]
+	\arrow["F", from=2-3, to=2-4]
+	\arrow["Fg", from=2-6, to=3-5]
+\end{tikzcd}\]
+
+Finalmente podemos entender a una transformaci'on natural como un mapeo o traslado de la informaci'on de un funtor $\F$ a otro dado $\fun G$, de tal modo que tambi'en el diagrama 
+
+% https\colon//q.uiver.app/#q=WzAsMTEsWzAsMCwiQSJdLFswLDIsIkMiXSxbMSwxLCJCIl0sWzQsMCwiRkEiXSxbNCwyLCJGQyJdLFs1LDEsIkZCIl0sWzIsMV0sWzMsMV0sWzcsMCwiR0EiXSxbNywyLCJHQyJdLFs5LDEsIkdCIl0sWzAsMSwiZ2YiLDJdLFswLDIsImYiXSxbMiwxLCJnIl0sWzMsNCwiRmdmIiwyXSxbMyw1LCJGZiJdLFs1LDQsIkZnIl0sWzYsNywiRiJdLFszLDgsIlxcYWxwaGFfQSJdLFs1LDEwLCJcXGFscGhhX0IiLDEseyJsYWJlbF9wb3NpdGlvbiI6MzB9XSxbOCw5LCJHZ2YiLDAseyJsYWJlbF9wb3NpdGlvbiI6MzB9XSxbOCwxMCwiR2YiXSxbMTAsOSwiR2ciXSxbNCw5LCJcXGFscGhhX0MiLDJdXQ==
+\[\begin{tikzcd}
+	A &&&& FA &&& GA \\
+	& B & {} & {} && FB &&&& GB \\
+	C &&&& FC &&& GC
+	\arrow["f", from=1-1, to=2-2]
+	\arrow["gf"', from=1-1, to=3-1]
+	\arrow["{\alpha_A}", from=1-5, to=1-8]
+	\arrow["Ff", from=1-5, to=2-6]
+	\arrow["Fgf"', from=1-5, to=3-5]
+	\arrow["Gf", from=1-8, to=2-10]
+	\arrow["g", from=2-2, to=3-1]
+	\arrow["F", from=2-3, to=2-4]
+	\arrow["{\alpha_B}"{pos=0.3}, from=2-6, to=2-10]
+	\arrow["Fg", from=2-6, to=3-5]
+	\arrow["Gg", from=2-10, to=3-8]
+	\arrow["{\alpha_C}"', from=3-5, to=3-8]
+    \arrow["Ggf"{pos=0.3}, from=1-8, to=3-8, crossing over]
+\end{tikzcd}\]
+
+es conmutativo. Expresar toda esta información a través de igualdad de composiciones no sólo sería tedioso y tardado, sino también confuso en la entendimiento de las ideas expuestas. Hay una clara ventaja pedagógica en el apoyo de los diagramas para expresar nuestras ideas y, como veremos, nuestras demostraciones. La sección que sigue es un ejemplo perfecto de esto, y es también uno de los resultados centrales en la teoría de categorías. 
+
+%Aquí finaliza la segunda sección
+%---------------------------------------------------------------------------------------------------
+
+\section{Lema de Yoneda}
+
+El Lema de Yoneda es uno de los resultados m'as importantes de la teor'ia de categor'ias. La primera aparici'on del lema en la literatura es con Grothendieck en \cite{lemayoneda}, aunque el resultado se la atribuye a Nobuo Yoneda. Para entender adecuadamente el resultado, necesitamos introducir algunos resultados. Primeramente, recordemos la definici'on \ref{elemento global} de un elemento global. Esta noci'on es m'as tradicional a como entendemos la pertenencia y lo denotamos global porque no depende de ning'un punto de vista particular. Pero podemos extender la noci'on conjuntista de pertenencia y pensar en puntos de vista o de \enquote{referencia} desde los cuales podemos observar a un objeto. En la definici'on de elemento global usamos de punto de partida el objeto $\uno$, pero podemos observar al elemento desde otro punto de partida. Esto nos lleva a la siguiente definici'on 
+\begin{defi}[Elemento local] \label{elemento local}
+    Sea $A$ un objeto no isom'orfico a $\uno$. Decimos que un morfismo $A\to B$ es un \textbf{elemento local} de $B$ en la \textbf{etapa} $A$. 
+\end{defi}
+
+Esta noci'on de obsevar un elemento en cierta \enquote{etapa} ser'a 'util para entender lo que el lema de Yoneda dice. 
+
+Recordemos ahora los funtores vistos en el ejemplo \ref{homfunctor}. Nos referimos a estos como \textbf{Hom-funtores}, en particular $\ff{\homo{A}{-}}{\C}{\set}$ es el Hom-funtor covariante y $\ff{\homo{-}{A}}{\opp C}{\set}$ es el Hom-funtor contravariante. Estos dos funtores son particularmente importantes porque nos permiten hablar de la noci'on de \enquote{representabilidad} que definimos a continuaci'on. 
+
+\begin{defi}[Representable]
+    Sea $\C$ una categor'ia. Un funtor $\func{F}{C}{\set}$ es (covariablemente) \textbf{representable} si es naturalmente isom'orfico a un Hom-funtor $\ff{\homo{A}{-}}{\C}{\set}$ para alg'un objeto $A$ en $\ob C$. Del mismo modo, un funtor $\ff{\fun G}{\opp C}{\set}$ es (contravariablemente) \textbf{representable} si es naturalmente isom'orfico a un Hom-funtor contravariante $\ff{\homo{-}{A}}{\opp C}{\set}$ para un objeto $A$ en $\ob C$. En ambos casos, tal objeto $A$ es llamado un \textbf{objeto representante} del funtor $\F$ o $\fun G$, seg'un corresponda. El objeto junto con la transformaci'on natural que induce el isomorfismo son llamados una \textbf{representaci'on del funtor} $\F$ o $\fun G$, seg'un corresponda.
+\end{defi}
+
+Ponemos entre par'entesis si es covariante o contravariante porque el dominio del Hom-funtor aclara inmediatamente eso. As'i, si no existe confusi'on decimos simplemnte que un funtor es representable. Antes de discutir su relaci'on con la definici'on \ref{elemento local}, veamos  algunos ejemplos. 
+
+\begin{ejems} \leavevmode\begin{enumerate}[label=\alph*)]
+    \item El funtor potencia $\ff{\fun P}{\set}{\set}$ visto en \ref{ejemplos funtores} no es representable, sin embargo, el funtor potencia contravariante $\ff{\invopp {\fun P}}{\opp \set}{\set}$ s'i es representable. Consideremos el objeto $\mathbf{2}= \{\varnothing, \{\varnothing\}\}=\{\mathbf{0},\uno\}$, y a $\ff{\homo{-}{\dos}}{\opp \set}{\set}$. La transformaci'on natural $\ff{\alpha}{\invopp {\fun P}}{\homo{-}{\dos}}$ est'a dada por la familia de morfismos $\ff{\alpha_A}{P(A)}{\homo{A}{\dos}}$ para cada conjunto $A$, que asigna $B\mapsto \chi_B$, donde $B\subseteq A$ y $\chi_B$ es la funci'on caracter'istica de $B$, 
+    \[  \chi_B(x)=
+    \begin{cases}
+        \cero \quad \text{si}\, x\notin B\\
+        \uno \quad \text{si}\, x\in B.
+    \end{cases}\]
+    Es claro ver por qu'e estos morfismos inducen una biyecci'on. Dado un subconjunto $B\subseteq A$, los elementos que pertenecen a 'este son mandados a $\uno$, es decir, $B$ no es otra cosa m'as que la preimagen bajo $\chi_B$ de $\uno$. Por otro lado, para ver la naturalidad necesitamos que dada una funci'on $f: A\to B$, el siguiente diagrama conmute
+
+    % https://q.uiver.app/#q=WzAsNCxbMCwwLCJQKEIpIl0sWzIsMCwiUChBKSJdLFswLDIsIlxcaG9tb3tCfXtcXGRvc30iXSxbMiwyLCJcXGhvbW97QX17XFxkb3N9Il0sWzAsMSwiXFxpbnYgZiJdLFswLDIsIlxcYWxwaGFfQiIsMl0sWzEsMywiXFxhbHBoYV9BIl0sWzIsMywiZl4qIiwyXV0=
+\[\begin{tikzcd}
+	{P(B)} && {P(A)} \\
+	\\
+	{\homo{B}{\dos}} && {\homo{A}{\dos},}
+	\arrow["{\inv f}", from=1-1, to=1-3]
+	\arrow["{\alpha_B}"', from=1-1, to=3-1]
+	\arrow["{\alpha_A}", from=1-3, to=3-3]
+	\arrow["{f^*}"', from=3-1, to=3-3]
+\end{tikzcd}\]
+
+donde $f^*$ denota la precomposici'on. Notemos que el camino derecho nos dice que dado un conjunto $C\subseteq B$, nos da una funci'on clasificadora de la preimagen de $C$, es decir, nos da $\chi_{\inv f(C)}$. Por otro lado, el camino izquierdo nos dice que dado ese conjunto $C \subseteq B$, nos da a trav'es de la precomposici'on con $f^*$ una funci'on clasificadora dada por $\chi_C f$. Ver la igualdad entonces equivale a que $\chi_C f$ sea una funci'on clasificadora de $\inv f(C)\subseteq A$, lo cual es claramente el caso. Por lo tanto, el diagrama conmuta. 
+
+De los argumentos anteriores vemos que $\alpha$ es un isomorfismo natural y por lo tanto $\invopp {\fun{P}}$ es representado por $\dos$. En realidad, es claro ver que cualquier conjunto con dos elementos representa a este funtor. 
+
+Pensemos ahora 
+
+\item Consideremos el funtor identidad de $\set$, $\ff{\id{\set}}{\set}{\set}$. Este funtor est'a representado por el elemento $\uno$. Es decir, $\homo{\uno}{-}\cong \id{\set}$. La transformaci'on natural es bastante directa, para cada $X$ en $\ob \set$, $\homo{\uno}{X}$ es el conjunto de todos los elementos de $X$, es decir, de todos los $\uno \xrightarrow{x} X$ que recordando la discusi'on en \ref{elemento global} no es m'as que los $x\in X$, por lo que $\homo{\uno}{X}$ es isom'orfico a $X$. Es inmediato ver por qu'e esta biyecci'on es natural en $\set$ tambi'en. Este funtor nos muestra de una manera clara que en $\set$, dado un conjunto $X$, $x\in X \iff \uno\xrightarrow{x} X$.  
+    \end{enumerate}
+ \end{ejems}
+
+Antes de enunciar y demostrar el lema de Yoneda, veamos el siguiente ejemplo. 
+
+\begin{ejem} \label{yonedaejem} Pensemos en un orden parcial $(P,\leq)$ como categor'ia y en un funtor $\F\to \set$. Para facilidad de consideraci'on, supongamos que la cardinalidad del conjunto $P$ es igual o menor a la de los naturales. Consideremos un objeto $p$. Tenemos que 
+ \[\homo{p}{-}= \{q\in P\,\vert\, p\leq q\}\]
+De existir una transformaci'on natural $\nat{\alpha}{\homo{p}{-}}{\F}$, debe ser tal que para cualquier $q\to r$, el diagrama
+ % https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXGhvbW97cH17cX0iXSxbMiwwLCJcXGhvbW97cH17cn0iXSxbMCwyLCJcXEYgcSJdLFsyLDIsIlxcRiByIl0sWzAsMV0sWzAsMiwiXFxhbHBoYSIsMl0sWzIsM10sWzEsMywiXFxhbHBoYSJdXQ==
+\[\begin{tikzcd}
+	{\homo{p}{q}} && {\homo{p}{r}} \\
+	\\
+	{\F q} && {\F r}
+	\arrow[from=1-1, to=1-3]
+	\arrow["\alpha_q"', from=1-1, to=3-1]
+	\arrow["\alpha_r", from=1-3, to=3-3]
+	\arrow[from=3-1, to=3-3]
+\end{tikzcd}\]
+conmuta. Si $p$  y $q$ no son comparables bajo $\leq$ el diagrama no aporta informaci'on alguna, del mismo modo que si $q\leq p$, pues ser'ia vac'io en su contenido. Si $p\leq q$, $\homo{p}{q}$ es simplemente la flecha $p\to q$ y del mismo modo $\homo{p}{r}$ es la flecha $p\to r$, es decir, ambos son unitarios. $\homo{p}{q}\to \homo{p}{r}$ es simplemente la transitividad del orden parcial en acci'on: $p\leq q \leq r$ implica $p\leq r$. De esto observamos que el diagrama determina elementos $\alpha_q\in \F q$ y $\alpha_r\in \F r$. Si denotamos por $f_{q,r}$ a la $\F q\to \F r$ del diagrama, vemos que la naturalidad implica $\alpha_r = f_{q,r}\alpha_q$. Si seguimos este proceso con una cadena que inicie en $p$, i.e., 
+% https://q.uiver.app/#q=WzAsMTAsWzEsMCwiXFxob21ve3B9e3F9Il0sWzIsMCwiXFxob21ve3B9e3J9Il0sWzMsMCwiXFxob21ve3B9e3N9Il0sWzQsMCwiXFxkb3RzIl0sWzEsMSwiXFxGIHEiXSxbMiwxLCJcXEYgciJdLFszLDEsIlxcRiBzIl0sWzQsMSwiXFxkb3RzIl0sWzAsMCwiXFxob21ve3B9e3B9Il0sWzAsMSwiXFxGIHAiXSxbMCwxXSxbMSwyXSxbMiwzXSxbMCw0LCJcXGFscGhhIiwyXSxbMSw1LCJcXGFscGhhIiwyXSxbMiw2LCJcXGFscGhhIiwyXSxbNCw1LCJmX3txLHJ9IiwyXSxbNSw2LCJmX3tyLHN9IiwyXSxbNiw3LCJmX3tzLHR9IiwyXSxbOCwwXSxbOCw5LCJcXGFscGhhX3AiLDJdLFs5LDQsImZfe3AscX0iLDJdXQ==
+\[\begin{tikzcd}
+	{\homo{p}{p}} & {\homo{p}{q}} & {\homo{p}{r}} & {\homo{p}{s}} & \dots \\
+	{\F p} & {\F q} & {\F r} & {\F s} & \dots
+	\arrow[from=1-1, to=1-2]
+	\arrow["{\alpha_p}"', from=1-1, to=2-1]
+	\arrow[from=1-2, to=1-3]
+	\arrow["\alpha_q"', from=1-2, to=2-2]
+	\arrow[from=1-3, to=1-4]
+	\arrow["\alpha_r"', from=1-3, to=2-3]
+	\arrow[from=1-4, to=1-5]
+	\arrow["\alpha_s"', from=1-4, to=2-4]
+	\arrow["{f_{p,q}}"', from=2-1, to=2-2]
+	\arrow["{f_{q,r}}"', from=2-2, to=2-3]
+	\arrow["{f_{r,s}}"', from=2-3, to=2-4]
+	\arrow[ from=2-4, to=2-5]
+\end{tikzcd}\]
+ se vuelve un ejercicio inductivo ver que para todos estos elementos son iguales a $\alpha_p$. Por supuesto, el orden parcial puede tener muchas ramificaciones en el proceso. Sin embargo, hay un componente $\alpha$ que \enquote{absorbe} a todos los dem'as valores, a saber, $\alpha_p: \homo{p}{p}\to \F p$. En principio, nuestro orden parcial visualizando a todos los elementos comparables con $p$ podr'ia verse de este estilo 
+ % https://q.uiver.app/#q=WzAsMTksWzQsNSwicCJdLFszLDQsInEiXSxbMiwzLCJyIl0sWzEsMiwicyJdLFswLDEsInQiXSxbMiwxLCJcXGJ1bGxldCJdLFszLDIsIlxcYnVsbGV0Il0sWzQsMSwiXFxidWxsZXQiXSxbNCwzLCJcXGJ1bGxldCJdLFs1LDIsIlxcYnVsbGV0Il0sWzYsMSwiXFxidWxsZXQiXSxbNywwLCJcXGRvdHMiXSxbNSwwLCJcXGRvdHMiXSxbNSw0LCJcXGJ1bGxldCJdLFs2LDMsIlxcYnVsbGV0Il0sWzcsMSwiXFxidWxsZXQiXSxbNywyLCJcXGJ1bGxldCJdLFsyLDAsIlxcZG90cyJdLFsxLDAsIlxcZG90cyJdLFswLDFdLFsxLDJdLFsyLDNdLFszLDRdLFszLDVdLFsyLDZdLFs2LDVdLFs2LDddLFsxLDhdLFs4LDldLFs5LDEwXSxbMTAsMTFdLFsxMCwxMl0sWzAsMTNdLFsxMyw4XSxbMTMsMTRdLFsxNCw5XSxbOSwxNV0sWzE0LDE2XSxbMTYsMTVdLFs1LDE3XSxbNCwxOF1d
+\[\begin{tikzcd}
+	& \dots & \dots &&& \dots && \dots \\
+	t && \bullet && \bullet && \bullet & \bullet \\
+	& s && \bullet && \bullet && \bullet \\
+	&& r && \bullet && \bullet \\
+	&&& q && \bullet \\
+	&&&& p
+	\arrow[from=2-1, to=1-2]
+	\arrow[from=2-3, to=1-3]
+	\arrow[from=2-7, to=1-6]
+	\arrow[from=2-7, to=1-8]
+	\arrow[from=3-2, to=2-1]
+	\arrow[from=3-2, to=2-3]
+	\arrow[from=3-4, to=2-3]
+	\arrow[from=3-4, to=2-5]
+	\arrow[from=3-6, to=2-7]
+	\arrow[from=3-6, to=2-8]
+	\arrow[from=3-8, to=2-8]
+	\arrow[from=4-3, to=3-2]
+	\arrow[from=4-3, to=3-4]
+	\arrow[from=4-5, to=3-6]
+	\arrow[from=4-7, to=3-6]
+	\arrow[from=4-7, to=3-8]
+	\arrow[from=5-4, to=4-3]
+	\arrow[from=5-4, to=4-5]
+	\arrow[from=5-6, to=4-5]
+	\arrow[from=5-6, to=4-7]
+	\arrow[from=6-5, to=5-4]
+	\arrow[from=6-5, to=5-6]
+\end{tikzcd}\]
+donde los $\bullet$ son otros elementos del orden parcial. Las flechas nos indican que los elementos estan bajo la relaci'on $\leq$. El conjunto pudiera ser denso tambi'en, pero como todos estos elementos son comparables con $p$, la naturalidad nos dar'a siempre que estos elementos son iguales a $\alpha_p\in \F p$. Por lo tanto, la transformaci'on natural $\nat{\alpha}{\homo{p}{-}}{\F}$ est'a completamente determinada por la elecci'on $\alpha_p\in \F p$. Podemos pensar en este elemento como la imagen del morfismo $\id p$ bajo la transformaci'on natural $\ff{\alpha_p}{\homo{p}{p}}{\F p}$. ¿Cu'ales son las posibles elecciones de elementos? Vemos que es precisamente los $x\in \F p$. 
+
+De este an'alisis vemos que las transformaciones naturales de $\homo{p}{-}$ al funtor $\F$ est'an determinadas por los elementos de $\F p$. Esta idea, como veremos, no depende de nuestra elecci'on $p$ o del funtor en particular, ni de haber trabajado en un conjunto parcialmente ordenado.
+
+Volveremos a este ejemplo en un momento, pero ahora enunciamos el teorema m'as importante en teor'ia de categor'ias.
+\end{ejem}
+\newpage
+
+\begin{teo}[Lema de Yoneda] \label{lema yoneda}
+    Para cualquier funtor $\ff{\F}{\C}{\set}$, con $\C$ una categor'ia localmente pequeña, y cualquier objeto $A$ en $\ob C$, la siguiente funci'on es una biyecci'on:
+    \[ \varphi \colon \Nat(\homo{A}{-}),\F)\cong \F A,    \] 
+    \[ \varphi(\alpha) = \alpha_A(\id A)\]
+
+    donde $\Nat(\homo{A}{-}),\F)$ denota la colecci'on de transformaciones naturales entre $\homo{A}{-}$ y $\F$.
+\end{teo}
+\begin{proof}
+    Queremos construir una $\ff{\phi}{\F A}{\Nat(\homo{A}{-}),\F)}$ que sea la inversa de $\varphi$. Para este fin, para cada elemento $x\in \F A$, $\phi(x)$ debe ser una transformaci'on natural, por lo que tenemos que definir una colecci'on de morfismos $\ff{\phi(x)_B}{\homo{A}{B}}{\F B}$ para cada objeto $B$ en $\ob C$ que definan a $\nat{\phi(x)}{\homo{A}{-}}{\F}$. Para este fin, definimos para cada $x\in \F A$ y cada objeto $B$ en $\ob C$,
+    \[\phi(x)_B(f) = \F f(x)\]
+    recordando que $f: A\to B$. Para corroborar que $\phi(x)$ es una transformaci'on natural, debemos verificar que para cualquier $\ff{g}{B}{C}$ con $C$ en $\ob C$, el diagrama 
+    % https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXGhvbW97QX17Qn0iXSxbMiwwLCJcXGhvbW97QX17Q30iXSxbMCwyLCJcXEYgQiJdLFsyLDIsIlxcRiBDIl0sWzAsMSwiZ18qIl0sWzAsMiwiXFxwaGkoeClfQiIsMl0sWzIsMywiRmciLDJdLFsxLDMsIlxccGhpKHgpX0MiXV0=
+\[\begin{tikzcd}
+	{\homo{A}{B}} && {\homo{A}{C}} \\
+	\\
+	{\F B} && {\F C}
+	\arrow["{g_*}", from=1-1, to=1-3]
+	\arrow["{\phi(x)_B}"', from=1-1, to=3-1]
+	\arrow["{\phi(x)_C}", from=1-3, to=3-3]
+	\arrow["Fg"', from=3-1, to=3-3]
+\end{tikzcd}\]
+conmuta, donde $g_*$ denota la post-composici'on. Evaluemos el camino izquierdo del diagrama.  
+
+\begin{align*}
+    \F g(\phi(x)_B(f)) &= \F g \F f(x) \\
+                     &= \F gf(x) \\
+                     &= \phi(x)_C (gf)\\
+                     &= \phi(x)_C(g_*(f)).
+\end{align*}
+Por lo tanto el diagrama conmuta. Notemos que el paso de la primera igualdad a la segunda se cumple por los axiomas de funtorialidad vistos en \ref{funtor}.
+
+Recordando que $\varphi(x)$ es una transformaci'on natural y por definici'on de $\phi$ tenemos que $\phi\varphi(x) = \phi(x)_A(\id A)$, por definici'on de $\phi(x)_A$ esto es igual a $\F \id A(x)$ y por axiomas de funtorialidad esto es $\id{\F A}(x)= x$. Por lo tanto, $\phi\varphi(x) = x$. 
+
+Para probar la biyecci'on, nos resta probar que $\varphi\phi(\alpha) = \alpha$. Consideremos un morfismo $\ff{f}{A}{B}$. Evaluando, 
+\begin{align*}
+    \varphi(\phi(\alpha))_B (f) &= \varphi(\alpha_A(\id A))_B (f) \\
+                                &= F(f)(\alpha_A(\id A))
+\end{align*}
+Ahora, $\alpha$ es una transformaci'on natural, por lo que el diagrama 
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXGhvbW97QX17QX0iXSxbMiwwLCJcXGhvbW97QX17Qn0iXSxbMCwyLCJcXEYgQSJdLFsyLDIsIlxcRiBCIl0sWzAsMSwiZl8qIl0sWzAsMiwiXFxwaGkoeClfQSIsMl0sWzIsMywiRmYiLDJdLFsxLDMsIlxccGhpKHgpX0IiXV0=
+\[\begin{tikzcd}
+	{\homo{A}{A}} && {\homo{A}{B}} \\
+	\\
+	{\F A} && {\F B}
+	\arrow["{f_*}", from=1-1, to=1-3]
+	\arrow["{\alpha_A}"', from=1-1, to=3-1]
+	\arrow["{\alpha_B}", from=1-3, to=3-3]
+	\arrow["Ff"', from=3-1, to=3-3]
+\end{tikzcd}\]
+conmuta. La 'ultima igualdad, $F(f)(\alpha_A(\id A))$ es el camino izquierdo del diagrama, por lo que es igual a $\alpha_B(f_*(\id A))$. Tenemos, 
+\begin{align*}
+    \alpha_B(f_*(\id A)) & = \alpha_B(f(\id A)) \\
+                         &= \alpha_B(f)
+\end{align*}
+Por lo tanto $\varphi(\phi(\alpha))_B (f) = \alpha_B (f)$. Como el morfismo fue elegido arbitrariamente concluimos que $\varphi(\phi(\alpha))_B = \alpha_B$, y como $B$ fue elegido arbitrariamente, concluimos que para todo morfismo de la colecci'on que conforman a $\alpha$ y a $\varphi(\phi(\alpha))$ se cumple la igualdad. Como coinciden en todos sus componentes, es el caso que son la misma transformaci'on natural. Por lo tanot, $\varphi(\phi(\alpha))=\alpha$. De esto concluimos que las funciones $\phi$ y $\varphi$ son inversas y por lo tanto $\phi$ es una biyecci'on. 
+\end{proof}
+
+Existe la versi'on del lema de Yoneda para pregavillas, es decir, tenemos 
+
+\begin{coro}[Contravariante del lema de Yoneda] 
+     Para cualquier funtor $\ff{\F}{\opp C}{\set}$, con $\opp C$ una categor'ia localmente pequeña, y cualquier objeto $A$ en $\ob C$, la siguiente funci'on es una biyecci'on:
+    \[ \varphi \colon \Nat(\homo{-}{A}),\F)\cong \F A,    \] 
+    \[ \varphi(\alpha) = \alpha_A(\invopp{\id A})\]
+\end{coro}
+\begin{proof}
+    La demostraci'on de este teorema es completamente an'aloga a la demostraci'on del lema de Yoneda en su versi'on covariante. 
+\end{proof}
+
+Podemos extender el lema. La biyecci'on $\varphi$ de \ref{lema yoneda} es una correspondencia natural tanto en $A$ y $\F$. Pero expresar a qu'e se refiere esto en particular requiere la introducci'on de algunos conceptos. 
+
+\begin{defi} [Categor'ia producto]
+    Sean $\C$ y $\cat D$ categor'ias. Definimos la categor'ia producto $\C \times \cat D$ dada por 
+    \begin{itemize}
+        \item objetos que son parejas ordenadas $(c,d)$ donde $c$ es un objeto en $\ob C$ y $d$ es un objeto en $\ob D$, 
+        \item morfismos que son parejas ordenadas $\ff{(f,g)}{(c,d)}{(e,f)}$ con $\ff{f}{c}{e}$ morfismo en $\C$ y $\ff{g}{d}{f}$ morfismo en $\cat D$
+    \end{itemize}
+    la composici'on y la identidad est'an definidas componentemente. 
+\end{defi}
+\newpage
+\begin{defi} Dadas categor'ias $\C$ y $\cat D$, definimos la categor'ia $\cat D^{\C}$ donde 
+\begin{itemize}
+    \item los objetos son funtores $\ff{\F}{\cat C}{\cat D}$,
+    \item los morfismos son transformaciones naturales entre funtores $\df{\C}{\cat D}{\F}{\fun G}$
+    \item dado un funtor $\ff{\F}{\C}{\cat D}$ la transformaci'on natural identidad $\nat{\id{\F}}{\F}{\F}$ est'a definida por los morfismos $(\id{\F})_c = \id{\F_c}$.
+    \item dadas transformaciones naturales $\nat{\alpha}{\F}{\fun G}$, $\nat{\beta}{\fun G}{\fun H}$ la composici'on $\nat{\beta\alpha}{\F}{\fun H}$ est'a definida en sus componentes $\pare{\beta\alpha}_A= \beta_A\alpha_A$.
+\end{itemize}
+    
+\end{defi}
+
+Una observaci'on importante de la definici'on anterior es que para garantizar que 'esta es efectivamente una categor'ia, la composici'on de los morfismos debe estar bien definida, y esto s'olo es el caso si en efecto $\beta\alpha$ es una transformaci'on natural. Consideremos $\ff{f}{A}{B}$ en $\C$, la naturalidad de $\alpha$ nos dice que los diagramas 
+% https://q.uiver.app/#q=WzAsOCxbMCwwLCJcXEYgQSJdLFswLDIsIlxcRiBCIl0sWzIsMCwiXFxmdW4gRyBBIl0sWzIsMiwiXFxmdW4gRyBCIl0sWzQsMCwiXFxmdW4gRyBBIl0sWzQsMiwiXFxmdW4gRyBCIl0sWzYsMiwiXFxmdW4gSCBCIl0sWzYsMCwiXFxmdW4gSCBBIl0sWzAsMSwiXFxGIGYiLDJdLFswLDIsIlxcYWxwaGFfQSJdLFsyLDMsIlxcZnVuIEcgZiJdLFsxLDMsIlxcYWxwaGFfQiIsMl0sWzQsNSwiXFxmdW4gRyBmIiwyXSxbNSw2LCJcXGJldGFfQiIsMl0sWzQsNywiXFxiZXRhX0EiXSxbNyw2LCJcXGZ1biBIIGYiXV0=
+\[\begin{tikzcd}
+	{\F A} && {\fun G A} && {\fun G A} && {\fun H A} \\
+	\\
+	{\F B} && {\fun G B} && {\fun G B} && {\fun H B}
+	\arrow["{\alpha_A}", from=1-1, to=1-3]
+	\arrow["{\F f}"', from=1-1, to=3-1]
+	\arrow["{\fun G f}", from=1-3, to=3-3]
+	\arrow["{\beta_A}", from=1-5, to=1-7]
+	\arrow["{\fun G f}"', from=1-5, to=3-5]
+	\arrow["{\fun H f}", from=1-7, to=3-7]
+	\arrow["{\alpha_B}"', from=3-1, to=3-3]
+	\arrow["{\beta_B}"', from=3-5, to=3-7]
+\end{tikzcd}\]
+
+conmutan. Podemos unir estos dos diagramas y ver que por la naturalidad de cada componente, el rect'angulo exterior del diagrama
+% https://q.uiver.app/#q=WzAsNixbMCwwLCJcXEYgQSJdLFswLDIsIlxcRiBCIl0sWzIsMCwiXFxmdW4gRyBBIl0sWzIsMiwiXFxmdW4gRyBCIl0sWzQsMCwiXFxmdW4gSCBBIl0sWzQsMiwiXFxmdW4gSCBCIl0sWzAsMSwiXFxGIGYiLDJdLFswLDIsIlxcYWxwaGFfQSJdLFsyLDMsIlxcZnVuIEcgZiJdLFsxLDMsIlxcYWxwaGFfQiIsMl0sWzIsNCwiXFxiZXRhX0EiXSxbNCw1LCJcXGZ1biBIIGYiXSxbMyw1LCJcXGJldGFfQiIsMl1d
+\[\begin{tikzcd}
+	{\F A} && {\fun G A} && {\fun H A} \\
+	\\
+	{\F B} && {\fun G B} && {\fun H B}
+	\arrow["{\alpha_A}", from=1-1, to=1-3]
+	\arrow["{\F f}"', from=1-1, to=3-1]
+	\arrow["{\beta_A}", from=1-3, to=1-5]
+	\arrow["{\fun G f}", from=1-3, to=3-3]
+	\arrow["{\fun H f}", from=1-5, to=3-5]
+	\arrow["{\alpha_B}"', from=3-1, to=3-3]
+	\arrow["{\beta_B}"', from=3-3, to=3-5]
+\end{tikzcd}\]
+conmuta. De esto podemos ver que efectivamente $\beta\alpha$ es una transformaci'on natural y la composici'on est'a bien definida. 
+
+Requerimos la construcci'on de estas dos categor'ias para hablar de una en particular. Podemos considerar dada una categor'ia $\C$ localmente pequeña, la categor'ia $\C \times \set^{\C}$. Aqu'i, podemos considerar un funtor $\ff{\Nat(\homo{-}{-},-)}{\C \times \set^{\C}}{\set}$ que recibe un objeto $(A,\F)$ y lo manda al conjunto $\Nat(\homo{A}{-}),\F)$. Es importante notar en este punto, que el hecho de que $\C$ sea localmente pequeña, no garantiza que $\set^{\C}$ sea localmente pequeña, por lo que no podr'iamos garantizar en principio que $\Nat(\homo{A}{-}),\F)$ sea un conjunto. Sin embargo, el lema de Yoneda precisamente garantiza esto, por lo que el codominio de este funtor est'a bien definido. Podemos considerar otro funtor de $\C\times \set^{\C}$ a $\set$, el funtor $\ff{\ev}{\C\times \set^{\C}}{\set}$ que manda objetos $(A,\F)$ al conjunto $\F A$. Con esta categor'ias y estos funtores en vista, podemos entender a la funci'on $\varphi$ dada en el lema de Yoneda como un isomorfismo natural $\nat{\varphi}{\Nat(\homo{-}{-},-)}{\ev}$. Es en este sentido que decimos que tanto $A$ como $\F$ son naturales en \ref{lema yoneda}. Como tal, esto es parte de la totalidad del lema de Yoneda, por lo que lo enunciamos como una \enquote{segunda parte}.
+
+\begin{teo}[Segunda parte del Lema de Yoneda] El isomorfismo $\varphi$ visto en \ref{lema yoneda} es natural tanto en $A$ como en $\F$ cuando ambos lados son vistos como funtores de $\C\times \set^{\C}$ a $\set$. 
+    
+\end{teo}
+\begin{proof}
+    La demostraci'on consiste en dos partes. Primero, fijemos un funtor $\ff{\F}{\C}{\set}$ y consideremos un morfismo $f: A\to B$ en $\C$. Consideremos el diagrama $$\diag{\Nat(\homo{A}{-}),\F)}{\Nat(\homo{B}{-}),\F)}{\F A}{\F B}{\circ(f^*)}{\F f}{\varphi_{A,\F}}{\varphi_{B,\F}}$$
+\end{proof}
+Aqu'i, $\varphi_{A,\F}$ define la funci'on definida en \ref{lema yoneda} en los valores $A$ y $\F$ y del mismo modo para $\varphi_{B,\F}$; por otro lado, $\circ f^*$ es dada a trav'es de la composici'on con una transformaci'on natural, $\circ f^*(\alpha)=\nat{\alpha f^*}{\homo{A}{-}}{\homo{B}{-}}$. Evaluando el lado derecho del diagrama, 
+\begin{align*}
+    \varphi_{B,\F}\pare{\circ(f^*)(\alpha)} & =  \varphi_{B,\F}(\alpha f^*) \\
+                                            & = (\alpha f^*)_B (\id B)\\
+                                            & = \alpha_B (f)\\
+                                            & \stackrel{\mathclap{\mbox{*}}}{=} \alpha_B(f_*(1_A))\\
+                                            & \stackrel{\mathclap{\mbox{*}}}{=} \F (f)(\alpha_A(1_A)) \\ 
+                                            & = \F(f)\varphi_{A,\F}(\alpha)\\
+\end{align*}
+La justificaci'on a las igualdades con un asterisco encima se encuentran en la demostraci'on de \ref{lema yoneda}. La 'ultima igualdad es precisamente el lado izquierdo del diagrama, de lo que concluimos que el diagrama conmuta. Por tanto, la funci'on es natural en $A$.
+
+Ahora fijemos al objeto $A$ en $\ob C$ y consideremos una transformaci'on natural $\nat{\alpha}{\F}{\fun G}$ en $\set^{\C}$, es decir, $\alpha$ es un morfismo en dicha categor'ia. Consideremos el diagrama $$\diag{\Nat(\homo{A}{-},\F)}{\Nat(\homo{A}{-},\fun G}{\F A}{\fun G A}{\ev_A}{}{}{}$$
+
+
+El lema de Yoneda nos dice que podemos entender cualquier objeto de una categor'ia a trav'es de c'omo se comportan todos los dem'as objetos. Por eso mismo a los morfismos tambi'en los llamamos elementos locales, como vimos en \ref{elemento local}: son puntos de vista de un objeto que queremos entender. Es decir, para saber todo lo que necesitamos de un objeto dado, basta con ver c'omo interaccionan los dem'as objetos de la categor'ia con 'este. 
+
+Regresemos al ejemplo \ref{yonedaejem}. Entendemos ahora, por el lema de Yoneda, que 
+\[\Nat(\homo{p}{-}, \F) \cong \F p\]
+Nosotros sab'iamos que las transformaciones naturales estaban determinadas por los elementos de $\F p$, pero con el lema de yoneda entendemos tambi'en que los elementos de $\F p$ est'an determinados por las transformaciones naturales y que esta correspondencia es biyectiva. 

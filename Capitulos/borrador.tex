@@ -1,0 +1,14 @@
+%Antes de enunciar y demostrar el lema de Yoneda, pensemos en un orden parcial $(P,\leq)$ como categor'ia y en un funtor $\F\to \set$. Para facilidad de consideraci'on, supongamos que la cardinalidad del conjunto $P$ es igual o menor a la de los naturales. Consideremos un objeto $p$. Tenemos que 
+ %\[\homo{p}{-}= \{q\in P\,\vert\, p\leq q\}\]
+% De existir una transformaci'on natural $\nat{\alpha}{\homo{p}{-}}{\F}$, debe ser tal que para cualquier $q\to r$, el diagrama
+ % https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXGhvbW97cH17cX0iXSxbMiwwLCJcXGhvbW97cH17cn0iXSxbMCwyLCJcXEYgcSJdLFsyLDIsIlxcRiByIl0sWzAsMV0sWzAsMiwiXFxhbHBoYSIsMl0sWzIsM10sWzEsMywiXFxhbHBoYSJdXQ==
+%\[\begin{tikzcd}
+%	{\homo{p}{q}} && {\homo{p}{r}} \\
+%	\\
+%	{\F q} && {\F r}
+%	\arrow[from=1-1, to=1-3]
+%	\arrow["\alpha_q"', from=1-1, to=3-1]
+%	\arrow["\alpha_r", from=1-3, to=3-3]
+%	\arrow[from=3-1, to=3-3]
+%\end{tikzcd}\]
+%conmuta. Si $p$  y $q$ no son comparables bajo $\leq$ el diagrama no aporta informaci'on alguna, del mismo modo que si $q\leq p$, pues ser'ia vac'io en su contenido. Si $p\leq q$, $\homo{p}{q}$ es simplemente la flecha $p\to q$ y del mismo modo $\homo{p}{r}$ es la flecha $p\to r$, es decir, ambos son unitarios. $\homo{p}{q}\to \homo{p}{r}$ es simplemente la transitividad del orden parcial en acci'on: $p\leq q \leq r$ implica $p\leq r$. De esto observamos que el diagrama determina elementos $\alpha_q\in \F q$ y $\alpha_r\in \F r$. Si denotamos por $f_{q,r}$ a la $\F q\to \F r$ del diagrama, vemos que 
