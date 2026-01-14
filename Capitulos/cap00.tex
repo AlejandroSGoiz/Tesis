@@ -102,6 +102,33 @@ Esta construcci'on nos permite ver que en un problema de autoreferencia permite 
 
 De estos casos de autoreferencia uno de los m'as famosos y el m'as rodeado de inter'es filos'ofico es el primer teorema de incompletitud de Gödel. Un planteamiento y demostraci'on formal de 'este teorema ocupar'ia demasiado espacio y saldr'ia mucho del inter'es de 'esta introducci'on, por lo que nos limitaremos dar una explicaci'on breve del teorema, en un esbozo que sigue al dado por Gödel en \parencite{gdl}.
 
+
+\subsection*{El Teorema de Incompletitud de Gödel}
+
+De estos casos de autorreferencia, el más célebre y con mayor peso filosófico es el \textbf{Primer Teorema de Incompletitud de Gödel}. Un planteamiento y demostración rigurosa de este teorema ocuparía demasiado espacio y se saldría de los objetivos de esta introducción. Por ello, nos limitaremos a dar un esbozo que sigue la línea argumental presentada por el propio Gödel en \cite{gdl}, resaltando cómo es, en el fondo, otro argumento diagonal.
+
+La idea central y genial de Gödel fue trasladar el problema de la autorreferencia al lenguaje de la aritmética. Para ello, ideó un método de codificación (conocido como \textit{numeración de Gödel}) que asigna a cada fórmula $\phi$ un número natural único, denotado por $\ulcorner \phi \urcorner$. Esto permite que la aritmética \enquote{hable} de sus propias fórmulas.
+
+Gracias a esta codificación, la propiedad metamatemática \enquote{$y$ es una demostración de $x$} se puede expresar como una relación aritmética, llamémosla $\dems(x,y)$. A partir de aquí, podemos definir el concepto de ser demostrable como 
+
+$$\dems(x) \iff \exists y \dems(x,y).$$
+
+A partir de aquí aparece la diagonal como en los otros dos ejemplos. Gödel definió una función de sustitución, $s(n, m)$, que calcula el código de la fórmula resultante al tomar la fórmula con código $n$ y reemplazar su variable libre por el número $m$, es decir, 
+\[ s(\ulcorner \phi(x) \urcorner, m) = \ulcorner \phi(m) \urcorner. \]
+Esta función $s$ es la herramienta que nos permite \enquote{caminar por la diagonal}: si evaluamos $s(n, n)$, estamos pidiéndole intrínsecamente a la fórmula número $n$ que hable del número $n$. Es el análogo aritmético de mirar la entrada $(n,n)$ en la matriz del argumento de la diagonal de Cantor o en la matriz que visualizamos de pertencencia para la Paradoja de Russell.
+
+Ahora, consideremos la siguiente fórmula:
+\[ P(x) := \neg \dems( s(x, x) ). \]
+Sea $k$ el número de Gödel de esta fórmula, es decir, $k = \ulcorner P(x) \urcorner$. Si evaluamos ahora la diagonal en este punto (calculamos $P(k)$), obtenemos una sentencia $G$ tal que:
+\[ G \iff \neg \dems( s(k, k) ) \]
+Pero por definición de nuestra función de sustitución, $s(k, k)$ es precisamente el código de $G$. Es decir, $\ulcorner G \urcorner = s(k, k)$. Sustituyendo esto, llegamos a:
+\[ G \iff \neg \dems( \ulcorner G \urcorner ) \]
+Esta sentencia $G$ afirma, literalmente: \enquote{yo no soy demostrable}.
+
+Si el sistema es consistente, no puede demostrar falsedades, por lo que no puede demostrar $G$ (ya que si lo hiciera, $G$ sería falsa). Pero al no poder demostrarla, lo que $G$ afirma es verdad. Tenemos entonces una sentencia que es verdadera pero no demostrable dentro del sistema.
+
+Este resultado, al igual que los de Cantor y Russell, surge de la capacidad de construir un objeto que niega su propia posición en la diagonal del sistema. El propósito de este trabajo es mostrar cómo la Teoría de Categorías, y en particular el Teorema de Lawvere, unifica todos estos argumentos bajo un mismo principio estructural.
+
 \textbf{Primer Teorema de Incompletitud de Gödel}
 
 Los sistemas formales que proveen los Axiomas de Peano o los de Zermelo-Fraenkel, que son capaces de construir aritmética básica de los naturales, tienen limitaciones internas respecto a qué pueden demostrar. Es decir, existen proposiciones en dichos sistemas que no pueden ser demostradas ni refutadas. Añadir estas proposiciones como axiomas no resolvería el problema: en este nuevo sistema existir'ian tambi'en proposiciones indecidibles, i.e., ni demostrables ni refutables. Este problema no es exclusivo a los dos sistemas mencionados, como veremos en el cap'itulo 3, una cantidad extensiva de sistemas formales de este tipo son incompletos, en el sentido de que tendr'an proposicones indecidibles. Es importante observar que estas proposiciones indecidibles ocurren tambi'en porque suponemos que estos sistemas son consistentes, una hipótesis necesaria para más adelante.
