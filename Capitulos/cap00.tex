@@ -1,6 +1,59 @@
 
 El desarrollo de la Teor'ia de Conjuntos de Cantor y, en general, de las matem'aticas en el siglo \textsc{xix} dio lugar a muchos argumentos que hoy conocemos como \enquote{diagonales}. Veamos, como ejemplo, el siguiente teorema.
 
+\begin{teo*}[Teorema de la Diagonal de Cantor]
+El intervalo real unitario $(0,1)$ no es numerable. Es decir, no existe una biyección $\ff{\phi}{\N}{(0,1)}$.
+\end{teo*}
+
+\begin{proof}
+Procederemos por reducción al absurdo. Supongamos que el conjunto es numerable y que, por tanto, existe una biyección $\phi$ que nos permite enlistar exhaustivamente todos los elementos del intervalo como una sucesión $x_1, x_2, x_3, \dots$, donde $x_n = \phi(n)$.
+
+Podemos representar cada número $x_n$ mediante su expansión decimal única:
+\begin{align*}
+    x_1 &= 0.a_{11} a_{12} a_{13} a_{14} \dots \\
+    x_2 &= 0.a_{21} a_{22} a_{23} a_{24} \dots \\
+    x_3 &= 0.a_{31} a_{32} a_{33} a_{34} \dots \\
+    &\vdotswithin{=} \\
+    x_n &= 0.a_{n1} a_{n2} a_{n3} a_{nn} \dots 
+\end{align*}
+Nuestro objetivo es encontrar un número real $y \in (0,1)$ que no se encuentre en dicha lista. Definimos $y = 0.d_1d_2d_3\dots$ determinando cada dígito decimal $d_n$ en función de la diagonal de nuestra lista (los términos $a_{nn}$). La regla de construcción es la siguiente:
+\[
+    d_n = \begin{cases} 
+    1 & \text{si } a_{nn} \neq 1 \\
+    2 & \text{si } a_{nn} = 1 
+    \end{cases}
+\]
+Analicemos el resultado. Para cualquier índice $n \in \N$, el $n$-ésimo dígito de nuestro nuevo número $y$ difiere del $n$-ésimo dígito del número $x_n$ de la lista (es decir, $d_n \neq a_{nn}$). 
+
+Esto implica necesariamente que $y \neq x_n$ para todo $n$. Sin embargo, $y$ es un número real bien definido con expansión decimal de unos y dos, por lo que $y \in (0,1)$. Hemos encontrado un elemento que escapa a la enumeración $\phi$, contradiciendo la hipótesis de que $\phi$ era sobreyectiva.
+\end{proof}
+
+Podemos observar en la demostración anterior que, para construir el elemento $y$, recurrimos explícitamente a la diagonal principal de la matriz; es decir, nos fijamos en los términos de la forma $a_{nn}$.
+
+\begin{center}
+\tikzset{every picture/.style={line width=0.75pt}}
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+% Text Node
+\draw (215,31.4) node [anchor=north west][inner sep=0.75pt]    {$ \begin{array}{l}
+0.\textcolor[rgb]{0.82,0.01,0.11}{a_{11}} a_{12} a_{13} a_{14} a_{15} \cdots a_{1n} \cdots \\
+0.a_{21}\textcolor[rgb]{0.82,0.01,0.11}{a_{22}} a_{23} a_{24} a_{25} \cdots a_{2n} \cdots \\
+0.a_{31} a_{32}\textcolor[rgb]{0.82,0.01,0.11}{a_{33}} a_{34} a_{35} \cdots a_{3n} \cdots \\
+0.a_{41} a_{42} a_{43}\textcolor[rgb]{0.82,0.01,0.11}{a_{44}} a_{45} \cdots a_{4n} \cdots \\
+0.a_{51} a_{52} a_{53} a_{54}\textcolor[rgb]{0.82,0.01,0.11}{a_{55}} \cdots a_{5n} \cdots \\
+\vdots \\
+0.a_{n1} a_{n2} a_{n3} a_{n4} a_{n5} \cdots \textcolor[rgb]{0.82,0.01,0.11}{a_{nn}} \cdots \\
+\vdots 
+\end{array}$};
+\end{tikzpicture}
+\end{center}
+
+La clave del argumento reside en el uso de esta información diagonal para definir un objeto que difiere sistemáticamente de todos los elementos listados. Nótese que el éxito de la construcción depende de la capacidad de \enquote{invertir} el valor encontrado en la diagonal. El apelar a esta estructura es lo que conocemos hoy como \textbf{argumento diagonal}.
+
+Sin embargo, este esquema lógico es generalizable y trasciende la geometría de una matriz infinita. En muchos contextos, la diagonal no es tan visible, pero el mecanismo subyacente es el mismo: la \textbf{autorreferencia}. 
+
+Si trasladamos este procedimiento a la Teoría de Conjuntos, sustituyendo la indexación numérica por la relación de pertenencia, el argumento diagonal deja de producir \enquote{nuevos elementos} para revelar, en su lugar, contradicciones en la estructura misma de la teoría. Fue precisamente al aplicar este principio de diagonalización sobre la totalidad de los conjuntos que Bertrand Russell formuló, en 1901, la siguiente paradoja.
+
 \begin{teo*}
 No existe una biyecci'on entre el conjunto de los n'umeros naturales, $\mathbb {N}$, y el intervalo real $(0,1)$.    
 \end{teo*}
@@ -20,6 +73,33 @@ No existe una biyecci'on entre el conjunto de los n'umeros naturales, $\mathbb {
     donde $a_{ij}\in \{0,1,2,3,4,5,6,7,8,9\}$ para todo $i,j\in \N$. De esta forma tenemos una matriz infinita donde los renglones de ésta constituyen los elementos en el intervalo. Buscamos ahora construir un elemento en $(0,1)$ que no est'e en esta lista. Para ello, consideremos las entradas $a_{ij}$ tales que $i=j$. Si $a_{ii} = 2$, definimos $b_i = 1$. Si $a_{ii}\neq 2$, definimos $b_i=2$. Afirmamos que el n'umero $b=0.b_1b_2b_3b_4\dots$ no est'a en la lista, i.e., no es un elemento de la imagen  de $\phi$. Para ver eso, basta observar que si $b$ estuviese en la lista, existir'ia un $n
     \in \N$ tal que $\phi(n) = b$. Pero $b_n$ ser'ia un dígito distinto a $a_{nn}$ pues construimos a $b$ de tal forma que fuese distinto en dicha entrada. Como los dos n'umeros son diferentes en ese decimal, no pueden ser el mismo n'umero y por tanto $\phi(n)\neq b$. Hemos entonces construido un elemento que no est'a en la imagen de $\phi$ pero que s'i est'a en $(0,1)$. Pero supusimos que $\phi$ es biyectiva por lo que en particular es suprayectiva. Esta es una clara contradicci'on, por lo que concluimos que no puede existir una funci'on biyectiva entre $\N$ y $(0,1)$.      
 \end{proof}
+
+Podemos observar en la demostración anterior que, para construir el elemento $y$, recurrimos explícitamente a la diagonal principal de la matriz; es decir, nos fijamos en los términos de la forma $a_{nn}$.
+
+\begin{center}
+\tikzset{every picture/.style={line width=0.75pt}}
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+% Text Node
+\draw (215,31.4) node [anchor=north west][inner sep=0.75pt]    {$ \begin{array}{l}
+0.\textcolor[rgb]{0.82,0.01,0.11}{a_{11}} a_{12} a_{13} a_{14} a_{15} \cdots a_{1n} \cdots \\
+0.a_{21}\textcolor[rgb]{0.82,0.01,0.11}{a_{22}} a_{23} a_{24} a_{25} \cdots a_{2n} \cdots \\
+0.a_{31} a_{32}\textcolor[rgb]{0.82,0.01,0.11}{a_{33}} a_{34} a_{35} \cdots a_{3n} \cdots \\
+0.a_{41} a_{42} a_{43}\textcolor[rgb]{0.82,0.01,0.11}{a_{44}} a_{45} \cdots a_{4n} \cdots \\
+0.a_{51} a_{52} a_{53} a_{54}\textcolor[rgb]{0.82,0.01,0.11}{a_{55}} \cdots a_{5n} \cdots \\
+\vdots \\
+0.a_{n1} a_{n2} a_{n3} a_{n4} a_{n5} \cdots \textcolor[rgb]{0.82,0.01,0.11}{a_{nn}} \cdots \\
+\vdots 
+\end{array}$};
+\end{tikzpicture}
+\end{center}
+
+La clave del argumento reside en el uso de esta información diagonal para definir un objeto que difiere sistemáticamente de todos los elementos listados. Nótese que el éxito de la construcción depende de la capacidad de \enquote{invertir} el valor encontrado en la diagonal. El apelar a esta estructura es lo que conocemos hoy como \textbf{argumento diagonal}.
+
+Sin embargo, este esquema lógico es generalizable y trasciende la geometría de una matriz infinita. En muchos contextos, la diagonal no es tan visible, pero el mecanismo subyacente es el mismo: la \textbf{autorreferencia}. 
+
+Si trasladamos este procedimiento a la Teoría de Conjuntos, sustituyendo la indexación numérica por la relación de pertenencia, el argumento diagonal deja de producir \enquote{nuevos elementos} para revelar, en su lugar, contradicciones en la estructura misma de la teoría. Fue precisamente al aplicar este principio de diagonalización sobre la totalidad de los conjuntos que Bertrand Russell formuló, en 1901, la siguiente paradoja.
+
 Podemos observar en la demostraci'on del teorema anterior que para construir al elemento $b$ usamos la diagonal principal de la matriz, i.e., nos fijamos en los elementos de la forma $a_{ii}$. 
 
 
@@ -102,6 +182,56 @@ Esta construcci'on nos permite ver que en un problema de autoreferencia permite 
 
 De estos casos de autoreferencia uno de los m'as famosos y el m'as rodeado de inter'es filos'ofico es el primer teorema de incompletitud de Gödel. Un planteamiento y demostraci'on formal de 'este teorema ocupar'ia demasiado espacio y saldr'ia mucho del inter'es de 'esta introducci'on, por lo que nos limitaremos dar una explicaci'on breve del teorema, en un esbozo que sigue al dado por Gödel en \parencite{gdl}.
 
+\section*{La Paradoja de Russell}
+
+La Paradoja de Russell concierne a la llamada \textit{Teoría Intuitiva de Conjuntos} (o \textit{Naive Set Theory}), la cual se fundamentaba en el principio de que cualquier propiedad lógica define un conjunto. Para visualizar el conflicto, es necesario considerar conjuntos que puedan pertenecerse a sí mismos (por ejemplo, el conjunto de \enquote{todas las ideas} es, en sí mismo, una idea).
+
+Consideremos el conjunto $R$, definido como la colección de todos los conjuntos que \textbf{no} son elementos de sí mismos:
+\[R = \{X \mid X \notin X\}\]
+Surge entonces la pregunta inevitable: ¿Se pertenece $R$ a sí mismo?
+Analicemos las dos posibilidades:
+\begin{itemize}
+    \item Si $R \in R$, entonces debe cumplir la condición que define al conjunto, es decir, $R \notin R$.
+    \item Si $R \notin R$, entonces cumple la condición de entrada, por lo que debería estar dentro, es decir, $R \in R$.
+\end{itemize}
+En ambos casos llegamos a la contradicción:
+\[R \in R \iff R \notin R\]
+Este resultado evidencia que la teoría intuitiva es inconsistente: no puede ser el caso que cualquier propiedad defina un conjunto. De permitirlo, el edificio lógico de la teoría se derrumbaría.
+
+Ahora bien, hemos afirmado que en el corazón de esta paradoja reside la \textbf{autorreferencia} y que se trata de un argumento diagonal. Sin embargo, en la formulación anterior no construimos ninguna matriz ni apelamos a dígitos decimales. ¿Cómo justificamos entonces que este es el mismo fenómeno que observamos con Cantor?
+
+Imaginemos, bajo la hipótesis de la teoría intuitiva, que podemos listar \enquote{todos los conjuntos existentes}. Organicémoslos tanto vertical como horizontalmente para formar una tabla de pertenencia:
+
+\begin{center}
+$ \begin{matrix} 
+& A & B & C & D & \dots \\
+A & \cdot & \cdot & \cdot & \cdot & \\
+B & \cdot & \cdot & \cdot & \cdot & \\
+C & \cdot & \cdot & \cdot & \cdot & \\
+\vdots & & & & & \ddots
+\end{matrix} $
+\end{center}
+
+Asignemos valores de verdad a las intersecciones: pondremos un $1$ si el conjunto de la fila pertenece al conjunto de la columna, y un $0$ en caso contrario. Supongamos, por ejemplo, que $A \notin A$ (diagonal es 0), $A \in B$, etc. Nuestra matriz de incidencia luciría así:
+
+\[
+\bordermatrix{
+  & A & B & C & D & E & \dots \cr
+A & \mathbf{0} & 0 & 0 & 1 & 0 & \dots \cr
+B & 1 & \mathbf{1} & 0 & 1 & 0 & \dots \cr
+C & 1 & 0 & \mathbf{0} & 1 & 1 & \dots \cr
+D & 0 & 0 & 1 & \mathbf{0} & 1 & \dots \cr
+E & 1 & 0 & 1 & 0 & \mathbf{1} & \dots \cr
+\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \ddots
+}
+\]
+
+Al igual que en el teorema anterior, nuestra atención se centra en la \textbf{diagonal principal} (marcada en negritas). Las entradas con valor $0$ en la diagonal corresponden a los conjuntos $X$ tales que $X \notin X$.
+La definición de $R$ es precisamente la instrucción de tomar esos casos: $R$ se define \enquote{invirtiendo} la diagonal principal.
+\[ X \in R \iff \text{Diagonal}(X, X) = 0 \]
+Dado que $R$ es un conjunto dentro de esta teoría, debe ocupar algún lugar en la lista (digamos, una fila $R$). ¿Qué valor tiene $R$ en su propia intersección diagonal? Por construcción, debe tener el valor opuesto al que tiene en la diagonal. Es decir, el valor en $(R, R)$ debe ser $0$ si y solo si es $1$.
+
+Esta visualización confirma que la paradoja es estructuralmente idéntica al argumento de Cantor: el problema surge al intentar introducir dentro de la matriz un objeto definido por la negación de la diagonal de dicha matriz.
 
 \subsection*{El Teorema de Incompletitud de Gödel}
 
