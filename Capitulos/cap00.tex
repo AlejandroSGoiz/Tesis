@@ -54,82 +54,6 @@ Sin embargo, este esquema lógico es generalizable y trasciende la geometría de
 
 Si trasladamos este procedimiento a la Teoría de Conjuntos, sustituyendo la indexación numérica por la relación de pertenencia, el argumento diagonal deja de producir \enquote{nuevos elementos} para revelar, en su lugar, contradicciones en la estructura misma de la teoría. Fue precisamente al aplicar este principio de diagonalización sobre la totalidad de los conjuntos que Bertrand Russell formuló, en 1901, la siguiente paradoja.
 
-\begin{teo*}
-No existe una biyecci'on entre el conjunto de los n'umeros naturales, $\mathbb {N}$, y el intervalo real $(0,1)$.    
-\end{teo*}
-\begin{proof}
-    Supongamos por el contrario que s'i existe una biyecci'on. Entonces hay una funci'on $\phi: 
-    \N \to (0,1)$ que enumera a todos los n'umeros reales en el intervalo $(0,1)$. Es decir, podemos enlistar a todos los n'umeros del intervalo, 
-
-    
-    \begin{align*}
-        &0.a_{00}a_{01}a_{02}a_{03}\dots\\
-        &0.a_{10}a_{11}a_{12}a_{13}\dots\\
-        &0.a_{20}a_{21}a_{22}a_{23}\dots\\
-        &\vdots\\
-        &0.a_{n0}a_{n0}a_{n2}a_{n3}\dots \\
-        &\vdots
-    \end{align*}
-    donde $a_{ij}\in \{0,1,2,3,4,5,6,7,8,9\}$ para todo $i,j\in \N$. De esta forma tenemos una matriz infinita donde los renglones de ésta constituyen los elementos en el intervalo. Buscamos ahora construir un elemento en $(0,1)$ que no est'e en esta lista. Para ello, consideremos las entradas $a_{ij}$ tales que $i=j$. Si $a_{ii} = 2$, definimos $b_i = 1$. Si $a_{ii}\neq 2$, definimos $b_i=2$. Afirmamos que el n'umero $b=0.b_1b_2b_3b_4\dots$ no est'a en la lista, i.e., no es un elemento de la imagen  de $\phi$. Para ver eso, basta observar que si $b$ estuviese en la lista, existir'ia un $n
-    \in \N$ tal que $\phi(n) = b$. Pero $b_n$ ser'ia un dígito distinto a $a_{nn}$ pues construimos a $b$ de tal forma que fuese distinto en dicha entrada. Como los dos n'umeros son diferentes en ese decimal, no pueden ser el mismo n'umero y por tanto $\phi(n)\neq b$. Hemos entonces construido un elemento que no est'a en la imagen de $\phi$ pero que s'i est'a en $(0,1)$. Pero supusimos que $\phi$ es biyectiva por lo que en particular es suprayectiva. Esta es una clara contradicci'on, por lo que concluimos que no puede existir una funci'on biyectiva entre $\N$ y $(0,1)$.      
-\end{proof}
-
-Podemos observar en la demostración anterior que, para construir el elemento $y$, recurrimos explícitamente a la diagonal principal de la matriz; es decir, nos fijamos en los términos de la forma $a_{nn}$.
-
-\begin{center}
-\tikzset{every picture/.style={line width=0.75pt}}
-
-\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
-% Text Node
-\draw (215,31.4) node [anchor=north west][inner sep=0.75pt]    {$ \begin{array}{l}
-0.\textcolor[rgb]{0.82,0.01,0.11}{a_{11}} a_{12} a_{13} a_{14} a_{15} \cdots a_{1n} \cdots \\
-0.a_{21}\textcolor[rgb]{0.82,0.01,0.11}{a_{22}} a_{23} a_{24} a_{25} \cdots a_{2n} \cdots \\
-0.a_{31} a_{32}\textcolor[rgb]{0.82,0.01,0.11}{a_{33}} a_{34} a_{35} \cdots a_{3n} \cdots \\
-0.a_{41} a_{42} a_{43}\textcolor[rgb]{0.82,0.01,0.11}{a_{44}} a_{45} \cdots a_{4n} \cdots \\
-0.a_{51} a_{52} a_{53} a_{54}\textcolor[rgb]{0.82,0.01,0.11}{a_{55}} \cdots a_{5n} \cdots \\
-\vdots \\
-0.a_{n1} a_{n2} a_{n3} a_{n4} a_{n5} \cdots \textcolor[rgb]{0.82,0.01,0.11}{a_{nn}} \cdots \\
-\vdots 
-\end{array}$};
-\end{tikzpicture}
-\end{center}
-
-La clave del argumento reside en el uso de esta información diagonal para definir un objeto que difiere sistemáticamente de todos los elementos listados. Nótese que el éxito de la construcción depende de la capacidad de \enquote{invertir} el valor encontrado en la diagonal. El apelar a esta estructura es lo que conocemos hoy como \textbf{argumento diagonal}.
-
-Sin embargo, este esquema lógico es generalizable y trasciende la geometría de una matriz infinita. En muchos contextos, la diagonal no es tan visible, pero el mecanismo subyacente es el mismo: la \textbf{autorreferencia}. 
-
-Si trasladamos este procedimiento a la Teoría de Conjuntos, sustituyendo la indexación numérica por la relación de pertenencia, el argumento diagonal deja de producir \enquote{nuevos elementos} para revelar, en su lugar, contradicciones en la estructura misma de la teoría. Fue precisamente al aplicar este principio de diagonalización sobre la totalidad de los conjuntos que Bertrand Russell formuló, en 1901, la siguiente paradoja.
-
-Podemos observar en la demostraci'on del teorema anterior que para construir al elemento $b$ usamos la diagonal principal de la matriz, i.e., nos fijamos en los elementos de la forma $a_{ii}$. 
-
-
-\begin{center}
-\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
-
-\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
-%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
-
-
-% Text Node
-\draw (215,31.4) node [anchor=north west][inner sep=0.75pt]    {$ \begin{array}{l}
-0.\textcolor[rgb]{0.82,0.01,0.11}{a_{00}} a_{01} a_{02} a_{03} a_{04} \cdots a_{0n} \cdots \\
-0.a_{10}\textcolor[rgb]{0.82,0.01,0.11}{a_{11}} a_{12} a_{13} a_{14} \cdots a_{1n} \cdots \\
-0.a_{20} a_{21}\textcolor[rgb]{0.82,0.01,0.11}{a_{22}} a_{23} a_{24} \cdots a_{2n} \cdots \\
-0.a_{30} a_{31} a_{32}\textcolor[rgb]{0.82,0.01,0.11}{a_{33}} a_{34} \cdots a_{3n} \cdots \\
-0.a_{40} a_{41} a_{42} a_{43}\textcolor[rgb]{0.82,0.01,0.11}{a_{44}} \cdots a_{4n} \cdots \\
-\vdots \\
-0.a_{n0} a_{n1} a_{n2} a_{n3} a_{n4} \cdots \textcolor[rgb]{0.82,0.01,0.11}{a_{nn}} \cdots \\
-\vdots 
-\end{array}$};
-
-
-\end{tikzpicture}
-\end{center}
-
-El apelar a esta diagonal principal de la matriz para llegar a nuestra prueba es lo que conocemos como un \emph{argumento diagonal}. De hecho, este resultado es conocido como el \textit{argumento de la diagonal de Cantor}.
-
-Los argumentos diagonales usualmente no son provistos de una manera tan expl'icita como en el argumento de Cantor. En realidad, muchos de estos son m'as conocidos por presentar en su desarrollo, visto metamatem'aticamente, la noci'on de autoreferencia. Para ver esto, consideremos la siguiente,
-
 %\textbf{Paradoja de Russel:}
 \subsubsection*{Paradoja de Russell}
 
@@ -339,3 +263,30 @@ El cap'itulo 3 abarca aplicaciones del teorema a trav'es de diferentes 'areas de
 En el cap'itulo 4 presentamos las conclusiones de nuestro trabajo. Al final, la lista de la bibliograf'ia en detalle es provista. 
 
 
+A pesar de que los tres ejemplos expuestos difieren sustancialmente en su contenido proposicional —el primero trata sobre cardinalidades infinitas, el segundo sobre inconsistencias en la teoría intuitiva de conjuntos y el tercero sobre las limitaciones deductivas de la aritmética—, todos comparten un método subyacente idéntico. En cada caso, la motivación principal surge de una noción de \textbf{autorreferencia} que es \enquote{transmitida} a la demostración matemática.
+
+Es precisamente este rasgo autorreferencial el que ha rodeado de un halo de misticismo y especulación filosófica a los Teoremas de Incompletitud de Gödel y, en general, a muchos resultados obtenidos mediante argumentos diagonales. Surge entonces una interrogante natural: si el germen de la autorreferencia puede incrustarse en el corazón de las matemáticas mediante un mecanismo tan simple, ¿existe acaso una limitación extrateórica o metafísica que restrinja el conocimiento científico?
+
+Esta inquietud fue popular durante gran parte del siglo XX, impulsada por la crisis de los fundamentos. Sin embargo, en 1969, William F. Lawvere publicó unas notas que, silenciosa pero contundentemente, derrumbarían este misticismo. En su artículo \textit{Diagonal Arguments and Cartesian Closed Categories}, Lawvere observó que todos estos argumentos no son sino consecuencias naturales de trabajar en tipos particulares de estructuras categóricas. En sus propias palabras:
+
+\begin{quote}
+The original aim of this article was to demystify the incompleteness theorem of Gödel and the truth-definition theory of Tarski by showing that both are consequences of some very simple algebra in the cartesian-closed setting.
+\end{quote}
+
+El aporte de Lawvere es fundamental: logró unificar en un solo esquema formal algunos de los resultados de imposibilidad más importantes del siglo pasado. Más adelante, este hallazgo sería conocido como el \textbf{Teorema del Punto Fijo de Lawvere}, uniéndose a la vasta familia de teoremas de punto fijo que abundan en diversas áreas de la matemática. 
+
+No obstante, y a pesar de su trascendencia unificadora, este teorema permanece sorprendentemente poco difundido. Una posible explicación radica en que el lenguaje natural del resultado, la Teoría de Categorías, es una disciplina relativamente joven y, en ocasiones, ajena a la formación matemática tradicional. Por ello, existe un vacío en la literatura divulgativa y educativa respecto a este resultado.
+
+\section*{Organización del Trabajo}
+
+El presente trabajo tiene por objetivo exponer el Teorema del Punto Fijo de Lawvere de manera autocontenida; por consiguiente, no se presupone ningún conocimiento previo de Teoría de Categorías. La estructura de la tesis es la siguiente:
+
+\begin{itemize}
+    \item El \textbf{Capítulo 1} introduce las herramientas categóricas necesarias. Dado que no se trata de un curso extensivo de Teoría de Categorías, nos limitaremos a los conceptos indispensables para llegar al resultado deseado. El lector interesado en profundizar en esta teoría puede consultar \cite{Rie16}, \cite{Lei16} y \cite{Mac97}.
+
+    \item El \textbf{Capítulo 2} aborda el núcleo del trabajo: el \textbf{Teorema del Punto Fijo de Lawvere}. Presentamos una versión modernizada y una demostración más detallada que la original de Lawvere en \cite{Law06}. Introducimos aquí el concepto de \textit{categoría cartesiana cerrada}, enfatizando su papel crucial como el entorno donde estos fenómenos diagonales ocurren naturalmente. Asimismo, se ofrece una explicación pormenorizada de la contrapositiva del teorema, resultado que será instrumental para las aplicaciones posteriores.
+
+    \item El \textbf{Capítulo 3} explora las aplicaciones del teorema a través de diversas áreas de la matemática. Este es el capítulo más extenso, pues nuestro interés principal es demostrar la utilidad y capacidad unificadora del resultado de Lawvere. Aunque todas las aplicaciones se tratan desde una argumentación categórica, los problemas originales provienen de contextos muy distintos (Lógica, Computación, Análisis), por lo que se provee el contexto necesario para una comprensión adecuada. Las demostraciones se presentan con el mayor detalle posible sin desviarse del hilo conductor.
+
+    \item Finalmente, en el \textbf{Capítulo 4} presentamos las conclusiones de nuestro trabajo, seguidas de la bibliografía detallada.
+\end{itemize}
