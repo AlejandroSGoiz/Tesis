@@ -1,12 +1,15 @@
 
-El desarrollo de la Teor'ia de Conjuntos de Cantor y, en general, de las matem'aticas en el siglo \textsc{xix} dio lugar a muchos argumentos que hoy conocemos como \enquote{diagonales}. Veamos, como ejemplo, el siguiente teorema.
+El desarrollo de la Teoría de Conjuntos por Georg Cantor, aunado a la evolución del pensamiento matemático del siglo XIX, dio pie a una clase de razonamientos lógicos que hoy llamamos \textbf{argumentos diagonales}.
+
+Estos argumentos revelan propiedades estructurales profundas mediante mecanismos de autorreferencia. A fin de ilustrar la esencia de este procedimiento, comenzaremos mostrando uno de los ejemplos más conocidos: la demostración de que los números reales son más grandes que los números naturales.
+
 
 \begin{teo*}[Teorema de la Diagonal de Cantor]
 El intervalo real unitario $(0,1)$ no es numerable. Es decir, no existe una biyección $\ff{\phi}{\N}{(0,1)}$.
 \end{teo*}
 
 \begin{proof}
-Procederemos por reducción al absurdo. Supongamos que el conjunto es numerable y que, por tanto, existe una biyección $\phi$ que nos permite enlistar exhaustivamente todos los elementos del intervalo como una sucesión $x_1, x_2, x_3, \dots$, donde $x_n = \phi(n)$.
+Procederemos por reducción al absurdo. Supongamos que el conjunto es numerable y que, por tanto, existe una biyección $\phi$ que nos permite ennumerar los elementos del intervalo como una sucesión $x_1, x_2, x_3, \dots$, donde $x_n = \phi(n)$.
 
 Podemos representar cada número $x_n$ mediante su expansión decimal única:
 \begin{align*}
@@ -16,16 +19,16 @@ Podemos representar cada número $x_n$ mediante su expansión decimal única:
     &\vdotswithin{=} \\
     x_n &= 0.a_{n1} a_{n2} a_{n3} a_{nn} \dots 
 \end{align*}
-Nuestro objetivo es encontrar un número real $y \in (0,1)$ que no se encuentre en dicha lista. Definimos $y = 0.d_1d_2d_3\dots$ determinando cada dígito decimal $d_n$ en función de la diagonal de nuestra lista (los términos $a_{nn}$). La regla de construcción es la siguiente:
+Buscamos encontrar un número real $y \in (0,1)$ que no se encuentre en dicha lista. Para ello, definimos $y = 0.d_1d_2d_3\dots$, donde los dígitos $d_n$ están dados por la siguiente regla:
 \[
     d_n = \begin{cases} 
     1 & \text{si } a_{nn} \neq 1 \\
     2 & \text{si } a_{nn} = 1 
     \end{cases}
 \]
-Analicemos el resultado. Para cualquier índice $n \in \N$, el $n$-ésimo dígito de nuestro nuevo número $y$ difiere del $n$-ésimo dígito del número $x_n$ de la lista (es decir, $d_n \neq a_{nn}$). 
+Observemos que, dada esta regla, para cualquier índice $n \in \N$, el $n$-ésimo dígito de nuestro nuevo número $y$ difiere del $n$-ésimo dígito del número $x_n$ de la lista (es decir, $d_n \neq a_{nn}$). 
 
-Esto implica necesariamente que $y \neq x_n$ para todo $n$. Sin embargo, $y$ es un número real bien definido con expansión decimal de unos y dos, por lo que $y \in (0,1)$. Hemos encontrado un elemento que escapa a la enumeración $\phi$, contradiciendo la hipótesis de que $\phi$ era sobreyectiva.
+Esto implica necesariamente que $y \neq x_n$ para todo $n$. Sin embargo, $y$ es un número real bien definido con expansión decimal de unos y dos, por lo que $y \in (0,1)$. Por tanto, hemos encontrado un número en el intervalo $(0,1)$ que no está en la imagen de $\phi$, contradiciendo la hipótesis de que $\phi$ era sobreyectiva. Por lo tanto, concluimos que el intervalo $(0,1)$ no es numerable.
 \end{proof}
 
 Podemos observar en la demostración anterior que, para construir el elemento $y$, recurrimos explícitamente a la diagonal principal de la matriz; es decir, nos fijamos en los términos de la forma $a_{nn}$.
@@ -48,83 +51,31 @@ Podemos observar en la demostración anterior que, para construir el elemento $y
 \end{tikzpicture}
 \end{center}
 
-La clave del argumento reside en el uso de esta información diagonal para definir un objeto que difiere sistemáticamente de todos los elementos listados. Nótese que el éxito de la construcción depende de la capacidad de \enquote{invertir} el valor encontrado en la diagonal. El apelar a esta estructura es lo que conocemos hoy como \textbf{argumento diagonal}.
+La clave del argumento reside en el uso de esta información diagonal para definir un objeto que difiere sistemáticamente de todos los elementos listados. Observemos que el éxito de la construcción depende de la capacidad de \enquote{invertir} el valor encontrado en la diagonal. El apelar a esta estructura es lo que conocemos hoy como \textbf{argumento diagonal}.
 
-Sin embargo, este esquema lógico es generalizable y trasciende la geometría de una matriz infinita. En muchos contextos, la diagonal no es tan visible, pero el mecanismo subyacente es el mismo: la \textbf{autorreferencia}. 
+Este argumento es generalizable y trasciende la geometría de una matriz infinita. En muchos contextos, la diagonal no es tan visible, pero el mecanismo subyacente es el mismo: la \textbf{autorreferencia}. 
 
-Si trasladamos este procedimiento a la Teoría de Conjuntos, sustituyendo la indexación numérica por la relación de pertenencia, el argumento diagonal deja de producir \enquote{nuevos elementos} para revelar, en su lugar, contradicciones en la estructura misma de la teoría. Fue precisamente al aplicar este principio de diagonalización sobre la totalidad de los conjuntos que Bertrand Russell formuló, en 1901, la siguiente paradoja.
+Si trasladamos este argumento a la Teoría de Conjuntos intuitiva, sustituyendo la numeración por la relación de pertenencia, el argumento diagonal, en vez de producir un \enquote{nuevo elemento}, revela una contradicción en la estructura misma de la teoría. Esta contradicción fue descubierta por Bertrand Russell en 1901, y es conocida como la \textbf{Paradoja de Russell}. 
 
-%\textbf{Paradoja de Russel:}
-\subsubsection*{Paradoja de Russell}
+\subsection*{La Paradoja de Russell}
 
-La paradoja de Russell concierne a la teor'ia de conjuntos informal, en donde cualquier propiedad define un conjunto. Para ver la paradoja, es necesario considerar a los conjuntos que se pertenecen a s'i mismos, i.e., pensemos en todos los conjuntos $X$ tales que $X\in X$. Consideremos ahora el siguiente conjunto: 
-\[R = \{X\vert X\notin X\}\]
-Es decir, $R$ es el conjunto de todos los conjuntos que no se pertenecen a s'i mismos. Surge entonces la pregunta, ¿$R$ se pertenece a s'i mismo? Si $R\in R$ entonces tenemos $R\notin R$ por definici'on de $R$. Por otro lado, si $R\notin R$ entonces es un conjunto que no se pertenece a s'i mismo y por tanto $R\in R$. Podemos observar entonces que en ambos casos llegamos a 
-\[R\in R \iff R\notin R\]
-Esta es una clara contradicci'on, por lo que llegamos a una paradoja. 
-
-La Paradoja de Russell nos deja ver la necesidad de formalizar la teor'ia de conjuntos y que no puede ser el caso de que cualquier propiedad defina a un conjunto. De hacerlo, nuestra teor'ia se derrumbar'ia. 
-
-En el coraz'on de la paradoja de Russell est'a la autoferencia. Construimos un conjunto $R$ tal que al considerarse a s'i mismo lleva a una paradoja. Esta paradoja es otro ejemplo de un argumento diagonal. Dicho esto, podemos ver que en ning'un momento construimos una matriz ni apelamos a una diagonal. ¿Cómo es entonces que éste es un argumento diagonal? 
-
-Pensemos en todos los conjuntos existentes. Organiz'emoslos tanto de manera vertical como horizontal, i.e., 
-
-\begin{align*}
-    &\quad A\quad B \quad C \quad D \quad \cdots\\
-    &A\\
-    &B\\
-    &C\\
-    &D\\
-    &\vdots
-\end{align*}
-Asignemos valores como sigue: si el elemento horizontal pertenece al elemento vertical, ponemos un $1$. En caso contrario, ponemos un $0$. As'i por ejemplo supongamos que $A\in B$ y que $A\notin A$, tendr'iamos entonces 
-
-\begin{align*}
-    &\,\,\quad A\quad B \quad C \quad D \quad \cdots\\
-    &A\quad 0\\
-    &B\quad 1\\
-    &C\\
-    &D\\
-    &\vdots
-\end{align*}
-
-Nuestra matriz entonces podr'ia lucir algo como el siguiente ejemplo, 
-\[
-\begin{matrix}
-    & A & B & C & D & E & F & \dots\\
-    A &  0 & 0 & 0 &1 & 0 &1 & \dots\\
-    B & 1 & 1 & 0 &1 &  0 & 0 & \dots\\
-    C&  1 & 0 & 0 & 1 & 1 & 1 & \dots\\
-    D& 0 & 0 & 1 & 0 & 1 & 1 & \dots \\
-    E& 1 & 0 & 1 & 0 &1 & 0 & \dots\\
-    F& 1 & 1 & 0 & 0 & 1 & 0 & \dots\\
-    \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \ddots\\
-\end{matrix}\]
-Aquí, nos interesan los valores de la diagonal principal. Las entradas $0$ son los $X$ tales que $X\notin X$ y la teor'ia informal de conjuntos nos dice que podemos crear el conjunto de todos los conjuntos cuyo valor en esta diagonal principal es $0$. Siendo este un conjunto, ocupa un lugar en esta matriz. ¿Qué valor tiene $R$ en esta diagonal principal? Como vimos, vale $0$ si y sólo si vale $1$. La existencia de este conjunto, entonces, nos lleva a un absurdo, por lo que concluimos que tal conjunto no puede existir. Como la teoría informal de conjuntos permite la construcción de dicho conjunto, podemos ver que existe un problema fundamental con ésta.
-
-Esta construcci'on nos permite ver que en un problema de autoreferencia permite ser representado en forma de un elemento de la diagonal principal. En s'i, entendemos que la $n-$'esima columna est'a \emph{hablando algo} de la $n-$'esima fila, es decir, en cierto modo pensamos que est'a \emph{hablando algo de s'i mismo} al compartir este valor $n$ en com'un. 
-
-De estos casos de autoreferencia uno de los m'as famosos y el m'as rodeado de inter'es filos'ofico es el primer teorema de incompletitud de Gödel. Un planteamiento y demostraci'on formal de 'este teorema ocupar'ia demasiado espacio y saldr'ia mucho del inter'es de 'esta introducci'on, por lo que nos limitaremos dar una explicaci'on breve del teorema, en un esbozo que sigue al dado por Gödel en \parencite{gdl}.
-
-\section*{La Paradoja de Russell}
-
-La Paradoja de Russell concierne a la llamada \textit{Teoría Intuitiva de Conjuntos} (o \textit{Naive Set Theory}), la cual se fundamentaba en el principio de que cualquier propiedad lógica define un conjunto. Para visualizar el conflicto, es necesario considerar conjuntos que puedan pertenecerse a sí mismos (por ejemplo, el conjunto de \enquote{todas las ideas} es, en sí mismo, una idea).
+La Paradoja de Russell concierne a la ahora llamada \textit{Teoría Intuitiva de Conjuntos}, como fue inicialmente concebida por Georg Cantor. Esta teoría incial se fundamentaba en el principio de que cualquier propiedad lógica define un conjunto. Por ejemplo, la propiedad de ser un número par da pie al conjunto $A=\{2k\,|\, k\in \mathbb{N}\}$. Con esto en mente, para visualizar el problema necesitamos considerar conjuntos que puedan pertenecerse a sí mismos. Por ejemplo, el conjunto definido por la propiedad de \enquote{ser una idea} es, en sí mismo, una idea, y por lo tanto pertenece a sí mismo.
 
 Consideremos el conjunto $R$, definido como la colección de todos los conjuntos que \textbf{no} son elementos de sí mismos:
 \[R = \{X \mid X \notin X\}\]
-Surge entonces la pregunta inevitable: ¿Se pertenece $R$ a sí mismo?
-Analicemos las dos posibilidades:
-\begin{itemize}
-    \item Si $R \in R$, entonces debe cumplir la condición que define al conjunto, es decir, $R \notin R$.
-    \item Si $R \notin R$, entonces cumple la condición de entrada, por lo que debería estar dentro, es decir, $R \in R$.
-\end{itemize}
+Podemos entonces formular la siguiente pregunta: ¿Se pertenece $R$ a sí mismo?
+Ante esto, tenemos dos posibilidades:
+\begin{enumerate}
+    \item $R \in R$. En este caso, tenemos que debe cumplir la condición que define al conjunto, es decir, tenemos $R \notin R$.
+    \item $R \notin R$. En este otro caso, tenemos que cumple la propiedad que define a $R$ por lo que debe pertenecer al conjunto, es decir, $R \in R$.
+\end{enumerate}
 En ambos casos llegamos a la contradicción:
 \[R \in R \iff R \notin R\]
 Este resultado evidencia que la teoría intuitiva es inconsistente: no puede ser el caso que cualquier propiedad defina un conjunto. De permitirlo, el edificio lógico de la teoría se derrumbaría.
 
-Ahora bien, hemos afirmado que en el corazón de esta paradoja reside la \textbf{autorreferencia} y que se trata de un argumento diagonal. Sin embargo, en la formulación anterior no construimos ninguna matriz ni apelamos a dígitos decimales. ¿Cómo justificamos entonces que este es el mismo fenómeno que observamos con Cantor?
+Ahora bien, hemos afirmado que en el corazón de esta paradoja reside la \textbf{autorreferencia} y que se trata de un argumento diagonal. La autoreferencia está presente para llegar a la Paradoja. Sin embargo, en la formulación anterior no construimos ninguna matriz ni apelamos a la diagonal. ¿Cómo es entonces que este ejemplo cae en un \enquote{argumento diagonal} como el que observamos con Cantor?
 
-Imaginemos, bajo la hipótesis de la teoría intuitiva, que podemos listar \enquote{todos los conjuntos existentes}. Organicémoslos tanto vertical como horizontalmente para formar una tabla de pertenencia:
+Imaginemos, conforme a la teoría intuitiva, que podemos enlistar \enquote{todos los conjuntos existentes}. Organicémoslos tanto vertical como horizontalmente para formar una tabla como la siguiente:
 
 \begin{center}
 $ \begin{matrix} 
@@ -136,7 +87,7 @@ C & \cdot & \cdot & \cdot & \cdot & \\
 \end{matrix} $
 \end{center}
 
-Asignemos valores de verdad a las intersecciones: pondremos un $1$ si el conjunto de la fila pertenece al conjunto de la columna, y un $0$ en caso contrario. Supongamos, por ejemplo, que $A \notin A$ (diagonal es 0), $A \in B$, etc. Nuestra matriz de incidencia luciría así:
+Asignemos valores de $1$ y $0$ de la siguiente forma: pondremos un $1$ si el conjunto de la fila pertenece al conjunto de la columna, y un $0$ en caso contrario. Supongamos, por ejemplo, que $A \notin A$ y $A \in B$. Los valores resultantes serían entonces $0$ y $1$, respectivamente. Nuestra matriz de pertenencia podría entonces lucir así:
 
 
 \begin{center}
@@ -160,24 +111,37 @@ $};
 
 
 
-Al igual que en el teorema anterior, nuestra atención se centra en la \textbf{diagonal principal} (marcada en negritas). Las entradas con valor $0$ en la diagonal corresponden a los conjuntos $X$ tales que $X \notin X$.
+Al igual que en el teorema anterior, nuestra atención se centra en la \textbf{diagonal principal} que hemos resaltado. Las entradas con valor $0$ en la diagonal corresponden a los conjuntos $X$ tales que $X \notin X$.
 La definición de $R$ es precisamente la instrucción de tomar esos casos: $R$ se define \enquote{invirtiendo} la diagonal principal.
 \[ X \in R \iff \text{Diagonal}(X, X) = 0 \]
-Dado que $R$ es un conjunto dentro de esta teoría, debe ocupar algún lugar en la lista (digamos, una fila $R$). ¿Qué valor tiene $R$ en su propia intersección diagonal? Por construcción, debe tener el valor opuesto al que tiene en la diagonal. Es decir, el valor en $(R, R)$ debe ser $0$ si y solo si es $1$.
+Dado que $R$ es un conjunto dentro de esta teoría, debe ocupar algún lugar en la lista, es decir, la fila $R$. ¿Qué valor tiene $R$ en su propia intersección diagonal? Por construcción, debe tener el valor opuesto al que tiene en la diagonal. Es decir, el valor en $(R, R)$ debe ser $0$ si y solo si es $1$.
 
 Esta visualización confirma que la paradoja es estructuralmente idéntica al argumento de Cantor: el problema surge al intentar introducir dentro de la matriz un objeto definido por la negación de la diagonal de dicha matriz.
 
+Siguiendo estos casos de autorreferencia, el más célebre y con mayor peso filosófico es indudablemente el \textbf{Primer Teorema de Incompletitud de Gödel}. Un planteamiento y demostración rigurosa de este teorema ocuparía demasiado espacio y se saldría de los objetivos de esta introducción. Por ello, nos limitaremos a dar un esbozo que sigue la línea argumental presentada por el propio Gödel en \cite{gdl}, resaltando cómo es, en el fondo, otro argumento diagonal.
+
 \subsection*{El Teorema de Incompletitud de Gödel}
 
-De estos casos de autorreferencia, el más célebre y con mayor peso filosófico es el \textbf{Primer Teorema de Incompletitud de Gödel}. Un planteamiento y demostración rigurosa de este teorema ocuparía demasiado espacio y se saldría de los objetivos de esta introducción. Por ello, nos limitaremos a dar un esbozo que sigue la línea argumental presentada por el propio Gödel en \cite{gdl}, resaltando cómo es, en el fondo, otro argumento diagonal.
 
-La idea central y genial de Gödel fue trasladar el problema de la autorreferencia al lenguaje de la aritmética. Para ello, ideó un método de codificación (conocido como \textit{numeración de Gödel}) que asigna a cada fórmula $\phi$ un número natural único, denotado por $\ulcorner \phi \urcorner$. Esto permite que la aritmética \enquote{hable} de sus propias fórmulas.
+Los sistemas formales que fundamentan la matemática moderna, tales como los Axiomas de Peano o la Teoría de Conjuntos de Zermelo-Fraenkel, poseen la capacidad expresiva suficiente para construir la aritmética básica de los números naturales. La expectativa histórica, liderada por el programa de Hilbert, era que estos sistemas fueran capaces de decidir la verdad o falsedad de cualquier proposición formulada en su lenguaje.
+
+Sin embargo, estos sistemas presentan limitaciones internas fundamentales respecto a lo que pueden demostrar. Gödel probó que, si estos sistemas son \textbf{consistentes} (que no poseen contradicciones), existen  entonces proposiciones en dichos sistemas que son \textit{indecidibles}; es decir, enunciados que el sistema no es capaz de demostrar como verdaderos ni refutar como falsos.
+
+Podría pensarse que la solución radica en añadir estas proposiciones como nuevos axiomas. No obstante, esto no resuelve el problema estructural: en el nuevo sistema ampliado surgirían inevitablemente nuevas proposiciones indecidibles. Este fenómeno de incompletitud no es exclusivo de los dos sistemas mencionados; como veremos en el Capítulo 3, una clase extensiva de sistemas formales sufren de esta limitación.
+
+
+En el corazón de este problema yace, nuevamente, la autorreferencia. Construimos una proposición que afirma algo sobre su propia indemostrabilidad. Para formalizar esto, Gödel tuvo que idear una manera de que la aritmética \enquote{hablara de sí misma}.
+
+La idea central y genial de Gödel fue trasladar el problema de la autorreferencia al lenguaje de la aritmética. Para ello, ideó un método de codificación (conocido como \textit{numeración de Gödel}) que asigna a cada fórmula $\phi$ del sistema un número natural único, denotado por $\ulcorner \phi \urcorner$. Esto permite que la aritmética \enquote{hable} de sus propias fórmulas.
 
 Gracias a esta codificación, la propiedad metamatemática \enquote{$y$ es una demostración de $x$} se puede expresar como una relación aritmética, llamémosla $\dems(x,y)$. A partir de aquí, podemos definir el concepto de ser demostrable como 
 
-$$\dems(x) \iff \exists y \dems(x,y).$$
+\begin{center}
+    
+$x$ es demostrable $ \iff \exists y \dems(x,y).$
 
-A partir de aquí aparece la diagonal como en los otros dos ejemplos. Gödel definió una función de sustitución, $s(n, m)$, que calcula el código de la fórmula resultante al tomar la fórmula con código $n$ y reemplazar su variable libre por el número $m$, es decir, 
+\end{center}
+Nace de aquí la diagonal como en los otros dos ejemplos. Gödel definió una función de sustitución $s(n, m)$, que calcula el código de la fórmula resultante al tomar la fórmula con código $n$ y reemplazar su variable libre por el número $m$, es decir, 
 \[ s(\ulcorner \phi(x) \urcorner, m) = \ulcorner \phi(m) \urcorner. \]
 Esta función $s$ es la herramienta que nos permite \enquote{caminar por la diagonal}: si evaluamos $s(n, n)$, estamos pidiéndole intrínsecamente a la fórmula número $n$ que hable del número $n$. Es el análogo aritmético de mirar la entrada $(n,n)$ en la matriz del argumento de la diagonal de Cantor o en la matriz que visualizamos de pertencencia para la Paradoja de Russell.
 
@@ -187,85 +151,44 @@ Sea $k$ el número de Gödel de esta fórmula, es decir, $k = \ulcorner P(x) \ur
 \[ G \iff \neg \dems( s(k, k) ) \]
 Pero por definición de nuestra función de sustitución, $s(k, k)$ es precisamente el código de $G$. Es decir, $\ulcorner G \urcorner = s(k, k)$. Sustituyendo esto, llegamos a:
 \[ G \iff \neg \dems( \ulcorner G \urcorner ) \]
-Esta sentencia $G$ afirma, literalmente: \enquote{yo no soy demostrable}.
+Esta sentencia $G$ afirma, esencialmente: \enquote{yo no soy demostrable}.
 
 Si el sistema es consistente, no puede demostrar falsedades, por lo que no puede demostrar $G$ (ya que si lo hiciera, $G$ sería falsa). Pero al no poder demostrarla, lo que $G$ afirma es verdad. Tenemos entonces una sentencia que es verdadera pero no demostrable dentro del sistema.
 
-Este resultado, al igual que los de Cantor y Russell, surge de la capacidad de construir un objeto que niega su propia posición en la diagonal del sistema. El propósito de este trabajo es mostrar cómo la Teoría de Categorías, y en particular el Teorema de Lawvere, unifica todos estos argumentos bajo un mismo principio estructural.
+Para visualizar la naturaleza diagonal de este argumento, podemos recurrir a la misma representación matricial que utilizamos con Cantor y Russell.
 
-\textbf{Primer Teorema de Incompletitud de Gödel}
+Imaginemos una lista enumerada de todas las fórmulas posibles con una variable libre en el lenguaje de la aritmética: $\phi_0(x), \phi_1(x), \phi_2(x), \dots$.
+En las columnas, colocamos los números naturales que pueden servir como argumentos para estas fórmulas.
 
-Los sistemas formales que proveen los Axiomas de Peano o los de Zermelo-Fraenkel, que son capaces de construir aritmética básica de los naturales, tienen limitaciones internas respecto a qué pueden demostrar. Es decir, existen proposiciones en dichos sistemas que no pueden ser demostradas ni refutadas. Añadir estas proposiciones como axiomas no resolvería el problema: en este nuevo sistema existir'ian tambi'en proposiciones indecidibles, i.e., ni demostrables ni refutables. Este problema no es exclusivo a los dos sistemas mencionados, como veremos en el cap'itulo 3, una cantidad extensiva de sistemas formales de este tipo son incompletos, en el sentido de que tendr'an proposicones indecidibles. Es importante observar que estas proposiciones indecidibles ocurren tambi'en porque suponemos que estos sistemas son consistentes, una hipótesis necesaria para más adelante.
+Definamos el valor de la entrada $(n, m)$ en esta matriz como $1$ si el sistema demuestra que la fórmula $\phi_n$ es verdadera para el número $m$ (es decir, si $\vdash \phi_n(m)$), y $0$ en caso contrario.
 
-El argumento heurístico que provee Gödel, y que nos permitirá exhibir la diagonalidad del argumento, nace con la idea de que en un sistema formal, es inconsecuente qué signos son ocupados para describir el sistema. Es decir, la elección de símbolos como paréntesis \enquote{$()$}, conectivos l'ogicos \enquote{$\lor$}, \enquote{$\land$}, etc. es arbitraria y, por tanto, es igual de plausible usar números naturales en su lugar. De esta forma, fórmulas en nuestro sistema se convierten en sucesiones finitas de números naturales y demostraciones se vuelven sucesiones finitas de sucesiones finitas de números naturales. 
+\begin{center}
+\tikzset{every picture/.style={line width=0.75pt}}
 
-Lo increíble de esta idea es que vuelve problemas metamatemáticos, es decir, problemas que nosotros observamos respecto al sistema, en problemas de números naturales. Por ejemplo, si nosotros usamos el número $0$ en lugar del conectivo lógico $\lor$, entonces una fórmula como \enquote{$x = 0$} en el sistema se puede entender tambi'en a nivel metamatem'atico como \enquote{$x= \lor$}. Es entonces posible construir dentro del sistema una fórmula $F(v)$, donde $v$ es una sucesión finita de números, que a nivel metamatemáticos nos diga \enquote{$v$ es una f'ormula demostrable}. En su demostraci'on, Gödel construye $40$ funciones recursivas para llegar a ésta fórmula. Esta fórmula es el interés principal de hacer estos cambios de simbología. 
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+% Text Node
+\draw (215,31.4) node [anchor=north west][inner sep=0.75pt]    {$
+\begin{array}{rcccccc}
+    & 0 & 1 & 2 & 3 & 4 & \cdots \\
+  \phi_0 & \mathbf{1} & 0 & 1 & 0 & 0 & \cdots \\
+  \phi_1 & 0 & \mathbf{0} & 1 & 1 & 0 & \cdots \\
+  \phi_2 & 1 & 1 & \mathbf{0} & 0 & 1 & \cdots \\
+  \phi_3 & 0 & 0 & 1 & \mathbf{1} & 0 & \cdots \\
+  \vdots & \vdots & \vdots & \vdots & \vdots & \mathbf{\ddots} & 
+\end{array}
+$};
+\end{tikzpicture}
+\end{center}
 
-Ahora, para el objetivo en mano, nos concentraremos en fórmulas bien formadas con una sola variable libre, por ejemplo, como la provista arriba \enquote{$x=0$}. Podemos imaginar estas f'ormulas con una sola variable libre ordenadas en una sucesi'on, de modo que sean fácilmente identificables. En esta sucesión, denotamos a la $n-$'esima entrada por $R_n$. 
+Nuevamente, nuestra atención se dirige a la \textbf{diagonal principal}. Esta diagonal representa si es demostrable cada fórmula cuando es aplicada a su propio número de código o dicho de otra forma: la entrada $(n, n)$ en la matriz nos dice si $\vdash \phi_n(n)$.
 
-Representamos por $\sub(R_n, m)$ a la f'ormula derivada de sustitur todas las instancias de la 'unica variable libre en $R_n$ por el n'umero natural $m$. A su vez, si una fórmula es demostrable, lo denotamos por $\dems (F)$. Observemos que esto 'ultimo es la f'ormula mencionada arriba por la cual surge esta necesidad de una numeraci'on de los s'imbolos, f'ormulas, etc.  Con estas notaciones en mano, definimos el siguiente conjunto $K$: 
+La sentencia indecidible de Gödel, $G$, se construye esencialmente definiendo una nueva fila (una nueva fórmula) que \enquote{invierte} los valores de esta diagonal. La fórmula $G(x)$ está diseñada para comportarse como la negación de la diagonal:
+\[ G(n) \text{ es verdadera} \iff \text{la entrada} (n,n) \text{de la matriz es } 0 \]
+Como $G$ es una fórmula válida en el sistema, debe aparecer en algún lugar de la lista de filas, digamos en la fila $k$. La contradicción (o en este caso, la indecidibilidad) surge al preguntar por el valor de la intersección $(k, k)$. La fórmula debe negar su propio valor en la diagonal, llegando así a que es verdadera si y solo si no es demostrable.
 
-\[K = \{n\in \N \vert \lnot \dems(\sub(R_n,n))\}\]
+A pesar de que los tres ejemplos expuestos difieren sustancialmente en su contenido proposicional —el primero trata sobre cardinalidades infinitas, el segundo sobre inconsistencias en la teoría intuitiva de conjuntos y el tercero sobre las limitaciones deductivas de la aritmética—, todos comparten un método subyacente idéntico en esencia. En cada caso, la motivación principal surge de una noción de \textbf{autorreferencia} que es \enquote{transmitida} a la demostración matemática.
 
-Es decir, los elementos en $K$ son los naturales $n$ tales que la f'ormula resultante de substituir todas las entradas de la variable libre en la f'ormula $R_n$ (que es una f'ormula con una sola variable libre) no es demostrable en el sistema formal. 
-
-Las nociones que conforman a este conjunto ($R_n$, $\dems$, $\sub$) son todas definibles en el sistema, por lo que la noci'on de pertenencia al conjunto $K$ es tambi'en definible dentro del sistema. Es decir, existe una f'ormula  de una sola variable libre, $S$, tal que 
-\[\dems(\sub(S,n))\iff n\in K\]
-
-Al ser una f'ormula de una sola variable libre, tiene un lugar en la secuencia, por lo que hay un $g\in \N$ para el cual $S=R_g$. Llegados a este punto tenemos ya en nuestras manos una proposici'on que no es ni demostrable ni refutable en el sistema, a saber 
-\[\sub(R_g,g)\]
-
-Antes de ver por qu'e no es demostrable ni refutable esta proposici'on, observemos del esbozo dado la presencia de un argumento diagonal. Por un lado, podemos acomodar en columnas a todas las f'ormulas de una sola variable libre y por otro, en filas a todos los n'umeros $n$. De ah'i podemos asignar $f$ a la entrada con f'ormula $R_n$ y n'umero $m$ si la f'ormula $\sub(R_n, m)$ no es demostrable en el sistema y $v$ si, por el contrario, es demostrable. Nuestra matriz entonces podr'ia lucir algo como 
-
-\[
-\begin{matrix}
-    & R_1 & R_2 & R_3 & \dots & R_{n-1} & R_n & \dots\\
-    1 &  f & f & f &f & v &v & \dots\\
-    2 & f & v & v &v &  f & v & \dots\\
-    3 &  v & v & f & v & f & f & \dots\\
-    \vdots& \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \ddots \\
-    n-1& v & v & v & v &v & v & \dots\\
-    n& f & v & f & v & v & f & \dots\\
-    \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \ddots\\
-\end{matrix}\]
-
-Nuestro conjunto $K$ ser'ian los $n\in \N$ para los cuales el valor de la $n-$'esima fila en la diagonal principal son $f$. Entonces, ¿cuál será el valor que presente el número $g$ en la diagonal principal? Sale a la luz la similitud con la paradoja de Russell a través de esta visualización de la matriz. Por supuesto, aqu'i no lidiamos con una paradoja, sino con una limitaci'on de nuestro sistema. 
-
-Retomando el esbozo de la demostraci'on, veamos por que $\sub(R_g,g)$ no es demostrable ni refutable. 
-
-Primero, de ser demostrable, tendr'iamos que $\dems(\sub(R_g,g))$ y, por tanto, $g\notin K$. Pero $S= R_g$ y $S$ es tal que $\dems(\sub(S, g))\iff g\in K$, por lo que tendr'iamos $g\in K \iff g\notin K$. Esto es una clara contradicci'on, pues suponemos que nuestro sistema es consistente, por lo que no puede ser demostrable.
-
-Segundo, de ser refutable, tendr'iamos que $\lnot \dems(\sub(R_g,g))$ por lo que por definici'on de $K$ implicar'ia que $g\in K$. Como $g\in K$, tenemos $\dems(\sub(S, g))$, pero $S$ es $R_g$, por lo que $\dems(\sub(R_g, g)$, de lo que llegamos a que ocurre tanto $\lnot \dems(\sub(R_g,g))$ como $\dems(\sub(R_g,g))$ lo cual es absurdo, porque suponemos que nuestro sistema es consistente y, por tanto, concluimos que no puede ser refutable.
-
-Como tal, hemos construido entonces una proposici'on que no es ni demostrable ni refutable en nuestro sistema. Podemos ver en la construcci'on de 'esta la noci'on de autoreferencia. En cierto sentido, la proposici'on dice a un nivel metametam'etico \enquote{No soy demostrable en el sistema formal} 
-a trav'es del sentido sem'antico que le damos a los s'imbolos. 
-
-Por supuesto, el esbozo dado de este Teorema no es bajo ningún motivo una demostración del mismo. Muchos detalles son omitidos y la visualización de la diagonalidad en el argumento de la demostración es mucho más complicado de ver explícitamente. Sin embargo, este esbozo nos permite observar la relación que guarda con los dos ejemplos anteriores y la noción de autoreferencia que lo rodea. 
-
-Los tres ejemplos expuestos son considerablemente distintos entre s'i en el contenido de sus proposiciones. El primero habla de la diferencia en cardinalidad entre el conjunto de los n'umeros naturales y el de los reales; el segundo, de los problemas irremediables en la formulaci'on informal de la teor'ia de conjuntos; el tercero, de las limitaciones de algunos sistemas formales consistentes que puedan desarrollar aritm'etica básica. Sin embargo, llegar a vislumbrar estos tres resultados ocupa un m'etodo muy similar y, en dos de estos casos, la motivaci'on principal surge de una noci'on de autoreferencia siendo \enquote{transmitida} a la demostraci'on. Este 'ultimo detalle es el que rodea de mucho misticismo y consideraciones filos'oficas a los Teorema de Incompletitud de Gödel y, en general, el que rodea a muchos de estos resultados obtenidos mediante argumentos diagonales de consideraciones más allá de las netamente matemáticas. Si el germen de la autoreferencia puede ser incrustado en el corazón de las matemáticas por un método tan simple, ¿acaso hay una noción más allá de la científica que las limite? 
-
-Esta noción fue muy popular en el siglo \textsc{xx}, tras los varios avances que ocurrieron en el desarrollo de fundamentos de la matemática. En 1969, se publicaron notas de William F. Lawvere que silenciosamente derrumbarían todo este misticismo que rodeaba a estos resultados. En su artículo, llamado simplemente \emph{Diagonal Arguments and Cartesian Closed Categories}, observar'ia que todos estos argumentos son simples resultados de trabajar en tipos particulares de categor'ias. Citandolo, 
-
-\begin{quote}
-    The original aim of this article was to demystify the incompleteness theorem of Gödel and the truth-definition theory of Tarski by showing that both are consequences of some very simple algebra in the cartesian-closed setting.
-\end{quote}
-
-El logro de Lawvere con este trabajo es importante: logra unificar en un solo resultado algunos de los resultados matem'aticos m'as importantes del siglo \textsc{xx}. M'as adelante, este resultado ser'ia conocido como el \emph{Teorema del punto fijo de Lawvere}, uni'endose a una larga lista de teoremas de puntos fijos, de los cuales abundan en diferentes are'as de la matem'atica y que suelen ser de mucha importancia en el 'area respectiva. 
-
-A pesar de esto, este teorema es muy poco conocido. Una conjetura al respecto de por qu'e esto puede ser es debido a que la teor'ia en donde toma lugar este resultado, la teor'ia de categor'ias, es relativamente nueva y no muy conocida incluso entre matem'aticos. Por ello, a pesar de la significancia del resultado, no hay mucho estudio al respecto de 'este. 
-
-El presente trabajo tiene por intenci'on presentar este teorema de forma autocontenida, por lo que no se presupone ning'un conocimiento previo de teor'ia de categor'ias. Todos los resultados y conceptos relevantes para entender el teorema ser'an presentados en el siguiente cap'itulo. Este cap'itulo no es un curso extensivo de la teor'ia de categor'ias, solo de las herramientas necesarias para llegar al resultado deseado; el lector interesado en averiguar m'as a fondo esta teor'ia puede consultar \parencite{riehl}, \parencite{leinster}, \parencite{maclane}.
-
-El cap'itulo 2 lidiar'a con el Teorema del Punto Fijo de Lawvere. Presentamos una versi'on modernizada y una demostraci'on m'as detallada que la presentada por Lawvere en \parencite{lawverefixed}. Introducimos aqu'i, como Lawvere hace, el concepto de categor'ias cartesianas cerradas para hacer 'enfasis en la necesidad de estar trabajando en 'estas para la aplicaci'on del teorema. Hacemos también una explicación m'as detallada de la contrapositiva al teorema, pues este resultado será muy usado para las aplicaciones que veremos m'as adelante. 
-
-El cap'itulo 3 abarca aplicaciones del teorema a trav'es de diferentes 'areas de la matem'atica. Este cap'itulo es el m'as extenso de todos porque nuestro principal inter'es es mostrar la utilidad, relevancia e importancia que tiene el Teorema de Lawvere como una forma de unificar distintos resultados en uno solo. Aunque todas estas aplicaciones son tratadas desde una argumentaci'on categ'orica, las 'areas donde nacen estos son de distinta naturaleza y por lo tanto conocimientos previos de 'estas son 'utiles para una comprensi'on m'as adecuada. Cada problema es explicado y las demostraciones son lo m'as detalladas posibles sin que entremos mucho en la teor'ia necesaria, para permitir a los lectores la comprensi'on m'as amplia de todos los resultados. Bibliograf'ia adecuada para entender a fondo cada problema ser'a provista para cada uno de ellos para los interesados. 
-
-En el cap'itulo 4 presentamos las conclusiones de nuestro trabajo. Al final, la lista de la bibliograf'ia en detalle es provista. 
-
-
-A pesar de que los tres ejemplos expuestos difieren sustancialmente en su contenido proposicional —el primero trata sobre cardinalidades infinitas, el segundo sobre inconsistencias en la teoría intuitiva de conjuntos y el tercero sobre las limitaciones deductivas de la aritmética—, todos comparten un método subyacente idéntico. En cada caso, la motivación principal surge de una noción de \textbf{autorreferencia} que es \enquote{transmitida} a la demostración matemática.
-
-Es precisamente este rasgo autorreferencial el que ha rodeado de un halo de misticismo y especulación filosófica a los Teoremas de Incompletitud de Gödel y, en general, a muchos resultados obtenidos mediante argumentos diagonales. Surge entonces una interrogante natural: si el germen de la autorreferencia puede incrustarse en el corazón de las matemáticas mediante un mecanismo tan simple, ¿existe acaso una limitación extrateórica o metafísica que restrinja el conocimiento científico?
+ Es precisamente este rasgo autorreferencial el que ha rodeado de un halo de misticismo y especulación filosófica a los Teoremas de Incompletitud de Gödel y, en general, a muchos resultados obtenidos mediante argumentos diagonales. Surge entonces una interrogante natural: si el germen de la autorreferencia puede incrustarse en el corazón de las matemáticas mediante un mecanismo tan simple, ¿acaso hay una noción más allá de lo científico que las limite?
 
 Esta inquietud fue popular durante gran parte del siglo XX, impulsada por la crisis de los fundamentos. Sin embargo, en 1969, William F. Lawvere publicó unas notas que, silenciosa pero contundentemente, derrumbarían este misticismo. En su artículo \textit{Diagonal Arguments and Cartesian Closed Categories}, Lawvere observó que todos estos argumentos no son sino consecuencias naturales de trabajar en tipos particulares de estructuras categóricas. En sus propias palabras:
 
@@ -275,18 +198,14 @@ The original aim of this article was to demystify the incompleteness theorem of 
 
 El aporte de Lawvere es fundamental: logró unificar en un solo esquema formal algunos de los resultados de imposibilidad más importantes del siglo pasado. Más adelante, este hallazgo sería conocido como el \textbf{Teorema del Punto Fijo de Lawvere}, uniéndose a la vasta familia de teoremas de punto fijo que abundan en diversas áreas de la matemática. 
 
-No obstante, y a pesar de su trascendencia unificadora, este teorema permanece sorprendentemente poco difundido. Una posible explicación radica en que el lenguaje natural del resultado, la Teoría de Categorías, es una disciplina relativamente joven y, en ocasiones, ajena a la formación matemática tradicional. Por ello, existe un vacío en la literatura divulgativa y educativa respecto a este resultado.
+No obstante, y a pesar de su trascendencia unificadora, este teorema permanece sorprendentemente poco difundido. Una posible explicación radica en que el lenguaje natural del resultado, la Teoría de Categorías, es una disciplina relativamente joven y, en ocasiones, ajena a la formación matemática tradicional. Por ello, existe un vacío en la literatura divulgativa y educativa respecto a este resultado. El presente trabajo nace de la intención de llenar ese vacío, presentando el Teorema del Punto Fijo de Lawvere de manera autocontenida y accesible, sin asumir conocimientos previos en Teoría de Categorías.
 
-\section*{Organización del Trabajo}
+Como el presente trabajo es autocontenido, en el \textbf{Capítulo 1} nos enfocamos en introducir los conocimientos de Teoría de Categorías necesarios. Dado que no se trata de un curso extensivo de Teoría de Categorías, nos limitaremos a los conceptos indispensables para llegar al resultado deseado. El lector interesado en profundizar en esta teoría puede consultar \cite{Rie16}, \cite{Lei16} y \cite{Mac97}.
 
-El presente trabajo tiene por objetivo exponer el Teorema del Punto Fijo de Lawvere de manera autocontenida; por consiguiente, no se presupone ningún conocimiento previo de Teoría de Categorías. La estructura de la tesis es la siguiente:
+El \textbf{Capítulo 2} aborda el núcleo del trabajo: el \textbf{Teorema del Punto Fijo de Lawvere}. Presentamos una versión modernizada y una demostración más detallada que la original de Lawvere en \cite{Law06}. Es en este capítulo donde introducimos el concepto de \textit{categoría cartesiana cerrada}, enfatizando su papel crucial como el entorno donde estos argumentos diagonales ocurren. Además, veremos aquí también la contrapositiva del teorema, que es en esencia el resultado que da pie a estos argumentos diagonales.
 
-\begin{itemize}
-    \item El \textbf{Capítulo 1} introduce las herramientas categóricas necesarias. Dado que no se trata de un curso extensivo de Teoría de Categorías, nos limitaremos a los conceptos indispensables para llegar al resultado deseado. El lector interesado en profundizar en esta teoría puede consultar \cite{Rie16}, \cite{Lei16} y \cite{Mac97}.
+El \textbf{Capítulo 3} explora las aplicaciones del teorema a través de diversas áreas de la matemática. Este es el capítulo más extenso, pues el interés principal de este trabajo es demostrar la utilidad y extensividad del resultado de Lawvere. 
 
-    \item El \textbf{Capítulo 2} aborda el núcleo del trabajo: el \textbf{Teorema del Punto Fijo de Lawvere}. Presentamos una versión modernizada y una demostración más detallada que la original de Lawvere en \cite{Law06}. Introducimos aquí el concepto de \textit{categoría cartesiana cerrada}, enfatizando su papel crucial como el entorno donde estos fenómenos diagonales ocurren naturalmente. Asimismo, se ofrece una explicación pormenorizada de la contrapositiva del teorema, resultado que será instrumental para las aplicaciones posteriores.
+El \textbf{Capítulo 4} presenta las conclusiones del trabajo.
 
-    \item El \textbf{Capítulo 3} explora las aplicaciones del teorema a través de diversas áreas de la matemática. Este es el capítulo más extenso, pues nuestro interés principal es demostrar la utilidad y capacidad unificadora del resultado de Lawvere. Aunque todas las aplicaciones se tratan desde una argumentación categórica, los problemas originales provienen de contextos muy distintos (Lógica, Computación, Análisis), por lo que se provee el contexto necesario para una comprensión adecuada. Las demostraciones se presentan con el mayor detalle posible sin desviarse del hilo conductor.
-
-    \item Finalmente, en el \textbf{Capítulo 4} presentamos las conclusiones de nuestro trabajo, seguidas de la bibliografía detallada.
-\end{itemize}
+La bibliogafía usada para esta tesis se podrá encontrar al final de la misma.

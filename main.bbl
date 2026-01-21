@@ -89,6 +89,7 @@
       \field{journaltitle}{Reprints in Theory and Applications of Categories}
       \field{title}{Diagonal arguments and cartesian closed categories with author commentary}
       \field{year}{2006}
+      \true{nocite}
     \endentry
     \entry{leinster}{misc}{}
       \name{author}{1}{}{%
@@ -113,6 +114,7 @@
       \field{eprinttype}{arXiv}
       \field{title}{Basic Category Theory}
       \field{year}{2016}
+      \true{nocite}
       \verb{eprint}
       \verb 1612.09375
       \endverb
@@ -178,6 +180,7 @@
       \field{labeltitlesource}{title}
       \field{title}{Categories for the Working Mathematician}
       \field{year}{1997}
+      \true{nocite}
     \endentry
     \entry{riehl}{book}{}
       \name{author}{1}{}{%
@@ -203,6 +206,7 @@
       \field{labeltitlesource}{title}
       \field{title}{Category Theory in Context}
       \field{year}{2016}
+      \true{nocite}
     \endentry
     \entry{Yanofsky_2003}{article}{}
       \name{author}{1}{}{%
