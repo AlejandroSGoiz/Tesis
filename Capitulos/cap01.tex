@@ -243,24 +243,7 @@ En el uso de la prueba anterior usamos la notaci'on $\inv f$ para hablar de un m
 \end{proof}
 Por tanto nuestra notaci'on $\inv f$ esta debidamente justificada. 
 
-Más allá de la cancelabilidad (mono y epi) y la invertibilidad bilateral (iso), existen nociones intermedias que involucran la existencia de inversas unilaterales.
 
-\begin{defi}
-    Sea $f\colon A\to B$ un morfismo en una categoría $\cat C$. Decimos que $f$ es una:
-    \begin{enumerate}
-        \item \textbf{Sección} (o \textbf{inversa a la derecha}): si existe un morfismo $s\colon B\to A$ tal que $f \circ s = \id B$. En este caso, $f$ es necesariamente un epimorfismo (llamado \emph{epimorfismo escindido} o \emph{split epi}).
-        \item \textbf{Retracción} (o \textbf{inversa a la izquierda}): si existe un morfismo $r\colon B\to A$ tal que $r \circ f = \id A$. En este caso, $f$ es necesariamente un monomorfismo (llamado \emph{monomorfismo escindido} o \emph{split mono}).
-    \end{enumerate}
-\end{defi}
-
-\begin{obs}
-    Es importante notar que estas condiciones son estrictamente más fuertes que ser epimorfismo o monomorfismo. 
-    \begin{itemize}
-        \item Si $f$ tiene una sección $s$, entonces $f$ cancela por derecha: supongamos $g f = h f$. Al componer con $s$ por la derecha obtenemos $g f s = h f s$, lo que implica $g \id B = h \id B$, es decir, $g=h$.
-        \item Análogamente, si $f$ tiene una retracción $r$, entonces $f$ cancela por izquierda y es mono.
-    \end{itemize}
-    Sin embargo, el recíproco no es cierto en general: existen epimorfismos que no tienen sección (no todo epi se escinde) y monomorfismos que no tienen retracción. El ejemplo del orden parcial visto anteriormente ilustra esto: la flecha única $1 \to 2$ es mono y epi, pero no tiene ni sección ni retracción, pues ello implicaría la existencia de una flecha de vuelta $2 \to 1$.
-\end{obs}
 
 Concluimos esta secci'on construyendo una categor'ia a partir de una dada $\cat C$. Dada una flecha $a\to b$, podemos pensar en el proceso de invertir la direcci'on de 'esta. En este caso, tendr'iamos $b\to a$. El proceso de \enquote{revertir todas las flechas} produce lo que conocemos como un proceso \emph{dual}. Este procedimiento nos permite definir la siguiente categor'ia: 
 
@@ -455,7 +438,7 @@ es conmutativo. Expresar toda esta información a través de igualdad de composi
 
 \section{Lema de Yoneda}
 
-El Lema de Yoneda es uno de los resultados m'as importantes de la teor'ia de categor'ias. La primera aparici'on del lema en la literatura es con Grothendieck en \cite{lemayoneda}, aunque el resultado se la atribuye a Nobuo Yoneda. Para entender adecuadamente el resultado, necesitamos introducir algunos resultados. Primeramente, recordemos la definici'on \ref{elemento global} de un elemento global. Esta noci'on es m'as tradicional a como entendemos la pertenencia y lo denotamos global porque no depende de ning'un punto de vista particular. Pero podemos extender la noci'on conjuntista de pertenencia y pensar en puntos de vista o de \enquote{referencia} desde los cuales podemos observar a un objeto. En la definici'on de elemento global usamos de punto de partida el objeto $\uno$, pero podemos observar al elemento desde otro punto de partida. Esto nos lleva a la siguiente definici'on 
+El Lema de Yoneda es uno de los resultados m'as importantes de la teor'ia de categor'ias. La primera aparici'on del lema en la literatura es con Grothendieck en \cite{lemayoneda}, aunque el resultado se la atribuye a Nobuo Yoneda. Para entender adecuadamente el resultado, necesitamos introducir algunos resultados. Primeramente, recordemos la definici'on ~\ref{elemento global} de un elemento global. Esta noci'on es m'as tradicional a como entendemos la pertenencia y lo denotamos global porque no depende de ning'un punto de vista particular. Pero podemos extender la noci'on conjuntista de pertenencia y pensar en puntos de vista o de \enquote{referencia} desde los cuales podemos observar a un objeto. En la definici'on de elemento global usamos de punto de partida el objeto $\uno$, pero podemos observar al elemento desde otro punto de partida. Esto nos lleva a la siguiente definici'on 
 \begin{defi}[Elemento local] \label{elemento local}
     Sea $A$ un objeto no isom'orfico a $\uno$. Decimos que un morfismo $A\to B$ es un \textbf{elemento local} de $B$ en la \textbf{etapa} $A$. 
 \end{defi}
