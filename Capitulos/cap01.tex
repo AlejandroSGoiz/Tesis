@@ -1,6 +1,11 @@
 \section{Categor'ias y tipos de morfismos}
 
-En el estudio moderno de las matemáticas, la mayoría de áreas empiezan a través de la teoría de conjuntos. Así, por ejemplo, un grupo es un conjunto con cierta estructura añadida; una topología es un conjunto y un subconjunto del conjunto potencia con ciertos axiomas a cumplir; incluso un sistema formal parte de conjuntos de símbolos, axiomas, reglas de formación y de inferencia. El lenguaje matemático es entonces, por lo general, uno que nace de la visión conjuntista. Sin embargo, el teorema del punto fijo de Lawvere sólo puede aplicarse en categorías cartesianas cerradas. Por tanto, todos los ejemplos que veremos en el capítulo 3 serán tratados desde la visión categórica, no la conjuntista. Es necesario entonces introducir los conceptos básicos de la teoría de categorías para poder llegar al teorema deseado y poder visualizar los ejemplos a mostrar desde una nueva percepción, i.e., la categórica. El punto natural para iniciar es con la noci'on de categor'ia, d'andonos nuestra primera
+En el estudio moderno de las matemáticas, la mayoría de áreas empiezan a través de la teoría de conjuntos. Así, por ejemplo, un grupo es un conjunto con cierta estructura añadida; una topología es un
+ conjunto y un subconjunto del conjunto potencia con ciertos axiomas a cumplir; incluso un sistema formal parte de conjuntos de símbolos, axiomas, reglas de formación y de inferencia. El lenguaje 
+ matemático es entonces, por lo general, uno que nace de la visión conjuntista. Sin embargo, el teorema del punto fijo de Lawvere sólo puede aplicarse en categorías cartesianas cerradas. 
+ Por tanto, todos los ejemplos que veremos en el capítulo 3 serán tratados desde la visión categórica, no la conjuntista. Es necesario entonces introducir los conceptos básicos de la teoría de 
+ categorías para poder llegar al teorema deseado y poder visualizar los ejemplos a mostrar desde una nueva percepción, i.e., la categórica. El punto natural para iniciar es con la noci'on de categor'ia,
+d'andonos nuestra primera
 
 
 \begin{defi}[Categoría]
@@ -24,9 +29,14 @@ En el estudio moderno de las matemáticas, la mayoría de áreas empiezan a trav
 
     Para denotar objetos usamos intercambiablemente letras may'usculas o letras min'usculas, seg'un sea m'as conveniente en el contexto que se usen. 
 
-    A los morfismos $f\colon A \to B$ tambi'en los denominamos como \textbf{flechas} o \textbf{mapas} entre objetos. A la colecci'on de morfismos entre dos objetos $A$ y $B$ de una categor'ia $\cat C$ la simbolizamos por $\homc{C}{A}{B}$ o bien simplemente $\homo{A}{B}$ si no existe confusi'on. Adicionalmente, los morfismos $f\colon A\to B$ tambi'en los podemos representar como $A \xlongrightarrow{f} B$. 
+    A los morfismos $f\colon A \to B$ tambi'en los denominamos como \textbf{flechas} o \textbf{mapas} entre objetos. A la colección de morfismos entre dos objetos $A$ y $B$ de una categor'ia $\cat C$ 
+	la simbolizamos por $\homc{C}{A}{B}$ o bien simplemente $\homo{A}{B}$ si no existe confusi'on sobre la categoría a la que pertenecen. Adicionalmente, los morfismos $f\colon A\to B$ tambi'en los
+	 podemos representar como $A \xlongrightarrow{f} B$. 
 
-    En el estudio de la teor'ia de categor'ias nos veremos constantemente usando \emph{diagramas}. Someramente, un diagrama es una representaci'on visual de objetos y flechas entre estos objetos. Pensado como una gr'afica, los objetos actuan como v'ertices y las flechas como aristas. Existe, como veremos a lo largo de este cap'itulo, una ventaja en representar cuestiones de la teor'ia a trav'es de diagramas. Usualmente, nos permitir'a una nueva percepci'on del problema y puede facilitar nuestro entendimiento de 'este. As'i, por ejemplo, la composici'on $gf\colon A\to B$ puede ser representado como la afirmaci'on de que el siguiente diagrama conmuta:
+    En el estudio de la teor'ia de categor'ias nos veremos constantemente usando \emph{diagramas}. Someramente, un diagrama es una representaci'on visual de objetos y flechas entre estos objetos.
+	 Pensado como una gr'afica, los objetos actuan como v'ertices y las flechas como aristas. Existe, como veremos a lo largo de este cap'itulo, una ventaja en representar cuestiones de la teor'ia
+	  a trav'es de diagramas. Usualmente, nos permitir'a una nueva percepci'on del problema y puede facilitar nuestro entendimiento de 'este. As'i, por ejemplo, la composici'on $gf\colon A\to B$
+	 puede ser representado como la afirmaci'on de que el siguiente diagrama conmuta:
 
 % https\colon//q.uiver.app/#q=WzAsMyxbMSwwLCJCIl0sWzAsMSwiQSJdLFsyLDEsIkMiXSxbMSwyLCJnZiIsMl0sWzEsMCwiZiJdLFswLDIsImciXV0=
 \[\begin{tikzcd}
@@ -37,7 +47,8 @@ En el estudio moderno de las matemáticas, la mayoría de áreas empiezan a trav
 	\arrow["gf"', from=2-1, to=2-3]
 \end{tikzcd}\]
 
-    Cuando decimos que el diagrama conmuta, nos referimos a que es lo mismo tomar el camino superior que el inferior, es decir, del objeto $A$ pasar al objeto $B$ a trav'es de $f$ y del objeto $B$ pasar a trav'es de $g$ al objeto $C$, que simplemente pasar del objeto $A$ al objeto $C$ a trav'es de $gf$.
+    Cuando decimos que el diagrama conmuta, nos referimos a que es lo mismo tomar el camino superior que el inferior, es decir, del objeto $A$ pasar al objeto $B$ a trav'es de $f$ y del objeto $B$ 
+	pasar a trav'es de $g$ al objeto $C$, que simplemente pasar del objeto $A$ al objeto $C$ a trav'es de $gf$.
 
     Para ejemplificar mejor, mostramos los axiomas de identidad y asociatividad a trav'es de diagramas. 
 
@@ -61,7 +72,9 @@ En el estudio moderno de las matemáticas, la mayoría de áreas empiezan a trav
 
 Para cualesquiera, $f\colon A\to B$, $g\colon B\to C$ y $C\to D$, el siguiente diagrama es conmutativo. 
 
-% https\colon//q.uiver.app/#q=WzAsNCxbMCwwLCJBIl0sWzMsMCwiQiJdLFszLDIsIkMiXSxbMCwyLCJEIl0sWzAsMSwiZiJdLFsxLDIsImciXSxbMiwzLCJoIl0sWzAsMywiaChnZik9KGhnKWYiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifX19XSxbMCwyLCJnZiIsMSx7ImxhYmVsX3Bvc2l0aW9uIjozMCwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzEsMywiaGciLDEseyJsYWJlbF9wb3NpdGlvbiI6MzAsInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
+% https\colon//q.uiver.app/#q=WzAsNCxbMCwwLCJBIl0sWzMsMCwiQiJdLFszLDIsIkMiXSxbMCwyLCJEIl0sWzAsMSwiZiJdLFsxLDIsImciXSxbMiwzLCJoIl0sWzAsMywiaChnZik9KGhnKWYiLDEseyJzdHlsZSI6eyJib2R5Ijp7
+%Im5hbWUiOiJkb3R0ZWQifX19XSxbMCwyLCJnZiIsMSx7ImxhYmVsX3Bvc2l0aW9uIjozMCwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzEsMywiaGciLDEseyJsYWJlbF9wb3NpdGlvbiI6MzAsInN0eWxlIjp7ImJvZHki
+%OnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
 \[\begin{tikzcd}
 	A &&& B \\
 	\\
@@ -74,14 +87,17 @@ Para cualesquiera, $f\colon A\to B$, $g\colon B\to C$ y $C\to D$, el siguiente d
 	\arrow["h", from=3-4, to=3-1]
 \end{tikzcd}\]
 
-Dos observaciones son importantes en la definici'on de categor'ia. La primera, la visi'on conjuntista habitual nos har'ia pensar que los objetos son en realidad conjuntos y los morfismos, funciones. Es importante observar que esta visi'on puede privar a uno de una visi'on m'as amplia que ofrece 'esta teor'ia y que, en lo general, no es cierto que se pueda hacer dicha comparaci'on. 
+Dos observaciones son importantes en la definici'on de categor'ia. La primera, la visi'on conjuntista habitual nos har'ia pensar que los objetos son en realidad conjuntos y los morfismos, funciones.
+ Es importante observar que esta visi'on puede privar a uno de una visi'on m'as amplia que ofrece 'esta teor'ia y que, en lo general, no es cierto que se pueda hacer dicha comparaci'on. 
 
-La segunda observación, se hace menci'on de \emph{colecciones}, no de conjuntos en la definición. Esto es porque en principio las categor'ias que se manejan pueden recolectar una cantidad tan grande de objetos y morfismos que no pueden ser conjuntos. Sin embargo, hay casos en que podemos hablar de conjuntos en vez de colecciones para los morfismos de una categor'ia, y la distinci'on es lo suficientemente importante para valer una definici'on:
+La segunda observación, se hace menci'on de \emph{colecciones}, no de conjuntos en la definición. Esto es porque en principio las categor'ias que se manejan pueden recolectar una cantidad tan grande
+ de objetos y morfismos que no pueden ser conjuntos. Sin embargo, hay casos en que podemos hablar de conjuntos en vez de colecciones para los morfismos de una categor'ia, y la distinci'on es lo
+  suficientemente importante para valer una definici'on:
 
 \begin{defi} Sea $\cat C$ una categor'ia. Decimos que es 
 \begin{enumerate}
     \item \textbf{Localmente pequeña} si para cada par de objetos $A,B$ en $\ob C$, $\homc{C}{A}{B}$ es un conjunto. 
-    \item \textbf{Pequeña} si tanto la colección de sus objetos como la colecci'on de todas sus flechas son conjuntos. 
+    \item \textbf{Pequeña} si tanto la colección de sus objetos como la colección de todas sus flechas son conjuntos. 
 \end{enumerate}   
 \end{defi}
  
@@ -90,49 +106,60 @@ Exhibimos algunos ejemplos de categor'ias.
 \begin{ejems} \leavevmode 
     \begin{enumerate}[label=\alph*)]
         \item $\set$ es la categor'ia cuyos objetos son conjuntos y los morfismos son funciones entre conjuntos. 
-        \item $\grp$ es la categor'ia cuyos objetos son grupos y los morfismos son homomorfismos entre grupos. Del mismo modo podemos definir categor'ias para grupos abelianos, Ab, para anillos unitarios, Ring, etc.
-        \item Un s'olo grupo $G$ puede ser visto como una categor'ia $\cat G$, que consta de un 'unico objeto $*$ y cuyos morfismos son todos los elementos del grupo. As'i, la composici'on est'a dada por la operaci'on del grupo y el morfismo identidad de $\cat G$ es el elemento neutro del grupo. 
+        \item $\grp$ es la categor'ia cuyos objetos son grupos y los morfismos son homomorfismos entre grupos. Del mismo modo podemos definir categor'ias para grupos abelianos, Ab, para anillos unitarios,
+		 Ring, etc.
+        \item Un s'olo grupo $G$ puede ser visto como una categor'ia $\cat G$, que consta de un 'unico objeto $*$ y cuyos morfismos son todos los elementos del grupo. As'i, la composici'on est'a dada por la
+		 operaci'on del grupo y el morfismo identidad de $\cat G$ es el elemento neutro del grupo. 
         \item $\topo$ es la categor'ia cuyos objetos son espacios topol'ogicos y los morfismos son las funciones continuas entre espacios topol'ogicos. 
         \item $\topo_*$ es la categor'ia cuyos objetos son espacios topol'ogicos con un punto base y los morfismos son funciones continuas que preservan puntos base. 
-        \item $\mat$ es la categor'ia cuyos objetos son n'umeros naturales y cuyos morfismos son matrices con entradas elementos de un campo $\mathbb K$, es decir, dados n'umeros naturales $m,n$ un morfismo $A\colon m\to n$ es una matriz de $m\times n$ con entradas en $\mathbb K$. La composici'on est'a dada por multiplicaci'on de matrices, y los morfismos identidad son las matrices identidad. 
-        \item Dado un orden parcial $(P, \leq)$ podemos tratar 'este como una categor'ia $\cat P$. Sus objetos son los elementos del orden parcial y dados dos objetos $a,b\in \ob P$, decimos que existe un morfismo $a\to b$ si y solo si $a\leq b$. Por la propiedad reflexiva del orden parcial, $a\leq a$ para todo $a\in \ob P$ por lo que existen morfismos identidad para cada objeto. La propiedad transitiva del orden define la composici'on de morfismos. 
-        \item La categoría $\poset$ tiene como objetos 'ordenes parciales $(P,\leq)$ y como morfismos funciones que preservan 'ordenes, es decir, tales que si $(P, \leq_P)$ y $(Q,\leq_Q)$ son 'ordenes parciales, $f\colon (P,\leq_P)\to (Q,\leq_q)$ es una funci'on tal que para todo $p, q\in P$, $fp\leq_Q fq$ si y s'olo si $p\leq_P q$.
+        \item $\mat$ es la categor'ia cuyos objetos son n'umeros naturales y cuyos morfismos son matrices con entradas elementos de un campo $\mathbb K$, es decir, dados n'umeros naturales $m,n$ un
+		 morfismo $A\colon m\to n$ es una matriz de $m\times n$ con entradas en $\mathbb K$. La composici'on est'a dada por multiplicaci'on de matrices, y los morfismos identidad son las matrices identidad. 
+        \item Dado un orden parcial $(P, \leq)$ podemos tratar 'este como una categor'ia $\cat P$. Sus objetos son los elementos del orden parcial y dados dos objetos $a,b\in \ob P$, decimos que existe 
+		un morfismo $a\to b$ si y solo si $a\leq b$. Por la propiedad reflexiva del orden parcial, $a\leq a$ para todo $a\in \ob P$ por lo que existen morfismos identidad para cada objeto. La propiedad 
+		transitiva del orden define la composici'on de morfismos. 
+        \item La categoría $\poset$ tiene como objetos 'ordenes parciales $(P,\leq)$ y como morfismos funciones que preservan 'ordenes, es decir, tales que si $(P, \leq_P)$ y $(Q,\leq_Q)$ son 'ordenes
+		 parciales, $f\colon (P,\leq_P)\to (Q,\leq_q)$ es una funci'on tal que para todo $p, q\in P$, $fp\leq_Q fq$ si y s'olo si $p\leq_P q$.
 
     \end{enumerate}
     \end{ejems}
 
-En contraste a la teor'ia de conjuntos, aqu'i no hablamos de elementos. La pertenencia como tal no es propia en el manejo de una categor'ia. Es decir, si consideramos un objeto $X$ en la categor'ia $\set$, no podemos hablar de un elemento $a\in X$. Existe, en este sentido, una forma de hablar de elementos y pertenencia a trav'es de morfismos. Para ello consideramos las siguientes definiciones:
+En contraste a la teor'ia de conjuntos, aqu'i no hablamos de elementos. La pertenencia como tal no es propia en el manejo de una categor'ia. Es decir, si consideramos un objeto $X$ en la categor'ia 
+$\set$, no podemos hablar de un elemento $a\in X$. Existe, en este sentido, una forma de hablar de elementos y pertenencia a trav'es de morfismos. Para ello consideramos las siguientes definiciones:
 
 \begin{defi}
-    Decimos que un objeto $A$ en una categor'ia $\cat C$ es 
+    Sea $\cat C$ una categoría. Decimos que un objeto es:
     \begin{enumerate}
-        \item \textbf{terminal}, si para cualquier objeto $X$ en $\cat C$ existe un 'unico morfismo con dominio $X$ y codominio $A$,
-        \item \textbf{inicial}, si para cualquier objeto $X$ en $\cat C$ existe un 'unico morfismo con dominio $A$ y codominio $X$.
+        \item \textbf{Terminal} (denotado usualmente por $\uno$), si para cualquier objeto $X$ en $\cat C$ existe un \emph{único} morfismo $X \to \uno$.
+        \item \textbf{Inicial} (denotado usualmente por $\cero$), si para cualquier objeto $X$ en $\cat C$ existe un \emph{único} morfismo $\cero \to X$.
     \end{enumerate}
 \end{defi}
 
+
 \begin{ejems} \leavevmode 
 \begin{enumerate}[label=\alph*)]
-    \item En la categor'ia $\set$, cualquier unitario, i.e., conjunto con un solo elemento $\{x\}$ es un objeto terminal. En particular, el conjunto $\mathbf{1}$ que definimos como $\{\varnothing\}$ es un objeto terminal. En contraste, el 'unico objeto incial es el conjunto vac'io, $\varnothing$, que definimos como $\mathbf{0}$, por vacuidad s'olo existe una funci'on con dominio $\varnothing$ y codominio $X$ para cualquier conjunto $X$. 
+    \item En la categoría $\set$, cualquier conjunto unitario es un objeto terminal. Denotamos para esta categoría $\uno = \{\varnothing\}$. Por otro lado, el único objeto inicial es el conjunto
+	 vacío $\varnothing$, que denotamos como $\cero$; por vacuidad sólo existe una función con dominio $\varnothing$ y codominio $X$ para cualquier conjunto $X$.
 
-    \item  En un orden parcial $(P,\leq)$ un m'inimo $a$ es tal que para todo $b\in P$, $a\leq b$. Por otro lado, un m'aximo $c$ es tal que para todo $b\in P$, $b\leq c$. Con estas nociones en mente, podemos observar que un objeto inicial en un orden parcial es un m'inimo y, por el contrario, un objeto terminal es un m'aximo.
+    \item En un orden parcial $(P,\leq)$, un objeto inicial $\cero$ es un elemento tal que para todo $x \in P$, existe una única flecha $\cero \to x$, lo cual es equivalente a decir $\cero \leq x$.
+	 Es decir, el objeto inicial es el \textbf{mínimo} del orden. Análogamente, un objeto terminal $\uno$ satisface $x \leq \uno$ para todo $x$, correspondiendo al \textbf{máximo} del orden.
 \end{enumerate}
 \end{ejems}
 
-Con esta noci'on en mente, podemos definir un elemento y la pertenencia. Pensemos, por ejemplo, en un elemento $a$ en un conjunto $A$. En t'erminos categ'oricos, podemos definir a $a$ como el morfismo $\uno \xlongrightarrow{a} A$. Tenemos entonces la siguiente definici'on. 
+Observemos en $\set$ que seleccionar un elemento $a$ de un conjunto $A$ es equivalente a definir una función $a\colon \uno \to A$ cuya imagen es precisamente $a$. Esto nos permite reinterpretar 
+la noción conjuntista de \enquote{pertenencia} usando únicamente flechas y objetos terminales, para generalizarla a cualquier categoría con objeto terminal.
 
-\begin{defi}\label{elemento global}
-    En la categor'ia $\set$, un \textbf{elemento global} de un objeto $A$ es un morfismo $\uno \xlongrightarrow{a} A$. 
+\begin{defi}[Elemento Global] \label{elemento global}
+    Sea $\cat C$ una categoría con objeto terminal $\uno$. Un \textbf{elemento global} de un objeto $A$ es un morfismo $x\colon \uno \to A$.
 \end{defi}
 
-En particular, podemos entender as'i la noci'on de pertenencia, $\in$, en t'erminos categ'oricos. Cuando expresamos $a\in A$ es lo mismo que expresar, en forma categ'orica, que existe un morfismo $a\colon\uno\to A$.
+Bajo esta óptica, en la categoría $\set$, la expresión $a \in A$ se traduce al lenguaje categórico como la existencia de un morfismo $a\colon \uno \to A$.
 
-Pensando ahora en los morfismos, hay propiedades interesantes en estos que merecen ser distinguidas. Tenemos las siguientes definiciones. 
+Pensando ahora en los morfismos, hay propiedades interesantes de estos que merecen ser distinguidas. Tenemos las siguientes definiciones. 
 
 \begin{defi}
     Decimos que un morfismo $f\colon A\to B$ es 
     \begin{enumerate}
-        \item \textbf{monomorfismo} o \textbf{mono} si para cada par de morfismos $h,g \colon C\to A$ tales que $fg=fh$ esto implica $g=h$. Es decir, si el siguiente diagrama conmuta 
+        \item \textbf{monomorfismo} o \textbf{mono} si para cada par de morfismos $h,g \colon C\to A$,\,  $fg=fh$ implica $g=h$. Es decir, si el siguiente diagrama conmuta 
         % https\colon//q.uiver.app/#q=WzAsMyxbMCwwLCJDIl0sWzIsMCwiQSJdLFs0LDAsIkIiXSxbMCwxLCJnIiwwLHsib2Zmc2V0IjotMn1dLFsxLDIsImYiXSxbMCwxLCJoIiwyLHsib2Zmc2V0IjoyfV1d
 \[\begin{tikzcd}
 	C && A && B
@@ -141,7 +168,7 @@ Pensando ahora en los morfismos, hay propiedades interesantes en estos que merec
 	\arrow["f", from=1-3, to=1-5]
 \end{tikzcd}\]
 entonces, $g=h$.
-        \item \textbf{epimorfismo} o $\textbf{epi}$ si para cada par de morfismos $h,g\colon B\to C$ tales que $gf=hf$ esto implica $g=h$. Es decir, si el siguiente diagrama conmuta, 
+        \item \textbf{epimorfismo} o $\textbf{epi}$ si para cada par de morfismos $h,g\colon B\to C$,\, $gf=hf$ implica $g=h$. Es decir, si el siguiente diagrama conmuta, 
         % https\colon//q.uiver.app/#q=WzAsMyxbMCwwLCJDIl0sWzIsMCwiQiJdLFs0LDAsIkEiXSxbMSwwLCJnIiwyLHsib2Zmc2V0IjoyfV0sWzIsMSwiZiIsMl0sWzEsMCwiaCIsMCx7Im9mZnNldCI6LTJ9XV0=
 \[\begin{tikzcd}
 	C && B && A
@@ -150,7 +177,7 @@ entonces, $g=h$.
 	\arrow["f"', from=1-5, to=1-3]
 \end{tikzcd}\]
 entonces $g=h$.
-        \item \textbf{invertible} si existe $g\colon B\to A$ tal que $fg= \id B$ y $gf= \id A$. En este caso decimos que $f$ es un \textbf{isomorfismo} y que $A$ y $B$ son \textbf{isomorfos}. Es decir, existe $g$ tal que el siguiente diagrama conmuta 
+        \item \textbf{invertible} si existe $g\colon B\to A$ tal que $fg= \id B$ y $gf= \id A$.  Es decir, existe $g$ tal que el siguiente diagrama conmuta 
         % https\colon//q.uiver.app/#q=WzAsNSxbMCwwLCJBIl0sWzIsMCwiQiJdLFswLDIsIkEiXSxbMiwyLCJCIl0sWzIsMywiQiJdLFswLDEsImYiXSxbMCwyLCJcXGlkIEEiXSxbMSwzLCJcXGlkIEIiLDJdLFsyLDMsImYiLDJdLFsxLDIsImciLDFdXQ==
 \[\begin{tikzcd}
 	A && B \\
@@ -162,6 +189,8 @@ entonces $g=h$.
 	\arrow["{\id B}", from=1-3, to=3-3]
 	\arrow["f"', from=3-1, to=3-3]
 \end{tikzcd}\]
+
+En este caso decimos que $f$ es un \textbf{isomorfismo} y que $A$ y $B$ son \textbf{isomorfos}.
     \end{enumerate}
 \end{defi}
 \begin{ejems}  \label{iso} \leavevmode
@@ -169,14 +198,29 @@ entonces $g=h$.
     \begin{enumerate}[label=\alph*)]
         \item En $\set$ los monomorfismos son las funciones inyectivas, los epimorfismos son las funciones suprayectivas y los isomorfismos son las funciones biyectivas. 
         \item En $\topo$ los isomorfismos son los homeomorfismos. 
-        \item  En un orden parcial $(P, \leq)$, todas las flechas son tanto monomorfismos como epimorfismos. Como las flechas $a\to b$ se dan si y s'olo si $a\leq b$, cada flecha $a\to b$ es 'unica. Por contraste, los 'unicos isomorfismos son las flechas identidades. En efecto, si tenemos $a\to b$ invertible,  esto implica que existe una flecha $b\to a$. Tenemos entonces $a\leq b$ y $b\leq a$, por lo que $a=b$ por antisimetr'ia. 
-        \item En un grupo $G$ considerado como categor'ia, todos los morfismos son isomorfismos. Recordemos que un grupo visto como categor'ia consta de un 'unico objeto $*$ y los elementos del grupo act'uan como morfismos, mientras que el elemento neutro actua como el morfismo identidad del objeto $G$. Recordemos que para cada elemento $g$ del grupo $G$, existe un inverso $h$ bajo la operaci'on del grupo tal que $g\cdot h = e$, con $\cdot$ la operaci'on del grupo y $e$ el elemento neutro. De esto vemos que cada morfismo tiene un inverso que da el morfismo identidad, por lo que to1546546564641064158 b ndos son isomorfismos. 
+        \item En un grupo $G$ considerado como categor'ia, todos los morfismos son isomorfismos. Recordemos que un grupo visto como categor'ia consta de un 'unico objeto $*$ y los elementos del
+		 grupo act'uan como morfismos, mientras que el elemento neutro actua como el morfismo identidad del objeto $G$. Recordemos que para cada elemento $g$ del grupo $G$, existe un inverso $h$
+		  bajo la operaci'on del grupo tal que $g\cdot h = e$, con $\cdot$ la operaci'on del grupo y $e$ el elemento neutro. De esto vemos que cada morfismo tiene un inverso que da el morfismo
+		   identidad, por lo que todos son isomorfismos. 
     \end{enumerate}
 \end{ejems}
 
-El ejemplo anterior ayuda a exhibir una noci'on importante que pudiese confundir. En la teor'ia de conjuntos, una funci'on biyectiva es tanto suprayectiva como inyectiva. Conversamente, si una funci'on es tanto suprayectiva como inyectiva, es biyectiva. En teor'ia de categor'ias el an'alogo es cierto para la primera parte: si un morfismo es isomorfismo es tambi'en epimorfismo y monomorfismo. Pero como el inciso c) del ejemplo~\ref{iso} nos muestra, el converso no es cierto: un morfismo que es tanto epi como mono no implica que sea isomorfismo. 
+Es crucial aquí hacer una observación. En la teor'ia de conjuntos, una funci'on biyectiva es tanto suprayectiva como inyectiva. Conversamente, si una funci'on es tanto suprayectiva como inyectiva,
+ es biyectiva. En teor'ia de categor'ias el an'alogo es cierto para la primera parte: si un morfismo es isomorfismo es tambi'en epimorfismo y monomorfismo. Sin embargo, el converso no es cierto: 
+ un morfismo que es tanto epi como mono no implica que sea isomorfismo. Para ver esto, consideremos el siguiente ejemplo.
 
-Procedemos a demostrar la afirmaci'on hecha.
+\begin{ejem}
+    Consideremos nuevamente un orden parcial $(P, \le)$ visto como categoría. Recordemos que una flecha $a\to b$ existe si y solo si $a\le b$. Por tanto, entre dos objetos $a,b$ existe a lo sumo
+	 una flecha. De este hecho tenemos que por vacuidad se da que toda flecha es tanto epimorfismo como monomorfismo: las premisas $fg=fh$ y $gf=hf$ implican trivialmente $g=h$ pues entre dos objetos
+	 la flecha es única. Por otro lado, si $a\to b$ es un isomorfismo debe primeramente existir $b\to a$. Esto implica $a\le b$ y $b\le a$. Por antisimetr'ia del orden parcial tenemos entonces
+	 que $a=b$. Por tanto, los únicos isomorfismos en $(P,\leq)$ son las flechas identidad $a\to a$.
+	De esto vemos que en un orden parcial considerado como categoría, toda flecha es epi y mono, pero solo las identidades son isomorfismos. 
+
+\end{ejem}
+
+Basta considerar $P=\{1,2\}$ con el orden usual para ver un ejemplo concreto de lo anterior. En este caso, la flecha $1\to 2$ es tanto epi como mono, pero no es isomorfismo pues no existe flecha $2\to 1$.
+
+Por otro lado, mencion'abamos que el hecho de ser isomorfismo implica ser epi y mono. Demostramos esta afirmaci'on.
 
 \begin{prop} Si $f\colon A\to B$ es un isomorfismo, entonces es tambi'en un epimorfismo y un monomorfismo. 
 \end{prop}
@@ -198,6 +242,25 @@ En el uso de la prueba anterior usamos la notaci'on $\inv f$ para hablar de un m
     Por lo tanto $g=h$.
 \end{proof}
 Por tanto nuestra notaci'on $\inv f$ esta debidamente justificada. 
+
+Más allá de la cancelabilidad (mono y epi) y la invertibilidad bilateral (iso), existen nociones intermedias que involucran la existencia de inversas unilaterales.
+
+\begin{defi}
+    Sea $f\colon A\to B$ un morfismo en una categoría $\cat C$. Decimos que $f$ es una:
+    \begin{enumerate}
+        \item \textbf{Sección} (o \textbf{inversa a la derecha}): si existe un morfismo $s\colon B\to A$ tal que $f \circ s = \id B$. En este caso, $f$ es necesariamente un epimorfismo (llamado \emph{epimorfismo escindido} o \emph{split epi}).
+        \item \textbf{Retracción} (o \textbf{inversa a la izquierda}): si existe un morfismo $r\colon B\to A$ tal que $r \circ f = \id A$. En este caso, $f$ es necesariamente un monomorfismo (llamado \emph{monomorfismo escindido} o \emph{split mono}).
+    \end{enumerate}
+\end{defi}
+
+\begin{obs}
+    Es importante notar que estas condiciones son estrictamente más fuertes que ser epimorfismo o monomorfismo. 
+    \begin{itemize}
+        \item Si $f$ tiene una sección $s$, entonces $f$ cancela por derecha: supongamos $g f = h f$. Al componer con $s$ por la derecha obtenemos $g f s = h f s$, lo que implica $g \id B = h \id B$, es decir, $g=h$.
+        \item Análogamente, si $f$ tiene una retracción $r$, entonces $f$ cancela por izquierda y es mono.
+    \end{itemize}
+    Sin embargo, el recíproco no es cierto en general: existen epimorfismos que no tienen sección (no todo epi se escinde) y monomorfismos que no tienen retracción. El ejemplo del orden parcial visto anteriormente ilustra esto: la flecha única $1 \to 2$ es mono y epi, pero no tiene ni sección ni retracción, pues ello implicaría la existencia de una flecha de vuelta $2 \to 1$.
+\end{obs}
 
 Concluimos esta secci'on construyendo una categor'ia a partir de una dada $\cat C$. Dada una flecha $a\to b$, podemos pensar en el proceso de invertir la direcci'on de 'esta. En este caso, tendr'iamos $b\to a$. El proceso de \enquote{revertir todas las flechas} produce lo que conocemos como un proceso \emph{dual}. Este procedimiento nos permite definir la siguiente categor'ia: 
 
