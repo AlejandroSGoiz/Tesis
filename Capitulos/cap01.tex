@@ -209,7 +209,10 @@ Es crucial aquí hacer una observación. En la teor'ia de conjuntos, una funci'o
  es biyectiva. En teor'ia de categor'ias el an'alogo es cierto para la primera parte: si un morfismo es isomorfismo es tambi'en epimorfismo y monomorfismo. Sin embargo, el converso no es cierto: 
  un morfismo que es tanto epi como mono no implica que sea isomorfismo. Para ver esto, consideremos el siguiente ejemplo.
 
-\begin{ejem}
+\begin{ejem} 
+	\label{ejemplo orden parcial mono y epi}
+
+
     Consideremos nuevamente un orden parcial $(P, \le)$ visto como categoría. Recordemos que una flecha $a\to b$ existe si y solo si $a\le b$. Por tanto, entre dos objetos $a,b$ existe a lo sumo
 	 una flecha. De este hecho tenemos que por vacuidad se da que toda flecha es tanto epimorfismo como monomorfismo: las premisas $fg=fh$ y $gf=hf$ implican trivialmente $g=h$ pues entre dos objetos
 	 la flecha es única. Por otro lado, si $a\to b$ es un isomorfismo debe primeramente existir $b\to a$. Esto implica $a\le b$ y $b\le a$. Por antisimetr'ia del orden parcial tenemos entonces
@@ -243,9 +246,35 @@ En el uso de la prueba anterior usamos la notaci'on $\inv f$ para hablar de un m
 \end{proof}
 Por tanto nuestra notaci'on $\inv f$ esta debidamente justificada. 
 
+Siguiendo la comparación entre monomorfismos con funciones inyectivas y epimorfismos con funciones suprayectivas, es importante mencionar otra distinción que existe entre estas nociones 
+en teor'ia de categor'ias. En teor'ia de conjuntos, una funci'on $\ff{f}{A}{B}$ es inyectiva si y solo si existe una funci'on \emph{ inversa izquierda}, es decir, una funci'on $\ff{g}{B}{A}$ tal que $gf = \id A$.
+De manera similar, una funci'on $\ff{f}{A}{B}$ es suprayectiva si y solo si existe una funci'on \emph{inversa derecha}, es decir, una funci'on $\ff{h}{B}{A}$ tal que $fh = \id B$. En teor'ia de categor'ias, estas 
+ afirmaciones no son ciertas en general: un monomorfismo no necesariamente tiene una  inversa izquierda y un epimorfismo no necesariamente tiene una inversa derecha. El ejemplo $P=\{1,2\}$ 
+  que vimos en ~\ref{ejemplo orden parcial mono y epi} sirve tambi'en para ilustrar este hecho. La flecha $1\to 2$ es tanto epi como mono, pero no tiene ni izquierda ni derecha inversa pues no 
+  existe flecha $2\to 1$. Sin embargo, si un morfismo tiene una  inversa izquierda, es un monomorfismo; de manera similar, si un morfismo tiene una inversa derecha, es un epimorfismo. Para 
+  ver esto, primero damos la siguiente definici'on:
 
+\begin{defi}[Retracci'on y secci'on]
+	Sean $x\xlongrightarrow{s}y\xlongrightarrow{r}x$ morfismos en una categor'ia $\cat C$ tal que $rs=\id x$. Decimos que $r$ es una \textbf{retracci'on} o \textbf{inversa izquierda} de $s$ y que $s$ es 
+	una \textbf{secci'on} o \textbf{inversa derecha} de $r$.
+\end{defi}  
 
-Concluimos esta secci'on construyendo una categor'ia a partir de una dada $\cat C$. Dada una flecha $a\to b$, podemos pensar en el proceso de invertir la direcci'on de 'esta. En este caso, tendr'iamos $b\to a$. El proceso de \enquote{revertir todas las flechas} produce lo que conocemos como un proceso \emph{dual}. Este procedimiento nos permite definir la siguiente categor'ia: 
+\begin{teo} Sean $s\colon x\to y$ y $r\colon y\to x$ morfismos en una categor'ia $\cat C$ tal que $rs=\id x$. Entonces, $s$ es un monomorfismo y $r$ es un epimorfismo.
+	\begin{proof}
+		Demostramos primero que $s$ es un monomorfismo. Sean $f,g\colon z\to x$ morfismos tales que $sf=sg$. Tenemos 
+		\[
+			f = \id x f = (rs)f = r(sf) = r(sg) = (rs)g = \id x g = g
+		\]
+		Por lo tanto, $f=g$ y $s$ es un monomorfismo. 
+		
+		La demostraci'on de que $r$ es un epimorfismo es completamente an'aloga.
+	\end{proof}
+
+\end{teo}
+
+En virtud de este resultado, decimos que $s$ es un \emph{monomorfismo escindido} y que $r$ es un \emph{epimorfismo escindido}.
+
+Concluimos esta secci'on construyendo una categor'ia a partir de una  $\cat C$. Dada una flecha $a\to b$, podemos pensar en el proceso de invertir la direcci'on de 'esta. En este caso, tendr'iamos $b\to a$. El proceso de \enquote{revertir todas las flechas} produce lo que conocemos como un proceso \emph{dual}. Este procedimiento nos permite definir la siguiente categor'ia: 
 
 \begin{defi} [Categor'ia Opuesta]
     Sea $\cat C$ una categor'ia. La categor'ia opuesta $\opp C$ tiene:

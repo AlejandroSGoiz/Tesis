@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber main"] 1768945602.53673 "main.bcf" "main.bbl" "main" 1769021424.836 0
-  "main.bcf" 1769021424 108233 87caf663f3827b0bef4a02b44e6a3b28 "pdflatex"
+["biber main"] 1768945602.53673 "main.bcf" "main.bbl" "main" 1769024044.06629 0
+  "main.bcf" 1769024043 108233 87caf663f3827b0bef4a02b44e6a3b28 "pdflatex"
   "referencias.bib" 1768364008 1960 7ffce1fdd6f6f68fb2f89b04ff24c050 ""
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1769021416.90289 "c:/Users/aleja/OneDrive/Documentos/GitHub/Tesis/main.tex" "main.pdf" "main" 1769021424.8373 0
+["pdflatex"] 1769024040.83927 "c:/Users/aleja/OneDrive/Documentos/GitHub/Tesis/main.tex" "main.pdf" "main" 1769024044.06712 0
   "C:/Users/aleja/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1754512708 81086 6fddea6b023469843de28035c851ec71 ""
   "C:/Users/aleja/AppData/Local/MiKTeX/fonts/tfm/public/rsfs/rsfs10.tfm" 1754512710 688 37338d6ab346c2f1466b29e195316aa4 ""
   "C:/Users/aleja/AppData/Local/MiKTeX/fonts/tfm/public/rsfs/rsfs5.tfm" 1754512714 684 3a51bd4fd9600428d5264cf25f04bb9a ""
@@ -237,14 +237,14 @@
   "C:/Users/aleja/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/aleja/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
   "Capitulos/cap00.tex" 1768945598 19294 6101857aeeffb25690f5b441a2afeca0 ""
-  "Capitulos/cap01.tex" 1768974673 59733 1566648384dd5d3cc63bcc595049f6e4 ""
+  "Capitulos/cap01.tex" 1769024040 62000 1760ac93013f2fe8ccb96d5908000941 ""
   "c:/Users/aleja/OneDrive/Documentos/GitHub/Tesis/main.tex" 1768364008 3652 14186c3ed9d14372e3255809510a2243 ""
-  "main.aux" 1769021424 2574 8d9f70b64dd58288250833d23aec777c "pdflatex"
+  "main.aux" 1769024043 2647 4e9c310585360a35ef101f601b7e6d5f "pdflatex"
   "main.bbl" 1768945604 9928 3bcf0fdd397f23b9f6378ab995c30d80 "biber main"
-  "main.out" 1769021424 864 dbb10378efd84a6c03bce69d88c5a46d "pdflatex"
-  "main.run.xml" 1769021424 2312 3e685d9ce56d2d6319c79ded5cf13f20 "pdflatex"
+  "main.out" 1769024043 864 dbb10378efd84a6c03bce69d88c5a46d "pdflatex"
+  "main.run.xml" 1769024043 2312 3e685d9ce56d2d6319c79ded5cf13f20 "pdflatex"
   "main.tex" 1768364008 3652 14186c3ed9d14372e3255809510a2243 ""
-  "main.toc" 1769021424 430 af993b44677fa167e382c6bc597ed214 "pdflatex"
+  "main.toc" 1769024043 430 c9deddd9ea7c5f3952c8acffe382d3ee "pdflatex"
   (generated)
   "main.aux"
   "main.bcf"
