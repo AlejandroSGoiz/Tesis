@@ -2,9 +2,9 @@
 
 En el estudio moderno de las matemáticas, la mayoría de áreas empiezan a través de la teoría de conjuntos. Así, por ejemplo, un grupo es un conjunto con cierta estructura añadida; una topología es un
  conjunto y un subconjunto del conjunto potencia con ciertos axiomas a cumplir; incluso un sistema formal parte de conjuntos de símbolos, axiomas, reglas de formación y de inferencia. El lenguaje 
- matemático es entonces, por lo general, uno que nace de la visión conjuntista. Sin embargo, el teorema del punto fijo de Lawvere sólo puede aplicarse en categorías cartesianas cerradas. 
+ matemático es entonces, por lo general, uno que nace de la visión conjuntista. Sin embargo, el teorema del punto fijo de Lawvere nace desde las categorías. 
  Por tanto, todos los ejemplos que veremos en el capítulo 3 serán tratados desde la visión categórica, no la conjuntista. Es necesario entonces introducir los conceptos básicos de la teoría de 
- categorías para poder llegar al teorema deseado y poder visualizar los ejemplos a mostrar desde una nueva percepción, i.e., la categórica. El punto natural para iniciar es con la noci'on de categor'ia,
+ categorías para llegar al teorema deseado y poder visualizar los ejemplos a mostrar desde una nueva percepción, i.e., la categórica. El punto natural para iniciar es, entonces, con la noci'on de categor'ia,
 d'andonos nuestra primera
 
 
@@ -21,7 +21,7 @@ d'andonos nuestra primera
     tales que cumplen los siguientes dos axiomas:
 
     \begin{itemize}
-        \item \textbf{Identidad:} Para cada $f\colon A\to B$, se cumple que $\id A f = f = f \id B$.
+        \item \textbf{Identidad:} Para cada $\ff{f}{A}{B}$, se cumple que $\id B f = f = f \id A$.
         \item \textbf{Asociatividad:} Para cualesquiera $f\colon A\to B$, $g\colon B\to C$, $h\colon C\to D$, tenemos que $h(gf) = (hg)f$.
     \end{itemize}
 
@@ -35,7 +35,7 @@ d'andonos nuestra primera
 
     En el estudio de la teor'ia de categor'ias nos veremos constantemente usando \emph{diagramas}. Someramente, un diagrama es una representaci'on visual de objetos y flechas entre estos objetos.
 	 Pensado como una gr'afica, los objetos actuan como v'ertices y las flechas como aristas. Existe, como veremos a lo largo de este cap'itulo, una ventaja en representar cuestiones de la teor'ia
-	  a trav'es de diagramas. Usualmente, nos permitir'a una nueva percepci'on del problema y puede facilitar nuestro entendimiento de 'este. As'i, por ejemplo, la composici'on $gf\colon A\to B$
+	  a trav'es de diagramas. Usualmente, nos permitir'a una nueva percepci'on del problema y puede facilitar nuestro entendimiento de 'este. As'i, por ejemplo, la composici'on $gf\colon A\to C$
 	 puede ser representado como la afirmaci'on de que el siguiente diagrama conmuta:
 
 % https\colon//q.uiver.app/#q=WzAsMyxbMSwwLCJCIl0sWzAsMSwiQSJdLFsyLDEsIkMiXSxbMSwyLCJnZiIsMl0sWzEsMCwiZiJdLFswLDIsImciXV0=
@@ -91,7 +91,7 @@ Dos observaciones son importantes en la definici'on de categor'ia. La primera, l
  Es importante observar que esta visi'on puede privar a uno de una visi'on m'as amplia que ofrece 'esta teor'ia y que, en lo general, no es cierto que se pueda hacer dicha comparaci'on. 
 
 La segunda observación, se hace menci'on de \emph{colecciones}, no de conjuntos en la definición. Esto es porque en principio las categor'ias que se manejan pueden recolectar una cantidad tan grande
- de objetos y morfismos que no pueden ser conjuntos. Sin embargo, hay casos en que podemos hablar de conjuntos en vez de colecciones para los morfismos de una categor'ia, y la distinci'on es lo
+ de objetos y morfismos que pueden no ser conjuntos. Sin embargo, hay casos en que podemos hablar de conjuntos en vez de colecciones para los morfismos de una categor'ia, y la distinci'on es lo
   suficientemente importante para valer una definici'on:
 
 \begin{defi} Sea $\cat C$ una categor'ia. Decimos que es 
@@ -115,10 +115,10 @@ Exhibimos algunos ejemplos de categor'ias.
         \item $\mat$ es la categor'ia cuyos objetos son n'umeros naturales y cuyos morfismos son matrices con entradas elementos de un campo $\mathbb K$, es decir, dados n'umeros naturales $m,n$ un
 		 morfismo $A\colon m\to n$ es una matriz de $m\times n$ con entradas en $\mathbb K$. La composici'on est'a dada por multiplicaci'on de matrices, y los morfismos identidad son las matrices identidad. 
         \item Dado un orden parcial $(P, \leq)$ podemos tratar 'este como una categor'ia $\cat P$. Sus objetos son los elementos del orden parcial y dados dos objetos $a,b\in \ob P$, decimos que existe 
-		un morfismo $a\to b$ si y solo si $a\leq b$. Por la propiedad reflexiva del orden parcial, $a\leq a$ para todo $a\in \ob P$ por lo que existen morfismos identidad para cada objeto. La propiedad 
+		un 'unico morfismo $a\to b$ si y solo si $a\leq b$. Por la propiedad reflexiva del orden parcial, $a\leq a$ para todo $a\in \ob P$ por lo que existen morfismos identidad para cada objeto. La propiedad 
 		transitiva del orden define la composici'on de morfismos. 
         \item La categoría $\poset$ tiene como objetos 'ordenes parciales $(P,\leq)$ y como morfismos funciones que preservan 'ordenes, es decir, tales que si $(P, \leq_P)$ y $(Q,\leq_Q)$ son 'ordenes
-		 parciales, $f\colon (P,\leq_P)\to (Q,\leq_q)$ es una funci'on tal que para todo $p, q\in P$, $fp\leq_Q fq$ si y s'olo si $p\leq_P q$.
+		 parciales, $f\colon (P,\leq_P)\to (Q,\leq_q)$ es una funci'on tal que para todo $p, q\in P$,  $p\leq_P q$ implica $fp\leq_Q fq$ .
 
     \end{enumerate}
     \end{ejems}
@@ -273,6 +273,54 @@ De manera similar, una funci'on $\ff{f}{A}{B}$ es suprayectiva si y solo si exis
 \end{teo}
 
 En virtud de este resultado, decimos que $s$ es un \emph{monomorfismo escindido} y que $r$ es un \emph{epimorfismo escindido}.
+
+Concluimos esta sección construyendo una categoría a partir de otra dada.
+Para ello, conservamos sus objetos e invertimos la dirección de todas
+sus flechas.
+
+\begin{defi}[Categoría opuesta]
+\label{def:categoria opuesta}
+Sea $\cat{C}$ una categoría. La \emph{categoría opuesta} de $\cat{C}$, denotada por $\opp{C}$, tiene:
+\begin{itemize}
+    \item Los mismos objetos que $\cat{C}$.
+    \item Para cada morfismo $\ff{f}{A}{B}$ en $\cat{C}$, un morfismo
+    correspondiente $\ff{\invopp{f}}{B}{A}$ en $\opp{C}$.
+    \item Como identidad de cada objeto $A$, el morfismo
+    $\invopp{(\id{A})}$.
+    \item La composición definida, para $\ff{f}{A}{B}$ y
+    $\ff{g}{B}{C}$ en $\cat{C}$, por
+    \[
+        \invopp{f}\,\invopp{g}=\invopp{(gf)}.
+    \]
+\end{itemize}
+\end{defi}
+
+Observemos que también se invierte el orden de composición. Los axiomas
+de identidad y asociatividad se siguen de los de $\cat{C}$, con los
+factores en orden contrario. Por tanto, $\opp{C}$ es una categoría.
+La flecha $\invopp{f}$ pertenece a $\opp{C}$; su existencia no implica
+que haya una flecha $B\to A$ en $\cat{C}$.
+
+\begin{ejem} Dado un orden parcial $(P,\leq)$ visto como categoría
+    $\cat{P}$, una flecha $a\to b$ en $\opp{P}$ existe si y sólo si
+    $b\leq a$. Así, $\opp{P}$ corresponde al orden contrario, es decir, 
+     $a\leq_{\text{op}}b$ si y solo si $b\leq a$.
+
+\end{ejem}
+
+Esta construcción da lugar al \emph{principio de dualidad}: todo
+enunciado formulado en el lenguaje de categorías y deducible de sus
+axiomas tiene un enunciado dual, obtenido al invertir todas las flechas
+y el orden de las composiciones. El enunciado dual también se deduce
+de esos axiomas. Si el resultado incluye hipótesis adicionales,
+estas deben dualizarse junto con la conclusión.
+
+Esto se debe a que un resultado aplicado a $\opp{C}$ puede interpretarse,
+al invertir nuevamente sus flechas, como el resultado dual en $\cat{C}$.
+En las siguientes secciones encontraremos nociones relacionadas de
+esta manera, lo que nos permitirá obtener resultados por dualidad sin
+repetir sus demostraciones.
+
 
 Concluimos esta secci'on construyendo una categor'ia a partir de una  $\cat C$. Dada una flecha $a\to b$, podemos pensar en el proceso de invertir la direcci'on de 'esta. En este caso, tendr'iamos $b\to a$. El proceso de \enquote{revertir todas las flechas} produce lo que conocemos como un proceso \emph{dual}. Este procedimiento nos permite definir la siguiente categor'ia: 
 
